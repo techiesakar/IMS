@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Purchase = () => {
   return (
-    <div>Purchase</div>
-  )
-}
+    <div className="w-full h-full flex items-center justify-center">
+      Purchase
+    </div>
+  );
+};
 
-export default Purchase
+export default Purchase;

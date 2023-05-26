@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
 const Sales = () => {
   return (
-    <div>Sales</div>
-  )
-}
+    <div className="w-full h-full flex items-center justify-center">Sales</div>
+  );
+};
 
-export default Sales
+export default Sales;

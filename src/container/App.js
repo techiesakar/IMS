@@ -13,7 +13,7 @@ import Suppliers from "pages/Suppliers/Suppliers";
 
 function App() {
   return (
-    <div className="App font-mulish">
+    <div className="App ">
       <Layout>
         <Routes>
           <Route path={"/"} element={<Dashboard />} />
@@ -21,7 +21,7 @@ function App() {
           <Route path={"/customers"} element={<Customers />} />
           <Route path={"/inventory"} element={<Inventory />} />
           <Route path={"/purchase"} element={<Purchase />} />
-          <Route path={"/report"} element={<Reports />} />
+          <Route path={"/reports"} element={<Reports />} />
           <Route path={"/sales"} element={<Sales />} />
           <Route path={"/settings"} element={<Settings />} />
           <Route path={"/suppliers"} element={<Suppliers />} />

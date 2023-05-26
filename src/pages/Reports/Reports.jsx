@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Reports = () => {
   return (
-    <div>Reports</div>
-  )
-}
+    <div className="w-full h-full flex items-center justify-center">
+      Reports
+    </div>
+  );
+};
 
-export default Reports
+export default Reports;

@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
 
 const Settings = () => {
   return (
-    <div>Settings</div>
-  )
-}
+    <div className="w-full h-full flex items-center justify-center">
+      Settings
+    </div>
+  );
+};
 
-export default Settings
+export default Settings;

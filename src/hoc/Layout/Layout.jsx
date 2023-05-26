@@ -4,7 +4,7 @@ import React from "react";
 
 const Layout = ({ children }) => {
   return (
-    <div className="pl-40 pt-14 min-h-screen w-screen relative">
+    <div className="md:pl-56 pt-14 min-h-screen w-screen relative">
       <Toolbar />
       <Sidebar />
       <main className="bg-[#F8FBFD] h-main-height">{children}</main>
