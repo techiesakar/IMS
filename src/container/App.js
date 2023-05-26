@@ -13,10 +13,11 @@ import Suppliers from "pages/Suppliers/Suppliers";
 
 function App() {
   return (
-    <div className="App">
+    <div className="App font-mulish">
       <Layout>
         <Routes>
           <Route path={"/"} element={<Dashboard />} />
+          <Route path={"/dashboard"} element={<Dashboard />} />
           <Route path={"/customers"} element={<Customers />} />
           <Route path={"/inventory"} element={<Inventory />} />
           <Route path={"/purchase"} element={<Purchase />} />

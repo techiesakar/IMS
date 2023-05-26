@@ -9,7 +9,14 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      height: {
+        "main-height": "calc(100vh - 3.5rem)",
+      },
+      fontFamily: {
+        mulish: "Mulish",
+      },
+    },
   },
   plugins: [],
 };

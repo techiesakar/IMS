@@ -4,10 +4,10 @@ import React from "react";
 
 const Layout = ({ children }) => {
   return (
-    <div className="xl:pl-60 pt-14 min-h-screen w-screen relative">
+    <div className="pl-40 pt-14 min-h-screen w-screen relative">
       <Toolbar />
       <Sidebar />
-      <main>{children}</main>
+      <main className="bg-[#F8FBFD] h-main-height">{children}</main>
     </div>
   );
 };
