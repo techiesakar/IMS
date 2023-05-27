@@ -1,7 +1,5 @@
-import React, { useState, useContext } from "react";
-
+import React, { useState, useContext, useRef, useEffect } from "react";
 import { MenuToggleContext } from "contexts/SideMenuToggleContext";
-
 import { AiFillMessage, AiOutlineClose } from "react-icons/ai";
 import { MdNotifications, MdKeyboardArrowDown } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
@@ -13,19 +11,37 @@ import { Link } from "react-router-dom";
 const Toolbar = () => {
   const { toggleMenu, setToggleMenu } = useContext(MenuToggleContext);
   const [profileToggle, setProfileToggle] = useState(false);
-  const handlClick = () => {
-    setToggleMenu(!toggleMenu);
-    console.log(toggleMenu);
-  };
+  const dropdownRef = useRef(null);
+  const dropdownButtonRef = useRef(null);
+
+  useEffect(() => {
+    console.log(dropdownButtonRef);
+    const pageClickEvent = (e) => {
+      if (
+        dropdownRef.current !== null &&
+        !dropdownRef.current.contains(e.target) &&
+        e.target !== dropdownButtonRef.current &&
+        !dropdownButtonRef.current.contains(e.target)
+      ) {
+        setProfileToggle(false);
+      }
+    };
+    if (profileToggle) {
+      window.addEventListener("click", pageClickEvent);
+    }
+    return () => {
+      window.removeEventListener("click", pageClickEvent);
+    };
+  }, [profileToggle]);
 
   return (
-    <header className="w-full  bg-white font-mulish">
+    <header className="w-full bg-white font-mulish">
       {toggleMenu && <Overlay />}
       <div className="flex justify-between items-center px-6 h-14">
         <button
           type="button"
           aria-label="Menu Toggle"
-          onClick={handlClick}
+          onClick={() => setToggleMenu(!toggleMenu)}
           className={`md:hidden text-2xl  ${
             toggleMenu ? "fixed top-6 right-6 z-50 text-white text-3xl" : ""
           }`}
@@ -47,11 +63,12 @@ const Toolbar = () => {
           </div>
           <div className="relative h-full flex items-center">
             <button
+              ref={dropdownButtonRef}
               onClick={() => setProfileToggle(!profileToggle)}
               type="button"
               className="flex gap-2 items-center"
               aria-haspopup="true"
-              aria-expanded={profileToggle ? profileToggle : !profileToggle}
+              aria-expanded={profileToggle ? "true" : "false"}
             >
               <img
                 src={profileImg}
@@ -59,7 +76,7 @@ const Toolbar = () => {
                 className="h-6 w-6 rounded-full"
               />
               <div className="hidden md:flex items-center gap-1">
-                <span className=" text-gray-800 font-medium text-sm ">
+                <span className="text-gray-800 font-medium text-sm">
                   Sakar Aryal
                 </span>
                 <span className="mt-1 text-lg">
@@ -69,7 +86,8 @@ const Toolbar = () => {
             </button>
 
             <div
-              className={`absolute top-full right-0 text-left bg-white shadow py-2 w-40 transition-all duration-800 ease-in  border ${
+              ref={dropdownRef}
+              className={`absolute top-full right-0 text-left bg-white shadow py-2 w-40 transition-all duration-800 ease-in border ${
                 profileToggle ? "z-50 opacity-100" : "-z-10 opacity-0"
               }`}
             >
