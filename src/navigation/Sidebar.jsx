@@ -20,7 +20,7 @@ const Sidebar = () => {
   };
   return (
     <aside
-      className={`sidebar fixed -left-56 md:left-0 top-0 transition-all duration-300  bg-cyan-950 h-screen whitespace-nowrap  md:flex flex-col gap-6 justify-between py-6 ${
+      className={`sidebar fixed -left-56 z-50  md:left-0 top-0 transition-all duration-300  bg-cyan-950 h-screen whitespace-nowrap  md:flex flex-col gap-6 justify-between py-6 ${
         toggle ? "w-16" : "w-52"
       }`}
     >
