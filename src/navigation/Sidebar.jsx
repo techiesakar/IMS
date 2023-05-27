@@ -1,33 +1,39 @@
 import React, { useContext } from "react";
-
-import Favicon from "assets/images/Favicon.png";
-import HeaderLogo from "assets/images/Logo.png";
+import {
+  MenuShrinkContext,
+  MenuToggleContext,
+} from "contexts/SideMenuToggleContext";
 
 import { Link } from "react-router-dom";
 import NavLinks from "./NavlLinks";
+
+import Favicon from "assets/images/Favicon.png";
+import HeaderLogo from "assets/images/Logo.png";
 
 import {
   TbLayoutSidebarLeftCollapse,
   TbLayoutSidebarRightCollapse,
 } from "react-icons/tb";
-import ToggleContext from "contexts/ToggleContext";
 
 const Sidebar = () => {
-  // const [toggle, setToggle] = useState(false);
-  const { toggle, setToggle } = useContext(ToggleContext);
+  const { toggleShrink, setToggleShrink } = useContext(MenuShrinkContext);
+  const { toggleMenu } = useContext(MenuToggleContext);
+
   const handleToggle = () => {
-    setToggle(!toggle);
+    setToggleShrink(!toggleShrink);
   };
   return (
     <aside
-      className={`sidebar fixed -left-56 z-50  md:left-0 top-0 transition-all duration-300  bg-cyan-950 h-screen whitespace-nowrap  md:flex flex-col gap-6 justify-between py-6 ${
-        toggle ? "w-16" : "w-52"
+      className={`sidebar fixed ${
+        toggleMenu ? "left-0" : "-left-56"
+      } z-50  md:left-0 top-0 transition-all duration-300  bg-cyan-950 h-screen whitespace-nowrap  flex flex-col gap-6 justify-between py-6 ${
+        toggleShrink ? "w-16" : "w-52"
       }`}
     >
       <div className="flex flex-col gap-6 px-4">
         <div className="site-branding h-8 flex items-center ">
           <Link to={"/"} className="flex gap-2 items-left h-full">
-            {!toggle ? (
+            {!toggleShrink ? (
               <img
                 src={HeaderLogo}
                 alt="SR Inventory"
@@ -56,7 +62,7 @@ const Sidebar = () => {
                   <button type="button" className="text-2xl" title={item.title}>
                     {item.icon}
                   </button>
-                  {!toggle && item.title}
+                  {!toggleShrink && item.title}
                 </Link>
               </li>
             );
@@ -65,9 +71,13 @@ const Sidebar = () => {
       </div>
 
       <div className="text-white flex gap-3 items-center px-4 toggle-wrapper">
-        <div className="text-2xl" onClick={handleToggle}>
-          <button type="button">
-            {toggle ? (
+        <div className="text-2xl">
+          <button
+            type="button"
+            className="md:block hidden"
+            onClick={handleToggle}
+          >
+            {toggleShrink ? (
               <TbLayoutSidebarRightCollapse />
             ) : (
               <span className="flex items-center gap-3">
@@ -81,5 +91,4 @@ const Sidebar = () => {
     </aside>
   );
 };
-
 export default Sidebar;

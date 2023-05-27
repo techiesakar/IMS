@@ -1,24 +1,29 @@
+// Layout.js
 import React, { useContext } from "react";
-import ToggleContext, { ToggleProvider } from "contexts/ToggleContext";
+import {
+  MenuShrinkContext,
+  MenuToggleProvider,
+} from "contexts/SideMenuToggleContext";
+
 import Sidebar from "navigation/Sidebar";
 import Toolbar from "navigation/Toolbar";
 
 const Layout = ({ children }) => {
   return (
-    <ToggleProvider>
+    <MenuToggleProvider>
       <LayoutContent>{children}</LayoutContent>
-    </ToggleProvider>
+    </MenuToggleProvider>
   );
 };
 
 const LayoutContent = ({ children }) => {
-  const { toggle } = useContext(ToggleContext);
+  const { toggleShrink } = useContext(MenuShrinkContext);
   return (
     <div>
       <Sidebar />
       <div
         className={`${
-          toggle ? "md:pl-16" : "md:pl-52"
+          toggleShrink ? "md:pl-16" : "md:pl-52"
         } min-h-screen  relative  ease-in duration-200`}
       >
         <Toolbar />
