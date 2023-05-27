@@ -1,29 +1,33 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import { MenuToggleContext } from "contexts/SideMenuToggleContext";
 
 import { AiFillMessage, AiOutlineClose } from "react-icons/ai";
-import { MdNotifications } from "react-icons/md";
+import { MdNotifications, MdKeyboardArrowDown } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { BiMenuAltLeft } from "react-icons/bi";
 import profileImg from "assets/images/profileImg.jpg";
 import Overlay from "components/Overlay";
+import { Link } from "react-router-dom";
 
 const Toolbar = () => {
   const { toggleMenu, setToggleMenu } = useContext(MenuToggleContext);
+  const [profileToggle, setProfileToggle] = useState(false);
   const handlClick = () => {
     setToggleMenu(!toggleMenu);
     console.log(toggleMenu);
   };
 
   return (
-    <header className="w-full  bg-white">
+    <header className="w-full  bg-white font-mulish">
       {toggleMenu && <Overlay />}
       <div className="flex justify-between items-center px-6 h-14">
         <button
+          type="button"
+          aria-label="Menu Toggle"
           onClick={handlClick}
           className={`md:hidden text-2xl  ${
-            toggleMenu && "fixed top-6 right-6 z-50 text-white text-3xl"
+            toggleMenu ? "fixed top-6 right-6 z-50 text-white text-3xl" : ""
           }`}
         >
           {toggleMenu ? <AiOutlineClose /> : <BiMenuAltLeft />}
@@ -36,22 +40,63 @@ const Toolbar = () => {
             placeholder="Search"
           />
         </div>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6 h-full">
           <div className="flex gap-2 text-xl text-gray-700 border-r-2 border-gray-200 px-4">
             <AiFillMessage />
             <MdNotifications />
           </div>
-          <div className="flex gap-3 items-center ">
-            <img
-              src={profileImg}
-              alt="Sakar Aryal"
-              className="h-6 w-6 rounded-full"
-            />
-            <div className="hidden md:flex flex-col items-start ">
-              <span className="font-bold text-gray-900 text-sm ">
-                Sakar Aryal
-              </span>
-              <span className="text-gray-600 text-xs">Inventory Manager</span>
+          <div className="relative h-full flex items-center">
+            <button
+              onClick={() => setProfileToggle(!profileToggle)}
+              type="button"
+              className="flex gap-2 items-center"
+              aria-haspopup="true"
+              aria-expanded={profileToggle ? profileToggle : !profileToggle}
+            >
+              <img
+                src={profileImg}
+                alt="Sakar Aryal"
+                className="h-6 w-6 rounded-full"
+              />
+              <div className="hidden md:flex items-center gap-1">
+                <span className=" text-gray-800 font-medium text-sm ">
+                  Sakar Aryal
+                </span>
+                <span className="mt-1 text-lg">
+                  <MdKeyboardArrowDown />
+                </span>
+              </div>
+            </button>
+
+            <div
+              className={`absolute top-full right-0 text-left bg-white shadow py-2 w-40 transition-all duration-800 ease-in  border ${
+                profileToggle ? "z-50 opacity-100" : "-z-10 opacity-0"
+              }`}
+            >
+              <div className="px-4 border-b border-gray-200 pb-3">
+                <div>Sakar Aryal</div>
+                <div className="italic text-xs text-gray-600">
+                  Administrator
+                </div>
+              </div>
+              <ul className="flex flex-col px-4">
+                <li>
+                  <Link
+                    to={"/settings"}
+                    className="text-blue-600 leading-7 text-sm font-medium"
+                  >
+                    Settings
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to={"/settings"}
+                    className="text-blue-600 leading-7 text-sm font-medium"
+                  >
+                    Sign Out
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

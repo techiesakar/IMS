@@ -10,10 +10,7 @@ import NavLinks from "./NavlLinks";
 import Favicon from "assets/images/Favicon.png";
 import HeaderLogo from "assets/images/Logo.png";
 
-import {
-  TbLayoutSidebarLeftCollapse,
-  TbLayoutSidebarRightCollapse,
-} from "react-icons/tb";
+import { FiArrowRightCircle, FiArrowLeftCircle } from "react-icons/fi";
 
 const Sidebar = () => {
   const { toggleShrink, setToggleShrink } = useContext(MenuShrinkContext);
@@ -78,10 +75,10 @@ const Sidebar = () => {
             onClick={handleToggle}
           >
             {toggleShrink ? (
-              <TbLayoutSidebarRightCollapse />
+              <FiArrowRightCircle />
             ) : (
               <span className="flex items-center gap-3">
-                <TbLayoutSidebarLeftCollapse />
+                <FiArrowLeftCircle />
                 <span className="text-base">Collapse Menu</span>
               </span>
             )}
