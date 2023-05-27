@@ -23,7 +23,7 @@ const Dashboard = () => {
       <div className="grid md:grid-cols-2 grid-cols-1 justify-between">
         {/* Card Start */}
         <div className="flex flex-col gap-6">
-          <h1 className="text-left font-bold text-lg w-1/2 text-gray-800">
+          <h1 className="text-left font-bold text-lg  text-gray-800">
             Sales Order
           </h1>
           <div className="bg-white rounded-md p-6 h-60">
@@ -34,7 +34,7 @@ const Dashboard = () => {
 
         {/* Card Start */}
         <div className="flex flex-col gap-6">
-          <h1 className="text-left font-bold text-lg w-1/2 text-gray-800">
+          <h1 className="text-left font-bold text-lg  text-gray-800">
             Inventory
           </h1>
           <div className="bg-white rounded-md p-6 h-60">
@@ -47,7 +47,7 @@ const Dashboard = () => {
       {/* Table Area */}
       <div className=" rounded-md  lg:grid md:grid-cols-2 gap-8">
         <div className="w-full h-full flex flex-col gap-4">
-          <h1 className="text-left font-bold text-lg w-1/2 text-gray-800">
+          <h1 className="text-left font-bold text-lg  text-gray-800">
             Top Selling Items
           </h1>
           <table className="w-full  text-left text-gray-800 bg-white">
@@ -92,7 +92,7 @@ const Dashboard = () => {
           </table>
         </div>
         <div className="w-full h-full flex flex-col gap-4">
-          <h1 className="text-left font-bold text-lg w-1/2 text-gray-800">
+          <h1 className="text-left font-bold text-lg  text-gray-800">
             High Demand is Expected
           </h1>
           <table className="w-full  text-left text-gray-800 bg-white">
