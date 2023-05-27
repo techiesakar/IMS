@@ -25,19 +25,19 @@ const Sidebar = () => {
       }`}
     >
       <div className="flex flex-col gap-6 px-4">
-        <div className="site-branding">
-          <Link to={"/"} className="flex gap-2 items-left">
+        <div className="site-branding h-8 flex items-center ">
+          <Link to={"/"} className="flex gap-2 items-left h-full">
             {!toggle ? (
               <img
                 src={HeaderLogo}
                 alt="SR Inventory"
-                className="site-logo h-8 w-auto object-contain"
+                className="site-logo  h-full w-auto object-contain"
               />
             ) : (
               <img
                 src={Favicon}
                 alt="SR Inventory"
-                className="site-logo h-8 w-8 "
+                className="site-logo h-full w-8"
               />
             )}
           </Link>
