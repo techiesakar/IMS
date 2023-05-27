@@ -7,8 +7,8 @@ import {
 import { Link } from "react-router-dom";
 import NavLinks from "./NavlLinks";
 
-import Favicon from "assets/images/Favicon.png";
-import HeaderLogo from "assets/images/Logo.png";
+import Favicon from "assets/brandings/Favicon.png";
+import HeaderLogo from "assets/brandings/Logo.png";
 
 import { FiArrowRightCircle, FiArrowLeftCircle } from "react-icons/fi";
 

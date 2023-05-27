@@ -27,7 +27,7 @@ const LayoutContent = ({ children }) => {
         } min-h-screen  relative  ease-in duration-200`}
       >
         <Toolbar />
-        <main className="bg-[#F8FBFD] p-6  h-main-height  font-mulish">
+        <main className="bg-[#F8FBFD] p-6  min-h-screen  font-mulish">
           {children}
         </main>
       </div>

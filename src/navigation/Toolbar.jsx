@@ -4,7 +4,7 @@ import { AiFillMessage, AiOutlineClose } from "react-icons/ai";
 import { MdNotifications, MdKeyboardArrowDown } from "react-icons/md";
 import { FiSearch } from "react-icons/fi";
 import { BiMenuAltLeft } from "react-icons/bi";
-import profileImg from "assets/images/profileImg.jpg";
+import profileImg from "assets/brandings/profileImg.jpg";
 import Overlay from "components/Overlay";
 import { Link } from "react-router-dom";
 
