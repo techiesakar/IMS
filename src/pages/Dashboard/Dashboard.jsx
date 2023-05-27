@@ -20,7 +20,7 @@ const Dashboard = () => {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 grid-cols-1 justify-between">
+      <div className="grid md:grid-cols-2 grid-cols-1 justify-between gap-6">
         {/* Card Start */}
         <div className="flex flex-col gap-6">
           <h1 className="text-left font-bold text-lg  text-gray-800">
@@ -45,7 +45,7 @@ const Dashboard = () => {
       </div>
 
       {/* Table Area */}
-      <div className=" rounded-md  lg:grid md:grid-cols-2 gap-8">
+      <div className=" rounded-md  grid  lg:grid-cols-2 gap-8">
         <div className="w-full h-full flex flex-col gap-4">
           <h1 className="text-left font-bold text-lg  text-gray-800">
             Top Selling Items
@@ -74,17 +74,17 @@ const Dashboard = () => {
               {inventoryItems.map((item, index) => {
                 return (
                   <tr key={index} className="border-b bg-white">
-                    <td class="px-5 py-2">
+                    <td className="px-5 py-2">
                       <img
                         src={item.image}
                         alt={item.name}
                         className="h-12 w-12 rounded-lg"
                       />
                     </td>
-                    <td class="px-5 py-2">{item.name}</td>
-                    <td class="px-5 py-2">{item.sold}</td>
-                    <td class="px-5 py-2">{item.onHand}</td>
-                    <td class="px-5 py-2">{item.units}</td>
+                    <td className="px-5 py-2">{item.name}</td>
+                    <td className="px-5 py-2">{item.sold}</td>
+                    <td className="px-5 py-2">{item.onHand}</td>
+                    <td className="px-5 py-2">{item.units}</td>
                   </tr>
                 );
               })}
@@ -119,17 +119,17 @@ const Dashboard = () => {
               {inventoryItems.map((item, index) => {
                 return (
                   <tr key={index} className="border-b bg-white">
-                    <td class="px-5 py-2">
+                    <td className="px-5 py-2">
                       <img
                         src={item.image}
                         alt={item.name}
                         className="h-12 w-12 rounded-lg"
                       />
                     </td>
-                    <td class="px-5 py-2">{item.name}</td>
-                    <td class="px-5 py-2">{item.sold}</td>
-                    <td class="px-5 py-2">{item.onHand}</td>
-                    <td class="px-5 py-2">{item.units}</td>
+                    <td className="px-5 py-2">{item.name}</td>
+                    <td className="px-5 py-2">{item.sold}</td>
+                    <td className="px-5 py-2">{item.onHand}</td>
+                    <td className="px-5 py-2">{item.units}</td>
                   </tr>
                 );
               })}
