@@ -10,31 +10,29 @@ import { Link } from "react-router-dom";
 
 const Toolbar = () => {
   const { toggleMenu, setToggleMenu } = useContext(MenuToggleContext);
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [profileToggle, setProfileToggle] = useState(false);
   const dropdownRef = useRef(null);
   const dropdownButtonRef = useRef(null);
 
   useEffect(() => {
+    console.log(dropdownButtonRef);
     const pageClickEvent = (e) => {
       if (
-        dropdownRef.current?.contains(e.target) ||
-        dropdownButtonRef.current?.contains(e.target)
+        dropdownRef.current !== null &&
+        !dropdownRef.current.contains(e.target) &&
+        e.target !== dropdownButtonRef.current &&
+        !dropdownButtonRef.current.contains(e.target)
       ) {
-        return;
-      } else {
-        setIsProfileOpen(false);
+        setProfileToggle(false);
       }
     };
-
-    if (isProfileOpen) {
+    if (profileToggle) {
       window.addEventListener("click", pageClickEvent);
-      console.log(isProfileOpen);
     }
-
     return () => {
       window.removeEventListener("click", pageClickEvent);
     };
-  }, [isProfileOpen]);
+  }, [profileToggle]);
 
   return (
     <header className="w-full bg-white font-mulish">
@@ -66,11 +64,11 @@ const Toolbar = () => {
           <div className="relative h-full flex items-center">
             <button
               ref={dropdownButtonRef}
-              onClick={() => setIsProfileOpen(!isProfileOpen)}
+              onClick={() => setProfileToggle(!profileToggle)}
               type="button"
               className="flex gap-2 items-center"
               aria-haspopup="true"
-              aria-expanded={isProfileOpen ? "true" : "false"}
+              aria-expanded={profileToggle ? "true" : "false"}
             >
               <img
                 src={profileImg}
@@ -90,7 +88,7 @@ const Toolbar = () => {
             <div
               ref={dropdownRef}
               className={`absolute top-full right-0 text-left bg-white shadow py-2 w-40 transition-all duration-800 ease-in border ${
-                isProfileOpen ? "z-50 opacity-100" : "-z-10 opacity-0"
+                profileToggle ? "z-50 opacity-100" : "-z-10 opacity-0"
               }`}
             >
               <div className="px-4 border-b border-gray-200 pb-3">
