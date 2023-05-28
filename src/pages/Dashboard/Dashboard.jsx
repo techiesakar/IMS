@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import CardData from "./CardData";
+import CardData from "./data/CardData";
 import Card from "./components/Card";
 import { Donut } from "./components/Donut";
 import SalesData from "./data/SalesData";
-import InventoryData from "./data/InventoryData";
 import inventoryItems from "data/Inventory";
+import InventoryData from "./data/InventoryData";
 const Dashboard = () => {
   useEffect(() => {
     document.title = "SA - Dashboard"; // Set the desired title of your page
