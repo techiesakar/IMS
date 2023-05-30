@@ -15,6 +15,11 @@ import AddCustomer from "pages/Customers/AddCustomers";
 import NotFound from "pages/NotFound/NotFound";
 import Login from "pages/Login/Login";
 import ViewCustomer from "pages/Customers/ViewCustomer";
+import Staffs from "pages/Staffs/Staffs";
+import AddStaff from "pages/Staffs/AddStaff";
+import SalesTransaction from "pages/Transactions/SalesTransaction";
+import PurchasesTransaction from "pages/Transactions/PurchasesTransaction";
+import AddSupplier from "pages/Suppliers/AddSupplier";
 
 function App() {
   return (
@@ -34,7 +39,14 @@ function App() {
           <Route path={"/sales"} element={<Sales />} />
           <Route path={"/settings"} element={<Settings />} />
           <Route path={"/suppliers"} element={<Suppliers />} />
-          <Route path={"/supplier/add"} element={<Suppliers />} />
+          <Route path={"/supplier/add"} element={<AddSupplier />} />
+          <Route path="/transactions/sales" element={<SalesTransaction />} />
+          <Route
+            path="/transactions/purchases"
+            element={<PurchasesTransaction />}
+          />
+          <Route path={"/staffs"} element={<Staffs />} />
+          <Route path={"/staff/add"} element={<AddStaff />} />
           <Route path={"/login"} element={<Login />} />
           <Route path={"/404"} element={<NotFound />} />
           <Route path={"*"} element={<Navigate to="/404" />} />

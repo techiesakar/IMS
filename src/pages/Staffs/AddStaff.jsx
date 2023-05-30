@@ -2,22 +2,22 @@ import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
 import React from "react";
 
-const AddCustomer = () => {
-  document.title = "SA - Add Customer";
+const AddStaff = () => {
+  document.title = "SA - Add Staff";
   return (
     <DataLayout
-      title="Add Customer"
+      title="Add Staff"
       hideFilter={true}
       hideEdit={true}
       hideAdd={true}
-      addItemLink="/customer/add"
-      viewAllLink="/customers"
+      addItemLink="/staff/add"
+      viewAllLink="/staffs"
     >
       <form className="bg-white p-8 rounded ">
         <div className="flex flex-col gap-6">
           <div className="flex w-full gap-12">
             <div className="flex flex-col items-start gap-2 w-1/2">
-              <span>Customer ID</span>
+              <span>Staff ID</span>
               <input
                 type="text"
                 placeholder="CX100"
@@ -34,6 +34,24 @@ const AddCustomer = () => {
                 placeholder="19-10-2022"
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               />
+            </div>
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>Role</span>
+              <select
+                name=""
+                id=""
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              >
+                <option value="" selected>
+                  Admin
+                </option>
+                <option value="" selected>
+                  Editor
+                </option>
+                <option value="" selected>
+                  Viewer
+                </option>
+              </select>
             </div>
           </div>
           {/* Row One Ends */}
@@ -152,4 +170,4 @@ const AddCustomer = () => {
   );
 };
 
-export default AddCustomer;
+export default AddStaff;
