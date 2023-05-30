@@ -37,7 +37,7 @@ const Customers = () => {
       addItemLink="/customer/add"
       viewAllLink="/customer"
     >
-      <table className="w-full  text-left text-gray-800 bg-white">
+      <table className="w-full  text-left text-gray-800 bg-white overfow-hidden	">
         <thead className="text-gray-700">
           <tr className="border-gray-200 border-b">
             <th className="px-6 py-4">

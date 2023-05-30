@@ -58,7 +58,9 @@ const DataLayout = ({
           </Link>
         )}
       </div>
-      <div className="w-full h-full flex  flex-col">{children} </div>
+      <div className="w-full h-full flex  flex-col overflow-scroll">
+        {children}{" "}
+      </div>
     </div>
   );
 };
