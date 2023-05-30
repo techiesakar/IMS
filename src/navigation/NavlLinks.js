@@ -70,7 +70,7 @@ const NavLinks = [
       {
         id: 0,
         title: "Add Supplier",
-        link: "/suppliers/add",
+        link: "/supplier/add",
       },
       {
         id: 1,
@@ -102,18 +102,18 @@ const NavLinks = [
   {
     id: 6,
     title: "Transactions",
-    link: "/transation",
+    link: "/transations",
     icon: <AiOutlineTransaction />,
     children: [
       {
         id: 0,
         title: "Sales",
-        link: "/suppliers/add",
+        link: "/transactions/sales",
       },
       {
         id: 1,
         title: "Purchases",
-        link: "/suppliers",
+        link: "/transactions/purchases",
       },
     ],
   },
@@ -122,6 +122,18 @@ const NavLinks = [
     title: "Staffs",
     link: "/staffs",
     icon: <BsPeopleFill />,
+    children: [
+      {
+        id: 0,
+        title: "Add Staff",
+        link: "/staff/add",
+      },
+      {
+        id: 1,
+        title: "View Staffs",
+        link: "/staffs",
+      },
+    ],
   },
   { id: 7, title: "Reports", link: "/reports", icon: <SiGoogleanalytics /> },
   { id: 8, title: "Settings", link: "/settings", icon: <CiSettings /> },
