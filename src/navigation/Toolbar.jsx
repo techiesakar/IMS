@@ -37,7 +37,7 @@ const Toolbar = () => {
   }, [isProfileOpen]);
 
   return (
-    <header className="w-full bg-white font-mulish">
+    <header className="w-full bg-transparent font-mulish">
       {toggleMenu && <Overlay />}
       <div className="flex justify-between items-center px-6 h-14">
         <button
@@ -50,6 +50,7 @@ const Toolbar = () => {
         >
           {toggleMenu ? <AiOutlineClose /> : <BiMenuAltLeft />}
         </button>
+
         <div className="border border-gray-200 rounded-2xl bg-white flex items-center px-4 gap-2 h-9">
           <FiSearch className="text-green-500" />
           <input

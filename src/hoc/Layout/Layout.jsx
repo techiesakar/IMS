@@ -4,6 +4,7 @@ import {
   MenuShrinkContext,
   MenuToggleProvider,
 } from "contexts/SideMenuToggleContext";
+import { useLocation } from "react-router-dom";
 
 import Sidebar from "navigation/Sidebar";
 import Toolbar from "navigation/Toolbar";
@@ -17,18 +18,25 @@ const Layout = ({ children }) => {
 };
 
 const LayoutContent = ({ children }) => {
+  const location = useLocation();
   const { toggleShrink } = useContext(MenuShrinkContext);
+  console.log(location);
   return (
     <div>
-      <Sidebar />
+      {location.pathname !== "/login" && <Sidebar />}
+
       <div
         className={`${
-          toggleShrink ? "md:pl-16" : "md:pl-52"
+          location.pathname !== "/login"
+            ? toggleShrink
+              ? "md:ml-16"
+              : "md:ml-52"
+            : ""
         } min-h-screen  relative  ease-in duration-200`}
       >
-        <Toolbar />
-        <main className="bg-[#F8FBFD] p-6  min-h-screen  font-mulish">
-          {children}
+        <main className="h-screen w-full bg-gray-50 flex flex-col font-mulish relative ">
+          {location.pathname !== "/login" && <Toolbar />}
+          <div className="px-6 flex-1 ">{children}</div>
         </main>
       </div>
     </div>

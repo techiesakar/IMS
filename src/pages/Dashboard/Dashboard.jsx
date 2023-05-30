@@ -1,14 +1,29 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CardData from "./data/CardData";
 import Card from "./components/Card";
+import inventory from "data/inventory.json";
 import { Donut } from "./components/Donut";
-import SalesData from "./data/SalesData";
-import inventoryItems from "data/Inventory";
-import InventoryData from "./data/InventoryData";
+import InventoryStats from "./data/InventoryStats";
+import SalesStats from "./data/SalesStats";
 const Dashboard = () => {
+  document.title = "SA - Dashboard"; // Set the desired title of your page
+  const productsList = inventory.products;
+  const currentProducts = productsList.slice(0, 6);
+
+  const [width, setWidth] = useState(0);
   useEffect(() => {
-    document.title = "SA - Dashboard"; // Set the desired title of your page
+    const winWidth = () => {
+      setWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", winWidth);
+    return () => {
+      window.removeEventListener("resize", winWidth);
+    };
   }, []);
+
+  console.log(width);
+
   return (
     <div className="w-full h-full flex flex-col gap-6">
       <h1 className="text-left font-bold text-xl text-gray-800">
@@ -26,8 +41,8 @@ const Dashboard = () => {
           <h1 className="text-left font-bold text-lg  text-gray-800">
             Sales Order
           </h1>
-          <div className="bg-white rounded-md p-6 h-60">
-            <Donut data={SalesData} />
+          <div className=" rounded-md lg:p-6  ">
+            <Donut width={width} data={SalesStats} />
           </div>
         </div>
         {/* Card Ends */}
@@ -37,8 +52,8 @@ const Dashboard = () => {
           <h1 className="text-left font-bold text-lg  text-gray-800">
             Inventory
           </h1>
-          <div className="bg-white rounded-md p-6 h-60">
-            <Donut data={InventoryData} />
+          <div className=" rounded-md lg:p-6 ">
+            <Donut width={width} data={InventoryStats} />
           </div>
         </div>
         {/* Card Ends */}
@@ -71,20 +86,20 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {inventoryItems.map((item, index) => {
+              {currentProducts.map((item, index) => {
                 return (
                   <tr key={index} className="border-b bg-white">
                     <td className="px-5 py-2">
                       <img
-                        src={item.image}
-                        alt={item.name}
-                        className="h-12 w-12 rounded-lg"
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className="h-8 w-8 rounded-lg"
                       />
                     </td>
-                    <td className="px-5 py-2">{item.name}</td>
-                    <td className="px-5 py-2">{item.sold}</td>
-                    <td className="px-5 py-2">{item.onHand}</td>
-                    <td className="px-5 py-2">{item.units}</td>
+                    <td className="px-5 py-2">{item.title}</td>
+                    <td className="px-5 py-2">20</td>
+                    <td className="px-5 py-2">{item.stock}</td>
+                    <td className="px-6 py-4">{item.price}</td>
                   </tr>
                 );
               })}
@@ -116,20 +131,20 @@ const Dashboard = () => {
               </tr>
             </thead>
             <tbody>
-              {inventoryItems.map((item, index) => {
+              {currentProducts.map((item, index) => {
                 return (
                   <tr key={index} className="border-b bg-white">
                     <td className="px-5 py-2">
                       <img
-                        src={item.image}
-                        alt={item.name}
-                        className="h-12 w-12 rounded-lg"
+                        src={item.thumbnail}
+                        alt={item.title}
+                        className="h-8 w-8 rounded-lg"
                       />
                     </td>
-                    <td className="px-5 py-2">{item.name}</td>
-                    <td className="px-5 py-2">{item.sold}</td>
-                    <td className="px-5 py-2">{item.onHand}</td>
-                    <td className="px-5 py-2">{item.units}</td>
+                    <td className="px-5 py-2">{item.title}</td>
+                    <td className="px-5 py-2">20</td>
+                    <td className="px-5 py-2">{item.stock}</td>
+                    <td className="px-6 py-4">{item.price}</td>
                   </tr>
                 );
               })}

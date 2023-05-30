@@ -12,7 +12,9 @@ const ButtonComponent = styled.button`
   border-radius: 0.3rem;
   padding: 0
     ${(props) =>
-      props.size === "sm"
+      props.size === "xs"
+        ? "0.6rem"
+        : props.size === "sm"
         ? "1.1rem"
         : props.size === "md"
         ? "1.4rem"
@@ -21,7 +23,9 @@ const ButtonComponent = styled.button`
         : "1.1rem"};
 
   height: ${(props) =>
-    props.size === "sm"
+    props.size === "xs"
+      ? "28px"
+      : props.size === "sm"
       ? "34px"
       : props.size === "md"
       ? "37px"
@@ -29,7 +33,18 @@ const ButtonComponent = styled.button`
       ? "40px"
       : "34px"};
 
-  font-weight: 500;
+  font-size: ${(props) =>
+    props.size === "xs"
+      ? "12px"
+      : props.size === "sm"
+      ? "14px"
+      : props.size === "md"
+      ? "16px"
+      : props.size === "lg"
+      ? "20px"
+      : "34px"};
+
+  font-weight: 600;
 
   background-color: ${(props) =>
     props.variant === "contained"

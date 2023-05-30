@@ -71,8 +71,8 @@ const Sidebar = () => {
                   <ul
                     className={`${
                       show === item.link
-                        ? " opacity-100 translate-0"
-                        : "opacity-0 -translate-y-4"
+                        ? " opacity-100 translate-0   z-40"
+                        : "opacity-0 -translate-y-4 -z-50 collapse"
                     } ease-in-out transition-all duration-300 delay-75 absolute bg-[#083344] p-2  rounded-r left-full w-40 flex flex-col gap-2 sub-menu`}
                   >
                     {item.children.map((childItem, count) => {
@@ -92,11 +92,13 @@ const Sidebar = () => {
                     })}
                   </ul>
 
-                  <MdOutlineKeyboardArrowDown
-                    className={`${
-                      show === item.link ? "-rotate-90" : "rotate-0"
-                    } transition-all  ease-in`}
-                  />
+                  {!toggleShrink && (
+                    <MdOutlineKeyboardArrowDown
+                      className={`${
+                        show === item.link ? "-rotate-90" : "rotate-0"
+                      } transition-all  ease-in text-2xl`}
+                    />
+                  )}
                 </li>
               );
             } else

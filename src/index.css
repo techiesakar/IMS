@@ -14,3 +14,13 @@ code {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body::-webkit-scrollbar {
+  background-color: #999;
+  width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #222;
+  border-radius: 12px;
+}
