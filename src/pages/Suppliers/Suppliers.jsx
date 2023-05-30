@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import SuppliersList from "data/SuppliersList";
 import Pagination from "components/Pagination";
 import { AiFillDelete } from "react-icons/ai";
-import { BiFilterAlt, BiPencil, BiPlus } from "react-icons/bi";
-import DataLayout from "hoc/Layout/DataLayout";
+import { BiPencil } from "react-icons/bi";
+import DataLayout from "components/ui/DataLayout";
+
+import SuppliersList from "data/SuppliersList";
 
 const Suppliers = () => {
   const [currentPage, setCurrentPage] = useState(1);

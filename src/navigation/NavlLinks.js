@@ -27,12 +27,42 @@ const NavLinks = [
   },
   {
     id: 2,
-    title: "Purchase Order",
+    title: "Purchases",
     link: "/purchase",
     icon: <BiPurchaseTagAlt />,
+    children: [
+      {
+        id: 0,
+        title: "Add Purchase",
+        link: "/purchase/add",
+      },
+      {
+        id: 1,
+        title: "View Purchases",
+        link: "/purchase",
+      },
+    ],
   },
   {
     id: 3,
+    title: "Sales",
+    link: "/sales",
+    icon: <SiSalesforce />,
+    children: [
+      {
+        id: 0,
+        title: "Add Sale",
+        link: "/sale/add",
+      },
+      {
+        id: 1,
+        title: "View Sales",
+        link: "/sale/add",
+      },
+    ],
+  },
+  {
+    id: 4,
     title: "Suppliers",
     link: "/suppliers",
     icon: <MdFireTruck />,
@@ -44,12 +74,12 @@ const NavLinks = [
       },
       {
         id: 1,
-        title: "View All",
+        title: "View Suppliers",
         link: "/suppliers",
       },
     ],
   },
-  { id: 4, title: "Sales Orders", link: "/sales", icon: <SiSalesforce /> },
+
   {
     id: 5,
     title: "Customers",
@@ -63,7 +93,7 @@ const NavLinks = [
       },
       {
         id: 0,
-        title: "View All",
+        title: "View Customers",
         link: "/customers",
       },
     ],

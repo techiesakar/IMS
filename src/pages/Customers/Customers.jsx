@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import Pagination from "components/Pagination";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
-import { BiFilterAlt, BiPencil, BiPlus } from "react-icons/bi";
+import { BiPencil } from "react-icons/bi";
 import customerData from "data/customerData.json";
-import DataLayout from "hoc/Layout/DataLayout";
+import DataLayout from "components/ui/DataLayout";
 
 const Customers = () => {
   const customersList = customerData.users;

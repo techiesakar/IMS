@@ -1,5 +1,5 @@
 import Button from "components/Button";
-import DataLayout from "hoc/Layout/DataLayout";
+import DataLayout from "components/ui/DataLayout";
 import React from "react";
 
 const AddCustomer = () => {

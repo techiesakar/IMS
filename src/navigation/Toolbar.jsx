@@ -37,7 +37,7 @@ const Toolbar = () => {
   }, [isProfileOpen]);
 
   return (
-    <header className="w-full bg-transparent font-mulish">
+    <header className="w-full bg-white font-mulish">
       {toggleMenu && <Overlay />}
       <div className="flex justify-between items-center px-6 h-14">
         <button
@@ -111,7 +111,7 @@ const Toolbar = () => {
                 </li>
                 <li>
                   <Link
-                    to={"/settings"}
+                    to={"/login"}
                     className="text-blue-600 leading-7 text-sm font-medium"
                   >
                     Sign Out

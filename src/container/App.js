@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Layout from "hoc/Layout/Layout";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "pages/Dashboard/Dashboard";
 import Customers from "pages/Customers/Customers";
 import Inventory from "pages/Inventory/Inventory";
@@ -35,8 +35,9 @@ function App() {
           <Route path={"/settings"} element={<Settings />} />
           <Route path={"/suppliers"} element={<Suppliers />} />
           <Route path={"/supplier/add"} element={<Suppliers />} />
-          <Route path={"*"} element={<NotFound />} />
           <Route path={"/login"} element={<Login />} />
+          <Route path={"/404"} element={<NotFound />} />
+          <Route path={"*"} element={<Navigate to="/404" />} />
         </Routes>
       </Layout>
     </div>

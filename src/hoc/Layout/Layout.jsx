@@ -23,11 +23,13 @@ const LayoutContent = ({ children }) => {
   console.log(location);
   return (
     <div>
-      {location.pathname !== "/login" && <Sidebar />}
+      {location.pathname !== "/login" && location.pathname !== "/404" && (
+        <Sidebar />
+      )}
 
       <div
         className={`${
-          location.pathname !== "/login"
+          location.pathname !== "/login" && location.pathname !== "/404"
             ? toggleShrink
               ? "md:ml-16"
               : "md:ml-52"
@@ -35,8 +37,10 @@ const LayoutContent = ({ children }) => {
         } min-h-screen  relative  ease-in duration-200`}
       >
         <main className="h-screen w-full bg-gray-50 flex flex-col font-mulish relative ">
-          {location.pathname !== "/login" && <Toolbar />}
-          <div className="px-6 flex-1 ">{children}</div>
+          {location.pathname !== "/login" && location.pathname !== "/404" && (
+            <Toolbar />
+          )}
+          <div className="px-6 py-6 flex-1 ">{children}</div>
         </main>
       </div>
     </div>

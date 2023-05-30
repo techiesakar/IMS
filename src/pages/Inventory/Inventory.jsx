@@ -1,8 +1,8 @@
 import Pagination from "components/Pagination";
-import inventoryItems from "data/inventory";
-import DataLayout from "hoc/Layout/DataLayout";
+// import inventoryItems from "data/inventory";
+import DataLayout from "components/ui/DataLayout";
 import React, { useState } from "react";
-import { BiFilterAlt, BiPlus, BiPencil } from "react-icons/bi";
+// import { BiFilterAlt, BiPlus, BiPencil } from "react-icons/bi";
 import inventory from "data/inventory.json";
 
 const Inventory = () => {
