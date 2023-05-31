@@ -57,7 +57,7 @@ const NavLinks = [
       {
         id: 1,
         title: "View Sales",
-        link: "/sale/add",
+        link: "/sales",
       },
     ],
   },
