@@ -2,6 +2,7 @@ import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
 import UploadImage from "components/ui/UploadImage";
 import React from "react";
+import categories from "data/categories.json";
 
 const AddInventory = () => {
   document.title = "SA - Inventory";
@@ -44,25 +45,25 @@ const AddInventory = () => {
                 id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               >
-                <option value="">Apple</option>
-                <option value="">Samsung</option>
-                <option value="">Nike</option>
-                <option value="">Addidas</option>
-                <option value="">Rolex</option>
+                {categories.brands.map((brand) => (
+                  <option className="capitalize" value={brand.name}>
+                    {brand.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="flex flex-col items-start w-1/2 gap-2">
-              <span>Category</span>
+              <span>Categories</span>
               <select
                 name=""
                 id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               >
-                <option value="">Electronics</option>
-                <option value="">Sports</option>
-                <option value="">Stationery</option>
-                <option value="">Cosmetics</option>
-                <option value="">Watches</option>
+                {categories.categories.map((category) => (
+                  <option className="capitalize" value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </div>
           </div>

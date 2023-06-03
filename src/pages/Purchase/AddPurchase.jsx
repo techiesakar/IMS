@@ -38,7 +38,14 @@ const AddPurchase = () => {
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               />
             </div>
-
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>Item Code</span>
+              <input
+                type="text"
+                placeholder="CX100"
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              />
+            </div>
             <div className="flex flex-col items-start w-1/2 gap-2">
               <span>Date</span>
               <input
@@ -52,12 +59,18 @@ const AddPurchase = () => {
           {/* Row One End */}
           <div className="flex gap-12 w-full">
             <div className="flex flex-col items-start w-1/2 gap-2">
-              <span>Item Code</span>
-              <input
-                type="text"
-                placeholder="CX100"
+              <span>Item's Name</span>
+              <select
+                name=""
+                id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
-              />
+              >
+                {products.products.map((product) => (
+                  <option className="capitalize" value={product.title}>
+                    {product.title}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="flex flex-col items-start w-1/2 gap-2">
               <span>Categories</span>
@@ -74,15 +87,15 @@ const AddPurchase = () => {
               </select>
             </div>
             <div className="flex flex-col items-start w-1/2 gap-2">
-              <span>Item's Name</span>
+              <span>Brand</span>
               <select
                 name=""
                 id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               >
-                {products.products.map((product) => (
-                  <option className="capitalize" value={product.title}>
-                    {product.title}
+                {categories.brands.map((brand) => (
+                  <option className="capitalize" value={brand.name}>
+                    {brand.name}
                   </option>
                 ))}
               </select>
@@ -185,6 +198,14 @@ const AddPurchase = () => {
               <h1 className="text-2xl font-bold text-right ml-auto">
                 Order Total Rs. 40.00
               </h1>
+              <Button
+                className="ml-auto"
+                variant="contained"
+                color="primary"
+                size="md"
+              >
+                Save Purchase Order
+              </Button>
             </div>
           </div>
         </div>
@@ -293,8 +314,17 @@ const AddPurchase = () => {
                   />
                 </div>
               </div>
+
               {/* Row  End */}
               <div className="flex w-full gap-12">
+                <div className="flex flex-col items-start w-1/2 gap-2">
+                  <span>PAN or VAT Number</span>
+                  <input
+                    type="text"
+                    placeholder="PAN or VAT Number"
+                    className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+                  />
+                </div>
                 <div className="flex flex-col items-start w-1/2 gap-2">
                   <span>Address</span>
                   <input
@@ -304,15 +334,7 @@ const AddPurchase = () => {
                   />
                 </div>
               </div>
-              {/* Row  End */}
-              <div className="flex gap-4 w-full">
-                <Button variant="contained" color="primary" size="sm">
-                  Save
-                </Button>
-                <Button variant="contained" color="danger" size="sm">
-                  Cancel
-                </Button>
-              </div>
+
               {/* Row Five End */}
             </>
           )}

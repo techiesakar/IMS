@@ -1,14 +1,30 @@
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsPencilFill } from "react-icons/bs";
 import categories from "data/categories.json";
 import products from "data/inventory.json";
+import customerData from "data/customerData.json";
+import UserProfileCard from "components/ui/UserProfileCard";
 
 const AddSales = () => {
   const [isMember, setIsMember] = useState(false);
-  console.log(categories.categories);
+  const [customerPhone, setCustomerPhone] = useState(null);
+  const [customerProfile, setCustomerProfile] = useState(false);
+
+  const handleNumberChange = (e) => {
+    setCustomerPhone(e.target.value);
+    console.log(customerPhone);
+  };
+
+  const getCustomerData = () => {
+    setCustomerProfile(!customerProfile);
+  };
+
+  // useEffect(() => {
+
+  // }, [customerPhone]);
 
   return (
     <DataLayout
@@ -258,16 +274,38 @@ const AddSales = () => {
                 <div className="flex flex-col items-start w-1/2 gap-2">
                   <span>Phone</span>
                   <input
+                    onChange={handleNumberChange}
                     type="text"
                     placeholder="Customer's Phone"
                     className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
                   />
                 </div>
-              </div>{" "}
+              </div>
               <div className="flex gap-4 w-full">
-                <Button variant="contained" color="primary" size="sm">
+                <Button
+                  onClick={getCustomerData}
+                  variant="contained"
+                  color="primary"
+                  size="sm"
+                >
                   Get Data
                 </Button>
+                {customerProfile && (
+                  <>
+                    {customerData.users.map(
+                      (user) =>
+                        user.phone === customerPhone && (
+                          <UserProfileCard
+                            name={user.firstName}
+                            email={user.email}
+                            phone={user.phone}
+                            address={user.address.address}
+                            image={user.image}
+                          />
+                        )
+                    )}
+                  </>
+                )}
               </div>
             </>
           ) : (
