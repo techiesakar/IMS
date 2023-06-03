@@ -13,18 +13,16 @@ const AddSales = () => {
   const [customerPhone, setCustomerPhone] = useState(null);
   const [customerProfile, setCustomerProfile] = useState(false);
 
-  const handleNumberChange = (e) => {
-    setCustomerPhone(e.target.value);
-    console.log(customerPhone);
-  };
-
   const getCustomerData = () => {
     setCustomerProfile(!customerProfile);
   };
 
-  // useEffect(() => {
-
-  // }, [customerPhone]);
+  const handleNumberChange = (e) => {
+    setCustomerPhone(e.target.value);
+  };
+  useEffect(() => {
+    getCustomerData();
+  }, [customerPhone]);
 
   return (
     <DataLayout
@@ -282,14 +280,6 @@ const AddSales = () => {
                 </div>
               </div>
               <div className="flex gap-4 w-full">
-                <Button
-                  onClick={getCustomerData}
-                  variant="contained"
-                  color="primary"
-                  size="sm"
-                >
-                  Get Data
-                </Button>
                 {customerProfile && (
                   <>
                     {customerData.users.map(
