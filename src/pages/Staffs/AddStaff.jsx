@@ -1,18 +1,11 @@
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import React, { useState } from "react";
+import UploadImage from "components/ui/UploadImage";
+import React from "react";
 
 const AddStaff = () => {
   document.title = "SA - Add Staff";
-  const [file, setFile] = useState();
-  function handleChange(e) {
-    console.log(e.target.files);
-    setFile(URL.createObjectURL(e.target.files[0]));
-  }
-  function handleDelete(e) {
-    e.preventDefault();
-    setFile(null);
-  }
+
   return (
     <DataLayout
       title="Add Staff"
@@ -96,6 +89,14 @@ const AddStaff = () => {
               <input
                 type="email"
                 placeholder="example@email.com"
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              />
+            </div>
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>PAN Number</span>
+              <input
+                type="text"
+                placeholder="PAN  Number"
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               />
             </div>
@@ -187,57 +188,22 @@ const AddStaff = () => {
             </div>
             <div className="flex flex-col items-start w-1/2 gap-2">
               <span>Salary</span>
-              <select
-                name=""
-                id=""
+              <input
+                type="number"
+                placeholder="Salary"
+                min={8000}
+                step={100}
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
-              >
-                <option value="" selected>
-                  12000
-                </option>
-                <option value="">15000</option>
-                <option value="">20000</option>
-                <option value="">25000</option>
-                <option value="">30000</option>
-                <option value="">35000</option>
-                <option value="">40000</option>
-                <option value="">45000</option>
-                <option value="">50000</option>
-                <option value="">60000</option>
-                <option value="">70000</option>
-                <option value="">80000</option>
-              </select>
+              />
             </div>
           </div>
           {/* Row Third End */}
           {/* Row Third End */}
-          <div className="flex gap-12 w-full">
-            <div className="flex flex-col items-start w-1/2 gap-2">
-              <span>Image</span>
-              <input
-                type="file"
-                onChange={handleChange}
-                placeholder="hello"
-                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
-              />
-              {file ? (
-                <div className="flex flex-col gap-4">
-                  <img
-                    className="w-16 h-16 rounded-full"
-                    src={file}
-                    alt="uploaded"
-                  />
-                  <Button
-                    onClick={handleDelete}
-                    variant="contained"
-                    color="danger"
-                    size="sm"
-                  >
-                    Delete
-                  </Button>
-                </div>
-              ) : null}
-            </div>
+          <div className="flex gap-4 w-full">
+            <UploadImage placeholder="Profile Image" />
+            <UploadImage placeholder="Citizenship Front" />
+            <UploadImage placeholder="Citizenship Back" />
+            <UploadImage placeholder="Other Documents" />
           </div>
           {/* Row Four End */}
           <div className="flex gap-4 w-full">
@@ -248,7 +214,6 @@ const AddStaff = () => {
               Cancel
             </Button>
           </div>
-          {/* Row Five End */}
         </div>
       </form>
     </DataLayout>

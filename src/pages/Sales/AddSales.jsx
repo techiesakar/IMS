@@ -3,9 +3,12 @@ import DataLayout from "components/ui/DataLayout";
 import React, { useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsPencilFill } from "react-icons/bs";
+import categories from "data/categories.json";
+import products from "data/inventory.json";
 
 const AddSales = () => {
   const [isMember, setIsMember] = useState(false);
+  console.log(categories.categories);
 
   return (
     <DataLayout
@@ -13,12 +16,13 @@ const AddSales = () => {
       hideFilter={true}
       hideEdit={true}
       hideAdd={true}
-      addItemLink="/inventory/add"
-      viewAllLink="/inventory"
+      hideViewAll={true}
+      addItemLink="/sales/add"
+      viewAllLink="/sales"
     >
-      <form className="bg-white p-8 rounded grid grid-cols-2 gap-12">
+      <form className=" rounded grid grid-cols-12 gap-12">
         {/* Sales Data Starts*/}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 col-span-7 bg-white p-8">
           {/* Row One Start */}
           <h1 className="text-2xl font-semibold text-left">Sales Data</h1>
           <div className="flex w-full gap-12">
@@ -59,11 +63,11 @@ const AddSales = () => {
                 id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               >
-                <option value="">Clothing - Men</option>
-                <option value="">Clothing - Women</option>
-                <option value="">Computers</option>
-                <option value="">Sports</option>
-                <option value="">Adventure</option>
+                {categories.categories.map((category) => (
+                  <option className="capitalize" value={category.name}>
+                    {category.name}
+                  </option>
+                ))}
               </select>
             </div>
             <div className="flex flex-col items-start w-1/2 gap-2">
@@ -73,17 +77,17 @@ const AddSales = () => {
                 id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               >
-                <option value="">Lenovo XP 5200</option>
-                <option value="">Lenovo Idepad</option>
-                <option value="">Jacket - XL - Black</option>
-                <option value="">Real Madrid Jersey - White</option>
-                <option value="">Socks - Black</option>
+                {products.products.map((product) => (
+                  <option className="capitalize" value={product.title}>
+                    {product.title}
+                  </option>
+                ))}
               </select>
             </div>
           </div>
 
           {/* Row One End */}
-          <div className="flex gap-12 w-full">
+          <div className="flex gap-2 w-full">
             <div className="flex flex-col items-start w-1/2 gap-2">
               <span>Qty</span>
               <input
@@ -102,7 +106,6 @@ const AddSales = () => {
               />
             </div>
             {/* Payment Method */}
-
             <div className="flex flex-col items-start w-1/2 gap-2">
               <span>Payment Method</span>
               <select
@@ -110,10 +113,49 @@ const AddSales = () => {
                 id=""
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               >
-                <option value="">Online</option>
-                <option value="">Cash</option>
+                <option value="">Wallet/E-banking</option>
+                <option value="">Credit/Debit Card</option>
+                <option selected value="">
+                  Cash on Delivery
+                </option>
                 <option value="">Credit</option>
               </select>
+            </div>
+            {/* Shipping Method */}
+
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>Payment Status</span>
+              <select
+                name=""
+                id=""
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              >
+                <option selected value="">
+                  Progress
+                </option>
+                <option value="">Success</option>
+                <option value="">Due</option>
+                <option value="">Cancelled</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="flex gap-2 w-full">
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>Shipping Address</span>
+              <input
+                type="text"
+                placeholder="Shipping Address"
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              />
+            </div>
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>Billing Address</span>
+              <input
+                type="text"
+                placeholder="Billing Address"
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              />
             </div>
           </div>
           {/* Row Two End */}
@@ -125,7 +167,7 @@ const AddSales = () => {
           {/* Row Five End */}
 
           <div className="flex gap-4 w-full items-center">
-            <div className="flex items-center w-full">
+            <div className="flex items-center w-full flex-col gap-6 ">
               <table className="w-full text-left">
                 <thead>
                   <tr className="border-b border-gray-200">
@@ -133,6 +175,7 @@ const AddSales = () => {
                     <th className="p-2">Name</th>
                     <th className="p-2">Qty</th>
                     <th className="p-2">Unit Price</th>
+                    <th className="p-2">Amount</th>
                     <th className="p-2">Actions</th>
                   </tr>
                 </thead>
@@ -140,8 +183,10 @@ const AddSales = () => {
                   <tr className="border-b border-gray-200">
                     <td className="p-2">Computers</td>
                     <td className="p-2">Lenovo XP 5200</td>
-                    <td className="p-2">1</td>
+                    <td className="p-2">2</td>
                     <td className="p-2">20</td>
+                    <td className="p-2">40</td>
+
                     <td className="p-2">
                       <button className="p-2 text-blue-500 text-xl">
                         <BsPencilFill />
@@ -153,40 +198,53 @@ const AddSales = () => {
                   </tr>
                 </tbody>
               </table>
+              <h1 className="text-2xl font-bold text-right ml-auto">
+                Order Total Rs. 40.00
+              </h1>
+              <Button
+                className="ml-auto"
+                variant="contained"
+                color="primary"
+                size="md"
+              >
+                Save Sales Order
+              </Button>
             </div>
           </div>
         </div>
         {/* Sales Data Ends */}
         {/* Customer's Data Start */}
-        <div className="flex flex-col gap-6">
+        <div className="flex flex-col gap-6 col-span-5 bg-white p-8">
           <h1 className="text-2xl font-semibold text-left">Customer's Data</h1>
 
           <div className="flex gap-8">
             <h1 className="text-lg font-semibold text-left">
               Already a member ?
             </h1>
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
               <label
                 htmlFor="yes"
-                className="py-1 px-2 border border-gray-300 rounded-md"
+                className="border border-gray-300 rounded-md flex gap-2 py-1 px-2 cursor-pointer"
               >
                 <input
                   type="radio"
                   id="yes"
                   name="member"
+                  className=" border border-gray-300 rounded-md flex gap-1"
                   onClick={() => setIsMember(true)}
                 />
                 Yes
               </label>
               <label
                 htmlFor="no"
-                className="py-1 px-2 border border-gray-300 rounded-md"
+                className="border border-gray-300 rounded-md flex gap-2 py-1 px-2 cursor-pointer"
               >
                 <input
                   id="no"
                   onClick={() => setIsMember(false)}
                   type="radio"
                   name="member"
+                  className=" border border-gray-300 rounded-md flex gap-1"
                   checked={!isMember ? true : false}
                 />
                 No
@@ -214,26 +272,6 @@ const AddSales = () => {
             </>
           ) : (
             <>
-              <div className="flex w-full gap-12">
-                <div className="flex flex-col items-start w-1/2 gap-2">
-                  <span>Phone</span>
-                  <input
-                    type="text"
-                    placeholder="Customer's Phone"
-                    className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
-                  />
-                </div>
-
-                <div className="flex flex-col items-start gap-2 w-1/2">
-                  <span>Customer ID</span>
-                  <input
-                    type="text"
-                    placeholder="CX100"
-                    disabled
-                    className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
-                  />
-                </div>
-              </div>
               {/* Row One Ends */}
               <div className="flex w-full gap-12">
                 <div className="flex flex-col items-start gap-2 w-1/2">
@@ -257,6 +295,14 @@ const AddSales = () => {
               {/* Row Second End */}
               <div className="flex gap-12 w-full">
                 <div className="flex flex-col items-start w-1/2 gap-2">
+                  <span>Phone</span>
+                  <input
+                    type="text"
+                    placeholder="Customer's Phone"
+                    className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+                  />
+                </div>
+                <div className="flex flex-col items-start w-1/2 gap-2">
                   <span>Email</span>
                   <input
                     type="email"
@@ -264,7 +310,9 @@ const AddSales = () => {
                     className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
                   />
                 </div>
+              </div>
 
+              <div className="flex w-full gap-12">
                 <div className="flex flex-col items-start w-1/2 gap-2">
                   <span>Address</span>
                   <input
@@ -320,15 +368,6 @@ const AddSales = () => {
                 </div>
               </div>
               {/* Row Four End */}
-
-              <div className="flex gap-4 w-full">
-                <Button variant="contained" color="primary" size="sm">
-                  Save
-                </Button>
-                <Button variant="contained" color="danger" size="sm">
-                  Cancel
-                </Button>
-              </div>
             </>
           )}
 

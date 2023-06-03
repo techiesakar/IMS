@@ -4,6 +4,9 @@ import DataLayout from "components/ui/DataLayout";
 import React, { useState } from "react";
 // import { BiFilterAlt, BiPlus, BiPencil } from "react-icons/bi";
 import inventory from "data/inventory.json";
+import { BiPencil } from "react-icons/bi";
+import { AiFillDelete, AiFillEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Inventory = () => {
   const productsList = inventory.products;
@@ -19,7 +22,6 @@ const Inventory = () => {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   // We need to perform loop on the products that is to be shown on the page
   const currentProducts = productsList.slice(indexOfFirstItem, indexOfLastItem);
-  console.log(currentProducts);
   // Change the page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -65,6 +67,9 @@ const Inventory = () => {
             <th scope="col" className="px-6 py-4">
               Date Updated
             </th>
+            <th scope="col" className="px-6 py-4">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -88,6 +93,21 @@ const Inventory = () => {
                 <td className="px-6 py-4">{item.discountPercentage}</td>
                 <td className="px-6 py-4">{item.stock}</td>
                 <td className="px-6 py-4">17-20-2023</td>
+                <td className="px-6 py-4">
+                  <div className="flex gap-2 items-center text-base">
+                    <button aria-label="Edit Supplier">
+                      <BiPencil />
+                    </button>
+                    <button aria-label="Delete Supplier">
+                      <AiFillDelete />
+                    </button>
+                    <Link to={"/inventory/view"} state={item}>
+                      <button aria-label="View Item">
+                        <AiFillEye />
+                      </button>
+                    </Link>
+                  </div>
+                </td>
               </tr>
             );
           })}

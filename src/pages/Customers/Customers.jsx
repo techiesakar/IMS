@@ -45,6 +45,9 @@ const Customers = () => {
             </th>
             <th scope="col" className="px-6 py-4 rounded-l-md w-20">
               ID
+            </th>{" "}
+            <th scope="col" className="px-6 py-4">
+              Image
             </th>
             <th scope="col" className="px-6 py-4">
               Full Name
@@ -61,7 +64,6 @@ const Customers = () => {
             <th scope="col" className="px-6 py-4">
               Membership Since
             </th>
-
             <th scope="col" className="px-6 w-20 py-3">
               Action
             </th>
@@ -78,8 +80,15 @@ const Customers = () => {
                   value={customer.id}
                 />
               </td>
-              <td className="px-6 py-4">{customer.id}</td>
 
+              <td className="px-6 py-4">{customer.id}</td>
+              <td className="px-6 py-4">
+                <img
+                  src={customer.image}
+                  alt={customer.firstName}
+                  className="h-8 w-8 rounded-lg"
+                />
+              </td>
               <td className="px-6 py-4">
                 {customer.firstName} {customer.lastName}
               </td>

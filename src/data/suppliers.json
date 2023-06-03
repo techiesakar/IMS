@@ -1,0 +1,319 @@
+{
+  "suppliers": [
+    {
+      "id": 0,
+      "title": "Wells & Wade",
+      "address": "Ohio, Delaware, 435 Park Ave",
+      "contact": "614-205-9702",
+      "contactPerson": "Michael Ripley",
+      "contactPersonPosition": "Inventory Manager",
+      "partnershipDate": "August 2017"
+    },
+    {
+      "id": 1,
+      "title": "Smithson Trading Co.",
+      "address": "California, Los Angeles, 123 Main St",
+      "contact": "555-123-4567",
+      "contactPerson": "John Smithson",
+      "contactPersonPosition": "Sales Manager",
+      "partnershipDate": "June 2019"
+    },
+    {
+      "id": 2,
+      "title": "Johnson Supplies Ltd.",
+      "address": "New York, Albany, 789 Elm St",
+      "contact": "555-987-6543",
+      "contactPerson": "Emily Johnson",
+      "contactPersonPosition": "Purchasing Manager",
+      "partnershipDate": "January 2020"
+    },
+    {
+      "id": 3,
+      "title": "Garcia & Sons",
+      "address": "Texas, Houston, 456 Oak Ave",
+      "contact": "555-789-1234",
+      "contactPerson": "Carlos Garcia",
+      "contactPersonPosition": "Operations Manager",
+      "partnershipDate": "March 2018"
+    },
+    {
+      "id": 4,
+      "title": "Anderson Supplies",
+      "address": "Washington, Seattle, 789 Pine St",
+      "contact": "555-555-5555",
+      "contactPerson": "Jessica Anderson",
+      "contactPersonPosition": "Account Manager",
+      "partnershipDate": "October 2020"
+    },
+    {
+      "id": 5,
+      "title": "Brown & Co.",
+      "address": "Texas, Austin, 567 Maple Ave",
+      "contact": "555-111-2222",
+      "contactPerson": "Robert Brown",
+      "contactPersonPosition": "Supply Chain Manager",
+      "partnershipDate": "May 2017"
+    },
+    {
+      "id": 6,
+      "title": "Williams Trading",
+      "address": "California, San Francisco, 789 Market St",
+      "contact": "555-222-3333",
+      "contactPerson": "Michelle Williams",
+      "contactPersonPosition": "Sales Representative",
+      "partnershipDate": "February 2022"
+    },
+    {
+      "id": 7,
+      "title": "Miller Enterprises",
+      "address": "New York, Rochester, 123 Elm St",
+      "contact": "555-444-5555",
+      "contactPerson": "Dav Miller",
+      "contactPersonPosition": "Logistics Coordinator",
+      "partnershipDate": "July 2016"
+    },
+    {
+      "id": 8,
+      "title": "Thomas & Sons",
+      "address": "Texas, Dallas, 789 Oak Ave",
+      "contact": "555-666-7777",
+      "contactPerson": "Emily Thomas",
+      "contactPersonPosition": "Procurement Manager",
+      "partnershipDate": "November 2019"
+    },
+    {
+      "id": 9,
+      "title": "Clark Supplies",
+      "address": "California, San Diego, 567 Broadway",
+      "contact": "555-888-9999",
+      "contactPerson": "Mark Clark",
+      "contactPersonPosition": "Inventory Supervisor",
+      "partnershipDate": "April 2021"
+    },
+    {
+      "id": 10,
+      "title": "Rodriguez & Co.",
+      "address": "Flor Miami, 789 Ocean Rd",
+      "contact": "555-000-1111",
+      "contactPerson": "Maria Rodriguez",
+      "contactPersonPosition": "Sales Coordinator",
+      "partnershipDate": "September 2018"
+    },
+    {
+      "id": 11,
+      "title": "Harris Trading",
+      "address": "Ohio, Columbus, 123 Broad St",
+      "contact": "555-222-3333",
+      "contactPerson": "Brian Harris",
+      "contactPersonPosition": "Operations Coordinator",
+      "partnershipDate": "June 2020"
+    },
+    {
+      "id": 12,
+      "title": "Lee & Associates",
+      "address": "New York, Syracuse, 789 Market St",
+      "contact": "555-444-5555",
+      "contactPerson": "Jessica Lee",
+      "contactPersonPosition": "Account Manager",
+      "partnershipDate": "August 2017"
+    },
+    {
+      "id": 13,
+      "title": "Kingston Suppliers",
+      "address": "Texas, Austin, 123 Oak Ave",
+      "contact": "555-666-7777",
+      "contactPerson": "Michael Kingston",
+      "contactPersonPosition": "Purchasing Manager",
+      "partnershipDate": "May 2019"
+    },
+    {
+      "id": 14,
+      "title": "Evans & Co.",
+      "address": "California, Los Angeles, 567 Main St",
+      "contact": "555-888-9999",
+      "contactPerson": "Emily Evans",
+      "contactPersonPosition": "Supply Chain Manager",
+      "partnershipDate": "December 2018"
+    },
+    {
+      "id": 15,
+      "title": "Baker Enterprises",
+      "address": "Ohio, Cleveland, 789 Elm St",
+      "contact": "555-111-2222",
+      "contactPerson": "Dav Baker",
+      "contactPersonPosition": "Logistics Coordinator",
+      "partnershipDate": "October 2021"
+    },
+    {
+      "id": 16,
+      "title": "Young Trading",
+      "address": "Texas, Houston, 123 Maple Ave",
+      "contact": "555-333-4444",
+      "contactPerson": "Sarah Young",
+      "contactPersonPosition": "Sales Representative",
+      "partnershipDate": "January 2020"
+    },
+    {
+      "id": 17,
+      "title": "Scott & Sons",
+      "address": "California, San Francisco, 567 Pine St",
+      "contact": "555-555-6666",
+      "contactPerson": "Robert Scott",
+      "contactPersonPosition": "Procurement Manager",
+      "partnershipDate": "March 2017"
+    },
+    {
+      "id": 18,
+      "title": "Gomez Supplies",
+      "address": "New York, Albany, 789 Market St",
+      "contact": "555-777-8888",
+      "contactPerson": "Michelle Gomez",
+      "contactPersonPosition": "Inventory Supervisor",
+      "partnershipDate": "July 2020"
+    },
+    {
+      "id": 19,
+      "title": "Woodward & Co.",
+      "address": "Texas, Dallas, 123 Elm St",
+      "contact": "555-999-0000",
+      "contactPerson": "John Woodward",
+      "contactPersonPosition": "Sales Coordinator",
+      "partnershipDate": "February 2019"
+    },
+    {
+      "id": 20,
+      "title": "Perez Trading",
+      "address": "California, San Diego, 567 Broadway",
+      "contact": "555-111-2222",
+      "contactPerson": "Maria Perez",
+      "contactPersonPosition": "Operations Coordinator",
+      "partnershipDate": "November 2017"
+    },
+    {
+      "id": 21,
+      "title": "Mitchell & Associates",
+      "address": "Flor Miami, 789 Ocean Rd",
+      "contact": "555-333-4444",
+      "contactPerson": "Brian Mitchell",
+      "contactPersonPosition": "Account Manager",
+      "partnershipDate": "April 2020"
+    },
+    {
+      "id": 22,
+      "title": "Cook Supplies",
+      "address": "Ohio, Columbus, 123 Broad St",
+      "contact": "555-555-6666",
+      "contactPerson": "Jessica Cook",
+      "contactPersonPosition": "Purchasing Manager",
+      "partnershipDate": "August 2019"
+    },
+    {
+      "id": 23,
+      "title": "Hawkins Trading",
+      "address": "New York, Syracuse, 567 Market St",
+      "contact": "555-777-8888",
+      "contactPerson": "Michael Hawkins",
+      "contactPersonPosition": "Supply Chain Manager",
+      "partnershipDate": "May 2018"
+    },
+    {
+      "id": 24,
+      "title": "Russell Enterprises",
+      "address": "Texas, Austin, 123 Oak Ave",
+      "contact": "555-999-0000",
+      "contactPerson": "Emily Russell",
+      "contactPersonPosition": "Logistics Coordinator",
+      "partnershipDate": "December 2020"
+    },
+    {
+      "id": 25,
+      "title": "Howard & Sons",
+      "address": "California, Los Angeles, 567 Main St",
+      "contact": "555-111-2222",
+      "contactPerson": "DavHoward",
+      "contactPersonPosition": "Sales Representative",
+      "partnershipDate": "October 2019"
+    },
+    {
+      "id": 26,
+      "title": "Bryant Supplies",
+      "address": "Ohio, Cleveland, 789 Elm St",
+      "contact": "555-333-4444",
+      "contactPerson": "Sarah Bryant",
+      "contactPersonPosition": "Procurement Manager",
+      "partnershipDate": "December 2017"
+    },
+    {
+      "id": 27,
+      "title": "Foster & Co.",
+      "address": "Texas, Houston, 123 Maple Ave",
+      "contact": "555-555-6666",
+      "contactPerson": "Robert Foster",
+      "contactPersonPosition": "Inventory Supervisor",
+      "partnershipDate": "March 2020"
+    },
+    {
+      "id": 28,
+      "title": "Lopez Trading",
+      "address": "California, San Francisco, 567 Pine St",
+      "contact": "555-777-8888",
+      "contactPerson": "Michelle Lopez",
+      "contactPersonPosition": "Sales Coordinator",
+      "partnershipDate": "July 2019"
+    },
+    {
+      "id": 29,
+      "title": "Hayes & Sons",
+      "address": "New York, Albany, 789 Market St",
+      "contact": "555-999-0000",
+      "contactPerson": "John Hayes",
+      "contactPersonPosition": "Operations Coordinator",
+      "partnershipDate": "February 2018"
+    },
+    {
+      "id": 30,
+      "title": "Peterson Supplies",
+      "address": "Texas, Dallas, 123 Elm St",
+      "contact": "555-111-2222",
+      "contactPerson": "Maria Peterson",
+      "contactPersonPosition": "Account Manager",
+      "partnershipDate": "November 2020"
+    },
+    {
+      "id": 31,
+      "title": "Simmons & Co.",
+      "address": "California, San Diego, 567 Broadway",
+      "contact": "555-333-4444",
+      "contactPerson": "Brian Simmons",
+      "contactPersonPosition": "Purchasing Manager",
+      "partnershipDate": "April 2019"
+    },
+    {
+      "id": 32,
+      "title": "Gray Trading",
+      "address": "Flor Miami, 789 Ocean Rd",
+      "contact": "555-555-6666",
+      "contactPerson": "Jessica Gray",
+      "contactPersonPosition": "Supply Chain Manager",
+      "partnershipDate": "August 2018"
+    },
+    {
+      "id": 33,
+      "title": "Morris Enterprises",
+      "address": "Ohio, Columbus, 123 Broad St",
+      "contact": "555-777-8888",
+      "contactPerson": "Michael Morris",
+      "contactPersonPosition": "Logistics Coordinator",
+      "partnershipDate": "May 2020"
+    },
+    {
+      "id": 34,
+      "title": "Bell & Sons",
+      "address": "New York, Syracuse, 567 Market St",
+      "contact": "555-999-0000",
+      "contactPerson": "Emily Bell",
+      "contactPersonPosition": "Sales Representative",
+      "partnershipDate": "December 2017"
+    }
+  ]
+}

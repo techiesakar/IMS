@@ -1,0 +1,286 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "smartphones"
+    },
+    {
+      "id": 2,
+      "name": "laptops"
+    },
+    {
+      "id": 3,
+      "name": "fragrances"
+    },
+    {
+      "id": 4,
+      "name": "skincare"
+    },
+    {
+      "id": 5,
+      "name": "groceries"
+    },
+    {
+      "id": 6,
+      "name": "furniture"
+    },
+    {
+      "id": 7,
+      "name": "tops"
+    },
+    {
+      "id": 8,
+      "name": "watches"
+    },
+    {
+      "id": 9,
+      "name": "automotive"
+    },
+    {
+      "id": 10,
+      "name": "motorcycle"
+    }
+  ],
+  "brands": [
+    {
+      "id": 1,
+      "name": "Apple",
+      "category_ids": [1, 2]
+    },
+    {
+      "id": 2,
+      "name": "Samsung",
+      "category_ids": [1]
+    },
+    {
+      "id": 3,
+      "name": "Google",
+      "category_ids": [1]
+    },
+    {
+      "id": 4,
+      "name": "OnePlus",
+      "category_ids": [1]
+    },
+    {
+      "id": 5,
+      "name": "Xiaomi",
+      "category_ids": [1]
+    },
+    {
+      "id": 6,
+      "name": "Dell",
+      "category_ids": [2]
+    },
+    {
+      "id": 7,
+      "name": "HP",
+      "category_ids": [2]
+    },
+    {
+      "id": 8,
+      "name": "Lenovo",
+      "category_ids": [2]
+    },
+    {
+      "id": 9,
+      "name": "Asus",
+      "category_ids": [2]
+    },
+    {
+      "id": 10,
+      "name": "Chanel",
+      "category_ids": [3]
+    },
+    {
+      "id": 11,
+      "name": "Dior",
+      "category_ids": [3]
+    },
+    {
+      "id": 12,
+      "name": "Gucci",
+      "category_ids": [3]
+    },
+    {
+      "id": 13,
+      "name": "Versace",
+      "category_ids": [3]
+    },
+    {
+      "id": 14,
+      "name": "Tom Ford",
+      "category_ids": [3]
+    },
+    {
+      "id": 15,
+      "name": "Neutrogena",
+      "category_ids": [4]
+    },
+    {
+      "id": 16,
+      "name": "Cetaphil",
+      "category_ids": [4]
+    },
+    {
+      "id": 17,
+      "name": "La Roche-Posay",
+      "category_ids": [4]
+    },
+    {
+      "id": 18,
+      "name": "Clinique",
+      "category_ids": [4]
+    },
+    {
+      "id": 19,
+      "name": "Kellogg's",
+      "category_ids": [5]
+    },
+    {
+      "id": 20,
+      "name": "Nestle",
+      "category_ids": [5]
+    },
+    {
+      "id": 21,
+      "name": "Coca-Cola",
+      "category_ids": [5]
+    },
+    {
+      "id": 22,
+      "name": "Kraft Heinz",
+      "category_ids": [5]
+    },
+    {
+      "id": 23,
+      "name": "Unilever",
+      "category_ids": [5]
+    },
+    {
+      "id": 24,
+      "name": "Ikea",
+      "category_ids": [6]
+    },
+    {
+      "id": 25,
+      "name": "Ashley Furniture",
+      "category_ids": [6]
+    },
+    {
+      "id": 26,
+      "name": "Wayfair",
+      "category_ids": [6]
+    },
+    {
+      "id": 27,
+      "name": "Herman Miller",
+      "category_ids": [6]
+    },
+    {
+      "id": 28,
+      "name": "Pottery Barn",
+      "category_ids": [6]
+    },
+    {
+      "id": 29,
+      "name": "Nike",
+      "category_ids": [7]
+    },
+    {
+      "id": 30,
+      "name": "Adidas",
+      "category_ids": [7]
+    },
+    {
+      "id": 31,
+      "name": "Under Armour",
+      "category_ids": [7]
+    },
+    {
+      "id": 32,
+      "name": "H&M",
+      "category_ids": [7]
+    },
+    {
+      "id": 33,
+      "name": "Zara",
+      "category_ids": [7]
+    },
+    {
+      "id": 34,
+      "name": "Rolex",
+      "category_ids": [8]
+    },
+    {
+      "id": 35,
+      "name": "TAG Heuer",
+      "category_ids": [8]
+    },
+    {
+      "id": 36,
+      "name": "Omega",
+      "category_ids": [8]
+    },
+    {
+      "id": 37,
+      "name": "Casio",
+      "category_ids": [8]
+    },
+    {
+      "id": 38,
+      "name": "Fossil",
+      "category_ids": [8]
+    },
+    {
+      "id": 39,
+      "name": "Toyota",
+      "category_ids": [9]
+    },
+    {
+      "id": 40,
+      "name": "Ford",
+      "category_ids": [9]
+    },
+    {
+      "id": 41,
+      "name": "Honda",
+      "category_ids": [9, 10]
+    },
+    {
+      "id": 42,
+      "name": "BMW",
+      "category_ids": [9]
+    },
+    {
+      "id": 43,
+      "name": "Mercedes-Benz",
+      "category_ids": [9]
+    },
+    {
+      "id": 44,
+      "name": "Harley-Davidson",
+      "category_ids": [10]
+    },
+    {
+      "id": 45,
+      "name": "Yamaha",
+      "category_ids": [10]
+    },
+    {
+      "id": 46,
+      "name": "Kawasaki",
+      "category_ids": [10]
+    },
+    {
+      "id": 47,
+      "name": "Honda",
+      "category_ids": [10]
+    },
+    {
+      "id": 48,
+      "name": "Ducati",
+      "category_ids": [10]
+    }
+  ]
+}

@@ -4,25 +4,31 @@ import { AiFillDelete } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 import DataLayout from "components/ui/DataLayout";
 
-import SuppliersList from "data/SuppliersList";
+import suppliers from "data/suppliers.json";
 
 const Suppliers = () => {
+  const supplierList = suppliers.suppliers;
+  document.title = "SA - Suppliers";
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
 
-  document.title = "SA - Suppliers";
+  // Calculate the index range for the current page
+  const totalPages = Math.ceil(supplierList.length / itemsPerPage);
 
   // Calculate the index range for the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = SuppliersList.slice(indexOfFirstItem, indexOfLastItem);
+  // We need to perform loop on the products that is to be shown on the page
+  const currentSuppliers = supplierList.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   // Change the page
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  const totalPages = Math.ceil(SuppliersList.length / itemsPerPage);
 
   return (
     <DataLayout
@@ -34,13 +40,13 @@ const Suppliers = () => {
       addItemLink="/supplier/add"
       viewAllLink="/suppliers"
     >
-      <table className="w-full  text-left text-gray-800 bg-white">
-        <thead className="text-gray-700">
-          <tr className="border-gray-200 border-b">
-            <th className="px-6 py-4">
-              <input type="checkbox" name="inventoryItem" />
+      <table>
+        <thead className="text-gray-900  ">
+          <tr className="border-b">
+            <th scope="col" className="px-6 py-4">
+              <input type="checkbox" />
             </th>
-            <th scope="col" className="px-6 py-4 rounded-l-md w-20">
+            <th scope="col" className="px-6 py-4">
               ID
             </th>
             <th scope="col" className="px-6 py-4">
@@ -58,14 +64,13 @@ const Suppliers = () => {
             <th scope="col" className="px-6 py-4">
               Since
             </th>
-            <th scope="col" className="px-6 w-20 py-3">
+            <th scope="col" className="px-6 py-4">
               Action
             </th>
           </tr>
         </thead>
-
         <tbody>
-          {currentItems.map((supplier) => (
+          {currentSuppliers.map((supplier, index) => (
             <tr key={supplier.id} className=" border-b">
               <td className="px-6 py-4">
                 <input
@@ -94,6 +99,7 @@ const Suppliers = () => {
           ))}
         </tbody>
       </table>
+
       <div className="flex justify-end">
         <Pagination
           currentPage={currentPage}

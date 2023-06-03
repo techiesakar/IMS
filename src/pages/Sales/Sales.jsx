@@ -9,7 +9,6 @@ import { BiPencil } from "react-icons/bi";
 
 const Sales = () => {
   const salesList = salesData.sales;
-  console.log(salesList);
 
   document.title = "SA - Sales";
 
@@ -19,10 +18,7 @@ const Sales = () => {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = salesList.slice(indexOfFirstItem, indexOfLastItem);
-  // Change the page
-  // const handlePageChange = (pageNumber) => {
-  //   setCurrentPage(pageNumber);
-  // };
+
   const totalPages = Math.ceil(salesList.length / itemsPerPage);
 
   return (
@@ -32,7 +28,7 @@ const Sales = () => {
       hideEdit={false}
       hideAdd={false}
       hideViewAll={true}
-      addItemLink="/sale/add"
+      addItemLink="/sales/add"
       viewAllLink="/sales"
     >
       <table className="w-full  text-left text-gray-800 bg-white">

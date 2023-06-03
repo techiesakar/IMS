@@ -1,5 +1,7 @@
+import { Upload } from "@mui/icons-material";
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
+import UploadImage from "components/ui/UploadImage";
 import React from "react";
 
 const AddCustomer = () => {
@@ -46,14 +48,7 @@ const AddCustomer = () => {
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               />
             </div>
-            <div className="flex flex-col items-start gap-2 w-1/2">
-              <span>Middle Name</span>
-              <input
-                type="text"
-                placeholder="Middle Name"
-                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
-              />
-            </div>
+
             <div className="flex flex-col items-start gap- w-1/2">
               <span>Last Name</span>
               <input
@@ -89,6 +84,14 @@ const AddCustomer = () => {
               <input
                 type="text"
                 placeholder="Address"
+                className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
+              />
+            </div>
+            <div className="flex flex-col items-start w-1/2 gap-2">
+              <span>Shipping Address</span>
+              <input
+                type="text"
+                placeholder="Shipping Address"
                 className="w-full p-3 outline-none border  focus:border-blue-500 border-gray-200 rounded-md transition-all duration-300"
               />
             </div>
@@ -136,7 +139,9 @@ const AddCustomer = () => {
             </div>
           </div>
           {/* Row Four End */}
-
+          <div className="flex gap-4 w-full">
+            <UploadImage placeholder="Upload Profile Image" />
+          </div>
           <div className="flex gap-4 w-full">
             <Button variant="contained" color="primary" size="sm">
               Save

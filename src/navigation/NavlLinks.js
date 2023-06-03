@@ -18,6 +18,11 @@ const NavLinks = [
         link: "/inventory/add",
       },
       {
+        id: 2,
+        title: "Categories",
+        link: "/categories",
+      },
+      {
         id: 1,
         title: "View All",
         link: "/inventory",

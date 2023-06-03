@@ -11,6 +11,7 @@ const DataLayout = ({
   hideEdit = false,
   hideAdd = false,
   hideViewAll = false,
+  openForm,
 }) => {
   return (
     <div className="w-full h-full flex flex-col gap-6">
@@ -27,7 +28,7 @@ const DataLayout = ({
         {console.log(viewAllLink)}
         {console.log(addItemLink)}
 
-        {!hideAdd && (
+        {!hideAdd && !openForm ? (
           <Link to={addItemLink}>
             <button
               className="flex gap-2 items-center font-semibold hover:text-blue-800"
@@ -36,6 +37,14 @@ const DataLayout = ({
               <BiPlus /> New Item
             </button>
           </Link>
+        ) : (
+          <button
+            onClick={() => openForm()}
+            className="flex gap-2 items-center font-semibold hover:text-blue-800"
+            aria-label="New Item"
+          >
+            <BiPlus /> New Item
+          </button>
         )}
 
         {!hideEdit && (
