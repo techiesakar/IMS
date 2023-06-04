@@ -36,6 +36,7 @@ const Customers = () => {
       hideViewAll={true}
       addItemLink="/customer/add"
       viewAllLink="/customer"
+      openForm={null}
     >
       <table className="w-full  text-left text-gray-800 bg-white overfow-hidden	">
         <thead className="text-gray-700">

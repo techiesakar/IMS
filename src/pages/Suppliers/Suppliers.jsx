@@ -39,6 +39,7 @@ const Suppliers = () => {
       hideViewAll={true}
       addItemLink="/supplier/add"
       viewAllLink="/suppliers"
+      openForm={null}
     >
       <table>
         <thead className="text-gray-900  ">

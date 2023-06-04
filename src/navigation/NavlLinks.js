@@ -18,12 +18,17 @@ const NavLinks = [
         link: "/inventory/add",
       },
       {
-        id: 2,
+        id: 1,
         title: "Categories",
         link: "/categories",
       },
       {
-        id: 1,
+        id: 2,
+        title: "Brands",
+        link: "/brands",
+      },
+      {
+        id: 2,
         title: "View All",
         link: "/inventory",
       },

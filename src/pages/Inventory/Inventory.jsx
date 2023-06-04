@@ -36,6 +36,7 @@ const Inventory = () => {
       hideViewAll={true}
       addItemLink="/inventory/add"
       viewAllLink="/inventory"
+      openForm={null}
     >
       <table className="w-full  text-left text-gray-800 bg-white">
         <thead className="text-gray-900  ">
