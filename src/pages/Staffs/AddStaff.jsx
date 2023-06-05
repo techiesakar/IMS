@@ -9,9 +9,9 @@ const AddStaff = () => {
   return (
     <DataLayout
       title="Add Staff"
-      hideFilter={true}
-      hideEdit={true}
-      hideAdd={true}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
       addItemLink="/staff/add"
       viewAllLink="/staffs"
     >

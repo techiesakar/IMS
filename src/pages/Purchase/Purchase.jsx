@@ -24,10 +24,10 @@ const Purchases = () => {
   return (
     <DataLayout
       title="Purchases"
-      hideFilter={false}
-      hideEdit={false}
-      hideAdd={false}
-      hideViewAll={true}
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
       addItemLink="/purchase/add"
       viewAllLink="/sales"
       openForm={null}

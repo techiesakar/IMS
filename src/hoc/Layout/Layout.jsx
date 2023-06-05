@@ -20,7 +20,6 @@ const Layout = ({ children }) => {
 const LayoutContent = ({ children }) => {
   const location = useLocation();
   const { toggleShrink } = useContext(MenuShrinkContext);
-  console.log(location);
   return (
     <div>
       {location.pathname !== "/login" && location.pathname !== "/404" && (

@@ -30,10 +30,10 @@ const Inventory = () => {
   return (
     <DataLayout
       title="All Products"
-      hideFilter={false}
-      hideEdit={false}
-      hideAdd={false}
-      hideViewAll={true}
+      showFilter={true}
+      showEdit={false}
+      showAdd={true}
+      showViewAll={false}
       addItemLink="/inventory/add"
       viewAllLink="/inventory"
       openForm={null}

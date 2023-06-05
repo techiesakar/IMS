@@ -13,8 +13,6 @@ const UploadImage = ({ placeholder }) => {
     setImageUrl(URL.createObjectURL(uploadedFile));
   };
 
-  const handleUpload = () => {};
-
   const handleButtonClick = () => {
     fileInputRef.current.click();
   };

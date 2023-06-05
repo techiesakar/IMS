@@ -5,10 +5,10 @@ const Account = () => {
   return (
     <DataLayout
       title="All Products"
-      hideFilter={true}
-      hideEdit={true}
-      hideAdd={true}
-      hideViewAll={true}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
+      showViewAll={true}
     ></DataLayout>
   );
 };

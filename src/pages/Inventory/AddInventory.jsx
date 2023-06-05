@@ -9,10 +9,11 @@ const AddInventory = () => {
   return (
     <DataLayout
       title="Add Product"
-      hideFilter={true}
-      hideEdit={true}
-      hideAdd={true}
-      addItemLink="/inventory/add"
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
+      addItemLink={null}
       viewAllLink="/inventory"
     >
       <form className="bg-white p-8 rounded ">

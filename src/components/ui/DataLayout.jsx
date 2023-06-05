@@ -5,19 +5,20 @@ import { Link } from "react-router-dom";
 const DataLayout = ({
   children,
   title,
-  addItemLink,
-  viewAllLink,
-  hideFilter = false,
-  hideEdit = false,
-  hideAdd = false,
-  hideViewAll = false,
-  openForm,
+  addItemLink = null,
+  viewAllLink = null,
+  showFilter = false,
+  showEdit = false,
+  showAdd = false,
+  showViewAll = false,
+  openAddForm,
 }) => {
   return (
     <div className="w-full h-full flex flex-col gap-6">
       <h1 className="text-left font-bold text-xl text-gray-800">{title}</h1>
+
       <div className="flex gap-4">
-        {!hideFilter && (
+        {showFilter && (
           <button
             className="flex gap-2 items-center font-semibold hover:text-blue-800"
             aria-label="Filter"
@@ -25,29 +26,28 @@ const DataLayout = ({
             <BiFilterAlt /> Filter
           </button>
         )}
-        {console.log(viewAllLink)}
-        {console.log(addItemLink)}
 
-        {!hideAdd && !openForm ? (
-          <Link to={addItemLink}>
+        {showAdd &&
+          (addItemLink ? (
+            <Link to={addItemLink}>
+              <button
+                className="flex gap-2 items-center font-semibold hover:text-blue-800"
+                aria-label="Add"
+              >
+                <BiPlus /> Add
+              </button>
+            </Link>
+          ) : (
             <button
+              onClick={() => openAddForm()}
               className="flex gap-2 items-center font-semibold hover:text-blue-800"
-              aria-label="New Item"
+              aria-label="Add"
             >
-              <BiPlus /> New Item
+              <BiPlus /> Add
             </button>
-          </Link>
-        ) : (
-          <button
-            onClick={() => openForm()}
-            className="flex gap-2 items-center font-semibold hover:text-blue-800"
-            aria-label="New Item"
-          >
-            <BiPlus /> New Item
-          </button>
-        )}
+          ))}
 
-        {!hideEdit && (
+        {showEdit && (
           <button
             className="flex gap-2 items-center font-semibold hover:text-blue-800"
             aria-label="Edit"
@@ -56,7 +56,7 @@ const DataLayout = ({
           </button>
         )}
 
-        {!hideViewAll && (
+        {showViewAll && (
           <Link to={viewAllLink}>
             <button
               className="flex gap-2 items-center font-semibold hover:text-blue-800"
@@ -67,6 +67,7 @@ const DataLayout = ({
           </Link>
         )}
       </div>
+
       <div className="w-full h-full flex  flex-col overflow-scroll">
         {children}
       </div>

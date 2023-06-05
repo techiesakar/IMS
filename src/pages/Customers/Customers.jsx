@@ -30,10 +30,10 @@ const Customers = () => {
   return (
     <DataLayout
       title="Customers"
-      hideFilter={false}
-      hideEdit={false}
-      hideAdd={false}
-      hideViewAll={true}
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
       addItemLink="/customer/add"
       viewAllLink="/customer"
       openForm={null}
@@ -46,7 +46,7 @@ const Customers = () => {
             </th>
             <th scope="col" className="px-6 py-4 rounded-l-md w-20">
               ID
-            </th>{" "}
+            </th>
             <th scope="col" className="px-6 py-4">
               Image
             </th>

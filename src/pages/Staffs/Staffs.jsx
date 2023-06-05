@@ -28,10 +28,10 @@ const Inventory = () => {
   return (
     <DataLayout
       title="All Staffs"
-      hideFilter={false}
-      hideEdit={false}
-      hideAdd={false}
-      hideViewAll={true}
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
       addItemLink="/staff/add"
       viewAllLink="/staffs"
       openForm={null}

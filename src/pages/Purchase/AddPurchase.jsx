@@ -17,9 +17,9 @@ const AddPurchase = () => {
   return (
     <DataLayout
       title="Purchase"
-      hideFilter={true}
-      hideEdit={true}
-      hideAdd={true}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
       addItemLink="/purchase/add"
       viewAllLink="/purchase"
     >

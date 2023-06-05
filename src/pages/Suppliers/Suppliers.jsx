@@ -33,10 +33,10 @@ const Suppliers = () => {
   return (
     <DataLayout
       title="Suppliers"
-      hideFilter={false}
-      hideEdit={false}
-      hideAdd={false}
-      hideViewAll={true}
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
       addItemLink="/supplier/add"
       viewAllLink="/suppliers"
       openForm={null}

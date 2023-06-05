@@ -27,10 +27,10 @@ const AddSales = () => {
   return (
     <DataLayout
       title="Sale Product"
-      hideFilter={true}
-      hideEdit={true}
-      hideAdd={true}
-      hideViewAll={true}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
+      showViewAll={true}
       addItemLink="/sales/add"
       viewAllLink="/sales"
     >

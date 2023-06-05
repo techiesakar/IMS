@@ -1,15 +1,26 @@
 import DataLayout from "components/ui/DataLayout";
-import UploadImage from "components/ui/UploadImage";
-import { useEffect, useState } from "react";
+// import UploadImage from "components/ui/UploadImage";
+import { useMemo, useCallback, useState } from "react";
 import axios from "hoc/axios";
+import Loading from "components/Loading";
+import { BiPencil } from "react-icons/bi";
+import { AiFillDelete, AiFillEye } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { Skeleton } from "@mui/material";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 const Brand = () => {
   document.title = "SA - Brand";
-  const [openForm, setOpenForm] = useState(false);
   const [Brand_name, setBrand_name] = useState("");
   const [Image, setImage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [change, setChange] = useState(false);
+  const [allBrands, setAllBrands] = useState([]);
 
   const postRequest = () => {
     try {
+      setLoading(true);
       const formdata = new FormData();
       formdata.append("image", Image);
       formdata.append("Brand_name", Brand_name);
@@ -18,6 +29,51 @@ const Brand = () => {
         .post("/brand", formdata)
         .then((res) => {
           console.log(res);
+          if (res.status === 200) {
+            setLoading(false);
+            setChange(!change);
+            toast(`${Brand_name} successfully added`);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const deleteRequest = (id) => {
+    try {
+      axios
+        .delete(`/brand/${id}`)
+        .then((res) => {
+          console.log(res);
+          if (res.status === 200) {
+            setLoading(false);
+            setChange(!change);
+            toast(`Item Deleted`);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          setLoading(false);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const getTable = useCallback(() => {
+    try {
+      setLoading(true);
+      axios
+        .get("/brand")
+        .then((res) => {
+          console.log(res);
+          setAllBrands([...res.data.Brand]);
+          setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -25,48 +81,149 @@ const Brand = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+    return allBrands;
+  }, []);
+
+  let data = useMemo(() => getTable(), [change]);
+  console.log(data);
+
+  // const notify = () => toast("Brand Successfully Added");
 
   return (
     <DataLayout
       title="All Brands"
-      hideFilter={true}
-      hideEdit={true}
-      hideAdd={true}
-      hideViewAll={true}
-      openForm={() => setOpenForm(!openForm)}
+      showFilter={true}
+      showEdit={false}
+      showViewAll={false}
     >
-      {openForm && (
-        <div className="p-4 rounded bg-white w-72 flex flex-col gap-4">
-          {/* <UploadImage placeholder="Upload Brand Image" /> */}
-          <input
-            type="text"
-            placeholder="Brand"
-            onChange={(e) => {
-              setBrand_name(e.target.value);
-            }}
-            className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded"
-          />
-
-          <input
-            type="file"
-            placeholder="files"
-            onChange={(e) => {
-              setImage(e.target.files[0]);
-            }}
-            className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded"
-          />
-
-          <button
-            onClick={() => {
-              postRequest();
-            }}
-            className="bg-blue-600 py-2 px-4 text-white rounded-md"
-          >
-            Submit
-          </button>
+      <div className="max-w-screen-xl w-full mx-auto grid grid-cols-12 gap-12">
+        <div className="col-span-6">
+          <table className="w-full table-fixed text-left text-gray-800 bg-white overfow-hidden	">
+            <thead className="text-gray-700">
+              <tr className="border-gray-200 border-b">
+                <th className="px-6 py-4">
+                  <input type="checkbox" name="brandItem" />
+                </th>
+                <th className="px-6 py-4">Name</th>
+                <th scope="col" className="px-6 w-40 py-3">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {loading &&
+                (() => {
+                  const skeletonRows = [];
+                  for (let i = 0; i <= 9; i++) {
+                    skeletonRows.push(
+                      <tr key={i} className="border-b">
+                        <td className="px-6 py-4">
+                          <Skeleton
+                            variant="rectangular"
+                            width={12}
+                            height={12}
+                          />
+                        </td>
+                        <td className="px-6 py-4">
+                          <Skeleton
+                            variant="rectangular"
+                            width={210}
+                            height={24}
+                          />
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="flex gap-2 items-center">
+                            <Skeleton
+                              variant="circular"
+                              width={12}
+                              height={12}
+                            />
+                            <Skeleton
+                              variant="circular"
+                              width={12}
+                              height={12}
+                            />
+                            <Skeleton
+                              variant="circular"
+                              width={12}
+                              height={12}
+                            />
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  }
+                  return skeletonRows;
+                })()}
+              {allBrands.map((brand, index) => {
+                return (
+                  <tr key={index} className=" border-b">
+                    <td className="px-6 py-4">
+                      <input type="checkbox" name="brand" />
+                    </td>
+                    <td className="px-6 py-4">{brand.Brand_name}</td>
+                    <td className="px-6 py-4">
+                      <div className="flex gap-2 items-center text-base">
+                        <button aria-label="Edit Supplier">
+                          <BiPencil />
+                        </button>
+                        <button
+                          aria-label="Delete Supplier"
+                          onClick={() => deleteRequest(brand.id)}
+                        >
+                          <AiFillDelete />
+                        </button>
+                        <Link to={"/brand/view"}>
+                          <button aria-label="View Supplier">
+                            <AiFillEye />
+                          </button>
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
-      )}
+
+        <div className="col-span-6">
+          <ToastContainer />
+
+          <div className="p-4 rounded bg-white w-72 flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Brand"
+              onChange={(e) => {
+                setBrand_name(e.target.value);
+              }}
+              className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded"
+            />
+
+            <input
+              type="file"
+              placeholder="files"
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+              className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded "
+            />
+
+            {loading ? (
+              <Loading />
+            ) : (
+              <button
+                onClick={() => {
+                  postRequest();
+                }}
+                className="bg-blue-600 py-2 px-4 text-white rounded-md"
+              >
+                Submit
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
     </DataLayout>
   );
 };

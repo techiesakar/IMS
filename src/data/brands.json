@@ -1,0 +1,44 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "smartphones"
+    },
+    {
+      "id": 2,
+      "name": "laptops"
+    },
+    {
+      "id": 3,
+      "name": "fragrances"
+    },
+    {
+      "id": 4,
+      "name": "skincare"
+    },
+    {
+      "id": 5,
+      "name": "groceries"
+    },
+    {
+      "id": 6,
+      "name": "furniture"
+    },
+    {
+      "id": 7,
+      "name": "tops"
+    },
+    {
+      "id": 8,
+      "name": "watches"
+    },
+    {
+      "id": 9,
+      "name": "automotive"
+    },
+    {
+      "id": 10,
+      "name": "motorcycle"
+    }
+  ]
+}
