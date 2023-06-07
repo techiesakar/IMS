@@ -3,12 +3,14 @@ import Pagination from "components/Pagination";
 import { AiFillDelete } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 import DataLayout from "components/ui/DataLayout";
+import { useNavigate } from "react-router-dom";
 
 import suppliers from "data/suppliers.json";
 
 const Suppliers = () => {
   const supplierList = suppliers.suppliers;
   document.title = "SA - Suppliers";
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -33,13 +35,13 @@ const Suppliers = () => {
   return (
     <DataLayout
       title="Suppliers"
-      showFilter={false}
-      showEdit={false}
-      showAdd={false}
-      showViewAll={true}
-      addItemLink="/supplier/add"
-      viewAllLink="/suppliers"
-      openForm={null}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
+      showViewAll={false}
+      addItemLink={() => {
+        navigate("/supplier/add");
+      }}
     >
       <table>
         <thead className="text-gray-900  ">

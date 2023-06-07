@@ -6,6 +6,7 @@ import { BsPencilFill } from "react-icons/bs";
 import suppliers from "data/suppliers.json";
 import categories from "data/categories.json";
 import products from "data/inventory.json";
+import { useNavigate } from "react-router-dom";
 
 const AddPurchase = () => {
   const [isMember, setIsMember] = useState(false);
@@ -14,14 +15,17 @@ const AddPurchase = () => {
     setSelectedSupplier(event.target.value);
   };
 
+  const navigate = useNavigate();
   return (
     <DataLayout
       title="Purchase"
-      showFilter={true}
-      showEdit={true}
-      showAdd={true}
-      addItemLink="/purchase/add"
-      viewAllLink="/purchase"
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
+      viewAllLink={() => {
+        navigate("/purchases");
+      }}
     >
       <form className=" rounded grid grid-cols-12 gap-12">
         {/* Sales Data Starts*/}

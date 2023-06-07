@@ -6,7 +6,6 @@ import Loading from "components/Loading";
 import { BiPencil } from "react-icons/bi";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { Skeleton } from "@mui/material";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -106,50 +105,6 @@ const Category = () => {
               </tr>
             </thead>
             <tbody>
-              {loading &&
-                (() => {
-                  const skeletonRows = [];
-                  for (let i = 0; i <= 9; i++) {
-                    skeletonRows.push(
-                      <tr key={i} className="border-b">
-                        <td className="px-6 py-4">
-                          <Skeleton
-                            variant="rectangular"
-                            width={12}
-                            height={12}
-                          />
-                        </td>
-                        <td className="px-6 py-4">
-                          <Skeleton
-                            variant="rectangular"
-                            width={210}
-                            height={24}
-                          />
-                        </td>
-                        <td className="px-6 py-4">
-                          <div className="flex gap-2 items-center">
-                            <Skeleton
-                              variant="circular"
-                              width={12}
-                              height={12}
-                            />
-                            <Skeleton
-                              variant="circular"
-                              width={12}
-                              height={12}
-                            />
-                            <Skeleton
-                              variant="circular"
-                              width={12}
-                              height={12}
-                            />
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  }
-                  return skeletonRows;
-                })()}
               {allCategories.map((item, index) => {
                 return (
                   <tr key={index} className=" border-b">

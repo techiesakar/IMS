@@ -7,11 +7,13 @@ import categories from "data/categories.json";
 import products from "data/inventory.json";
 import customerData from "data/customerData.json";
 import UserProfileCard from "components/ui/UserProfileCard";
+import { useNavigate } from "react-router-dom";
 
 const AddSales = () => {
   const [isMember, setIsMember] = useState(false);
   const [customerPhone, setCustomerPhone] = useState(null);
   const [customerProfile, setCustomerProfile] = useState(false);
+  const navigate = useNavigate();
 
   const getCustomerData = () => {
     setCustomerProfile(!customerProfile);
@@ -27,12 +29,13 @@ const AddSales = () => {
   return (
     <DataLayout
       title="Sale Product"
-      showFilter={true}
-      showEdit={true}
-      showAdd={true}
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
       showViewAll={true}
-      addItemLink="/sales/add"
-      viewAllLink="/sales"
+      viewAllLink={() => {
+        navigate("/sales");
+      }}
     >
       <form className=" rounded grid grid-cols-12 gap-12">
         {/* Sales Data Starts*/}

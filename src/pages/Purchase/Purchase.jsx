@@ -6,11 +6,13 @@ import purchaseData from "data/purchases.json";
 import { Link } from "react-router-dom";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Purchases = () => {
   const purchaseList = purchaseData.purchases;
 
   document.title = "SA - Sales";
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -24,13 +26,13 @@ const Purchases = () => {
   return (
     <DataLayout
       title="Purchases"
-      showFilter={false}
-      showEdit={false}
-      showAdd={false}
-      showViewAll={true}
-      addItemLink="/purchase/add"
-      viewAllLink="/sales"
-      openForm={null}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
+      showViewAll={false}
+      addItemLink={() => {
+        navigate("/purchase/add");
+      }}
     >
       <table className="w-full  text-left text-gray-800 bg-white">
         <thead className="text-gray-700">

@@ -2,17 +2,22 @@ import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
 import UploadImage from "components/ui/UploadImage";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const AddSupplier = () => {
   document.title = "SA - Inventory";
+  const navigate = useNavigate();
+
   return (
     <DataLayout
       title="Add Supplier"
-      showFilter={true}
-      showEdit={true}
-      showAdd={true}
-      addItemLink="/supplier/add"
-      viewAllLink="/suppliers"
+      showFilter={false}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
+      viewAllLink={() => {
+        navigate("/suppliers");
+      }}
     >
       <form className="bg-white p-8 rounded ">
         <div className="flex flex-col gap-6">

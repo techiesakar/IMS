@@ -1,23 +1,16 @@
 import DataLayout from "components/ui/DataLayout";
 // import UploadImage from "components/ui/UploadImage";
 import { useMemo, useCallback, useState } from "react";
+import axios from "hoc/axios";
 import Loading from "components/Loading";
 import { BiPencil } from "react-icons/bi";
 import { AiFillDelete, AiFillEye, AiOutlineClose } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {
-  // postRequest,
-  deleteRequest,
-  getTable,
-} from "components/page-components/brands/Request";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as yup from "yup";
-import InventoryCRUDContextApi, {
-  BrandContext,
-} from "hoc/ContextApi/InventoryContext/InventoryCRUD";
 
 const schema = yup.object().shape({
   Brand_name: yup.string().required("cannot be empty"),
@@ -98,9 +91,10 @@ const Brand = () => {
   //     console.log(error);
   //   }
   //   return allBrands;
-  // }, [change]);
+  // }, []);
 
-  useMemo(() => getTable(setAllBrands, setLoading, change), [change]);
+  let data = useMemo(() => getTable(), [change]);
+  console.log(data);
 
   let mode;
   if (currentBrand.length > 0) {
@@ -183,133 +177,117 @@ const Brand = () => {
     );
   }
   return (
-    <InventoryCRUDContextApi>
-      <BrandContext.Consumer>
-        {({ brand }) => {
-          console.log(brand);
-          return (
-            <DataLayout
-              title="All Brands"
-              showFilter={true}
-              showEdit={false}
-              showViewAll={false}
-            >
-              {mode}
-              <div className="max-w-screen-xl w-full mx-auto grid grid-cols-12 gap-12">
-                <div className="col-span-6">
-                  <table className="w-full table-fixed text-left text-gray-800 bg-white overfow-hidden	">
-                    <thead className="text-gray-700">
-                      <tr className="border-gray-200 border-b">
-                        <th className="px-6 py-4">
-                          <input type="checkbox" name="brandItem" />
-                        </th>
-                        <th className="px-6 py-4">Name</th>
-                        <th scope="col" className="px-6 w-40 py-3">
-                          Action
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {brand.map((brand, index) => {
-                        return (
-                          <tr key={index} className=" border-b">
-                            <td className="px-6 py-4">
-                              <input type="checkbox" name="brand" />
-                            </td>
-                            <td className="px-6 py-4">
-                              {editInputOpen && currentBrand === brand.id ? (
-                                <input
-                                  type="text"
-                                  placeholder={brand.Brand_name}
-                                  onChange={(e) => {
-                                    setBrand_name(e.target.value);
-                                  }}
-                                  className="p-1 outline-none text-sm border-gray-300 focus:border-blue-500 border rounded"
-                                />
-                              ) : (
-                                brand.Brand_name
-                              )}
-                            </td>
-                            <td className="px-6 py-4">
-                              <div className="flex gap-2 items-center text-base">
-                                <button
-                                  aria-label="Edit Supplier"
-                                  onClick={() => {
-                                    setEditInputOpen(true);
-                                    setCurrentBrand([brand]);
-                                  }}
-                                >
-                                  <BiPencil />
-                                </button>
-                                <button
-                                  aria-label="Delete Supplier"
-                                  onClick={() =>
-                                    deleteRequest(
-                                      brand.id,
-                                      setLoading,
-                                      setChange,
-                                      change
-                                    )
-                                  }
-                                >
-                                  <AiFillDelete />
-                                </button>
-                                <Link to={"/brand/view"}>
-                                  <button aria-label="View Supplier">
-                                    <AiFillEye />
-                                  </button>
-                                </Link>
-                              </div>
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
-                </div>
+    <DataLayout
+      title="All Brands"
+      showFilter={true}
+      showEdit={false}
+      showViewAll={false}
+    >
+      {mode}
+      <div className="max-w-screen-xl w-full mx-auto grid grid-cols-12 gap-12">
+        <div className="col-span-6">
+          <table className="w-full table-fixed text-left text-gray-800 bg-white overfow-hidden	">
+            <thead className="text-gray-700">
+              <tr className="border-gray-200 border-b">
+                <th className="px-6 py-4">
+                  <input type="checkbox" name="brandItem" />
+                </th>
+                <th className="px-6 py-4">Name</th>
+                <th scope="col" className="px-6 w-40 py-3">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {allBrands.map((brand, index) => {
+                return (
+                  <tr key={index} className=" border-b">
+                    <td className="px-6 py-4">
+                      <input type="checkbox" name="brand" />
+                    </td>
+                    <td className="px-6 py-4">
+                      {editInputOpen && currentBrand === brand.id ? (
+                        <input
+                          type="text"
+                          placeholder={brand.Brand_name}
+                          onChange={(e) => {
+                            setBrand_name(e.target.value);
+                          }}
+                          className="p-1 outline-none text-sm border-gray-300 focus:border-blue-500 border rounded"
+                        />
+                      ) : (
+                        brand.Brand_name
+                      )}
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex gap-2 items-center text-base">
+                        <button
+                          aria-label="Edit Supplier"
+                          onClick={() => {
+                            setEditInputOpen(true);
+                            setCurrentBrand([brand]);
+                          }}
+                        >
+                          <BiPencil />
+                        </button>
+                        <button
+                          aria-label="Delete Supplier"
+                          onClick={() => deleteRequest(brand.id)}
+                        >
+                          <AiFillDelete />
+                        </button>
+                        <Link to={"/brand/view"}>
+                          <button aria-label="View Supplier">
+                            <AiFillEye />
+                          </button>
+                        </Link>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
 
-                <div className="col-span-6">
-                  <ToastContainer />
+        <div className="col-span-6">
+          <ToastContainer />
 
-                  <div className="p-4 rounded bg-white w-72 flex flex-col gap-4">
-                    <input
-                      type="text"
-                      placeholder="Brand"
-                      onChange={(e) => {
-                        setBrand_name(e.target.value);
-                      }}
-                      className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded"
-                    />
+          <div className="p-4 rounded bg-white w-72 flex flex-col gap-4">
+            <input
+              type="text"
+              placeholder="Brand"
+              onChange={(e) => {
+                setBrand_name(e.target.value);
+              }}
+              className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded"
+            />
 
-                    <input
-                      type="file"
-                      placeholder="files"
-                      onChange={(e) => {
-                        setImage(e.target.files[0]);
-                      }}
-                      className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded "
-                    />
+            <input
+              type="file"
+              placeholder="files"
+              onChange={(e) => {
+                setImage(e.target.files[0]);
+              }}
+              className="py-2 px-3 outline-none border-gray-300 focus:border-blue-500 border-2 rounded "
+            />
 
-                    {loading ? (
-                      <Loading />
-                    ) : (
-                      <button
-                        onClick={() => {
-                          // postRequest();
-                        }}
-                        className="bg-blue-600 py-2 px-4 text-white rounded-md"
-                      >
-                        Submit
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </DataLayout>
-          );
-        }}
-      </BrandContext.Consumer>
-    </InventoryCRUDContextApi>
+            {loading ? (
+              <Loading />
+            ) : (
+              <button
+                onClick={() => {
+                  postRequest();
+                }}
+                className="bg-blue-600 py-2 px-4 text-white rounded-md"
+              >
+                Submit
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </DataLayout>
   );
 };
 

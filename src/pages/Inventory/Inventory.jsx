@@ -6,11 +6,13 @@ import React, { useState } from "react";
 import inventory from "data/inventory.json";
 import { BiPencil } from "react-icons/bi";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Inventory = () => {
   const productsList = inventory.products;
   document.title = "SA - Inventory";
+
+  const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
@@ -34,9 +36,12 @@ const Inventory = () => {
       showEdit={false}
       showAdd={true}
       showViewAll={false}
-      addItemLink="/inventory/add"
-      viewAllLink="/inventory"
-      openForm={null}
+      addItemLink={() => {
+        navigate("/inventory/add");
+      }}
+      viewAllLink={() => {
+        navigate("/inventory");
+      }}
     >
       <table className="w-full  text-left text-gray-800 bg-white">
         <thead className="text-gray-900  ">
@@ -102,11 +107,10 @@ const Inventory = () => {
                     <button aria-label="Delete Supplier">
                       <AiFillDelete />
                     </button>
-                    <Link to={"/inventory/view"} state={item}>
-                      <button aria-label="View Item">
-                        <AiFillEye />
-                      </button>
-                    </Link>
+
+                    <button aria-label="View Item">
+                      <AiFillEye />
+                    </button>
                   </div>
                 </td>
               </tr>

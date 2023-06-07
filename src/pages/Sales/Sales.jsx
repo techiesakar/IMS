@@ -3,12 +3,13 @@ import React, { useState } from "react";
 import DataLayout from "components/ui/DataLayout";
 
 import salesData from "data/sales.json";
-import { Link } from "react-router-dom";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
+import { useNavigate } from "react-router-dom";
 
 const Sales = () => {
   const salesList = salesData.sales;
+  const navigate = useNavigate();
 
   document.title = "SA - Sales";
 
@@ -24,13 +25,13 @@ const Sales = () => {
   return (
     <DataLayout
       title="Sales"
-      showFilter={false}
-      showEdit={false}
-      showAdd={false}
-      showViewAll={true}
-      addItemLink="/sales/add"
-      viewAllLink="/sales"
-      openForm={null}
+      showFilter={true}
+      showEdit={true}
+      showAdd={true}
+      showViewAll={false}
+      addItemLink={() => {
+        navigate("/sales/add");
+      }}
     >
       <table className="w-full  text-left text-gray-800 bg-white">
         <thead className="text-gray-700">
@@ -94,11 +95,9 @@ const Sales = () => {
                   <button aria-label="Delete Supplier">
                     <AiFillDelete />
                   </button>
-                  <Link to={"/customer/view"}>
-                    <button aria-label="View Supplier">
-                      <AiFillEye />
-                    </button>
-                  </Link>
+                  <button aria-label="View Supplier">
+                    <AiFillEye />
+                  </button>
                 </div>
               </td>
             </tr>
