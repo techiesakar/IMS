@@ -1,12 +1,14 @@
 import React, { createContext, useCallback, useMemo, useState } from "react";
 import axios from "hoc/axios";
+import { toast } from "react-toastify";
+
 export const BrandContext = createContext();
 
-function InventoryCRUDContextApi({ children }) {
+function BrandContextAPI({ children }) {
   const [allBrands, setAllBrands] = useState([]);
   const [change, setChange] = useState(false);
-
-  const postRequest = () => {
+  const [loading, setLoading] = useState(false);
+  const postRequest = (Brand_name, Image) => {
     try {
       setLoading(true);
       const formdata = new FormData();
@@ -16,7 +18,6 @@ function InventoryCRUDContextApi({ children }) {
       axios
         .post("/brand", formdata)
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             setLoading(false);
             setChange(!change);
@@ -34,34 +35,29 @@ function InventoryCRUDContextApi({ children }) {
 
   const deleteRequest = (id) => {
     try {
+      setLoading(true);
       axios
         .delete(`/brand/${id}`)
         .then((res) => {
-          console.log(res);
           if (res.status === 200) {
             setLoading(false);
             setChange(!change);
-            toast(`Item Deleted`);
           }
         })
         .catch((err) => {
           console.log(err);
-          setLoading(false);
         });
     } catch (error) {
       console.log(error);
     }
   };
-  //   Get Table
+
   const getTable = useCallback(() => {
     try {
-      //   setLoading(true);
       axios
         .get("/brand")
         .then((res) => {
-          console.log(res);
           setAllBrands([...res.data.Brand]);
-          //   setLoading(false);
         })
         .catch((err) => {
           console.log(err);
@@ -71,13 +67,21 @@ function InventoryCRUDContextApi({ children }) {
     }
     return allBrands;
   }, [change]);
+
   useMemo(() => getTable(), [change]);
 
   return (
-    <BrandContext.Provider value={{ brand: allBrands }}>
+    <BrandContext.Provider
+      value={{
+        brand: allBrands,
+        deleteRequest: deleteRequest,
+        postRequest: postRequest,
+        loading: loading,
+      }}
+    >
       {children}
     </BrandContext.Provider>
   );
 }
 
-export default InventoryCRUDContextApi;
+export default BrandContextAPI;
