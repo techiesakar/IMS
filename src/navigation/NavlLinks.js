@@ -54,19 +54,19 @@ const NavLinks = [
   },
   {
     id: 3,
-    title: "Sales",
-    link: "/sales",
+    title: "Students",
+    link: "/students",
     icon: <SiSalesforce />,
     children: [
       {
         id: 0,
         title: "Add Sale",
-        link: "/sales/add",
+        link: "/students/add",
       },
       {
         id: 1,
         title: "View Sales",
-        link: "/sales",
+        link: "/students",
       },
     ],
   },

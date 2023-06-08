@@ -26,6 +26,7 @@ import AddPurchase from "pages/Purchase/AddPurchase";
 import AddSales from "pages/Sales/AddSales";
 import Category from "pages/Inventory/Category";
 import Brand from "pages/Inventory/Brand";
+import AddStudent from "pages/Student/AddStuden";
 
 function App() {
   return (
@@ -49,8 +50,9 @@ function App() {
           <Route path={"/purchase/add"} element={<AddPurchase />} />
 
           <Route path={"/reports"} element={<Reports />} />
-          <Route path={"/sales"} element={<Sales />} />
-          <Route path={"/sales/add"} element={<AddSales />} />
+          <Route path={"/students"} element={<Sales />}  />
+
+          <Route path={"/students/add"} element={<AddStudent />} />
 
           <Route path={"/suppliers"} element={<Suppliers />} />
           <Route path={"/supplier/add"} element={<AddSupplier />} />

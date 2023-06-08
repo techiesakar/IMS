@@ -86,7 +86,7 @@ const Toolbar = () => {
               />
               <div className="hidden md:flex items-center gap-1">
                 <span className="text-gray-800 font-medium text-sm">
-                  Sakar Aryal
+                  kisan mahat
                 </span>
                 <span className="mt-1 text-lg">
                   <MdKeyboardArrowDown />
