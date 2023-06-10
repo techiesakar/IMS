@@ -26,6 +26,7 @@ import AddPurchase from "pages/Purchase/AddPurchase";
 import AddSales from "pages/Sales/AddSales";
 import Category from "pages/Inventory/Category";
 import Brand from "pages/Inventory/Brand";
+import ViewBrand from "components/page-components/inventory/brand/ViewBrand";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
           <Route path={"/categories"} element={<Category />} />
 
           <Route path={"/brands"} element={<Brand />} />
+          <Route path={"/brand/:slug"} element={<ViewBrand />} />
 
           <Route path={"/purchases"} element={<Purchase />} />
           <Route path={"/purchase/add"} element={<AddPurchase />} />
