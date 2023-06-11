@@ -18,8 +18,10 @@ function BrandContextAPI({ children }) {
     try {
       setLoading(true);
       const formdata = new FormData();
+      console.log("Form Data", formdata);
       formdata.append("image", Image);
       formdata.append("Brand_name", Brand_name);
+      console.log(formdata);
 
       axios
         .post("/brand", formdata)
@@ -67,7 +69,7 @@ function BrandContextAPI({ children }) {
     }
   };
 
-  const deleteRequest = (id, setIsDeleting) => {
+  const deleteRequest = (id) => {
     try {
       setIsDeleting(true);
       axios

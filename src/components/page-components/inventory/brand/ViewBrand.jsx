@@ -4,13 +4,8 @@ import { BrandContext } from "hoc/ContextApi/BrandContextAPI/BrandContextAPI";
 
 const ViewBrand = () => {
   const { slug } = useParams();
-  return (
-    <BrandContext.Consumer>
-      {({ viewBrand }) => {
-        return viewBrand(slug);
-      }}
-    </BrandContext.Consumer>
-  );
+
+  return <>{slug}</>;
 };
 
 export default ViewBrand;

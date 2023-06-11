@@ -67,7 +67,7 @@ function App() {
           <Route path={"/account/settings"} element={<Settings />} />
 
           <Route path={"/404"} element={<NotFound />} />
-          <Route path={"*"} element={<Navigate to="/404" />} />
+          <Route path={"*"} element={<NotFound />} />
         </Routes>
       </Layout>
     </div>

@@ -12,13 +12,7 @@ const BrandTable = () => {
 
   return (
     <BrandContext.Consumer>
-      {({
-        brand,
-        deleteRequest,
-        setCurrentBrand,
-        isDeleting,
-        setIsDeleting,
-      }) => {
+      {({ brand, deleteRequest, setCurrentBrand, isDeleting }) => {
         return (
           <>
             <table className="w-full table-full  text-left text-gray-800 bg-white overfow-hidden	">
@@ -74,9 +68,8 @@ const BrandTable = () => {
                             <button
                               aria-label="Delete Supplier"
                               onClick={() => {
-                                deleteRequest(brand.id, setIsDeleting);
+                                deleteRequest(brand.id);
                                 setBrandID(brand.id);
-                                console.log(brandID);
                               }}
                             >
                               <AiFillDelete />

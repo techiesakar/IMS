@@ -5,7 +5,7 @@ import { Formik, Form, ErrorMessage, Field } from "formik";
 import { brandSchema } from "components/schema/brand/BrandSchema";
 import Loading from "components/Loading";
 import { BiUpload } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
+import { AiOutlineDelete } from "react-icons/ai";
 const AddBrand = () => {
   const [loading, setLoading] = useState(false);
   return (
@@ -40,7 +40,7 @@ const AddBrand = () => {
                     <ErrorMessage
                       name="Brand_name"
                       component="div"
-                      className="text-red-600"
+                      className="text-red-400 text-xs "
                     />
                     <div className="w-full h-32 p-3 rounded-md bg-white flex justify-center items-center">
                       {values.image.length <= 0 && (
@@ -59,15 +59,16 @@ const AddBrand = () => {
                             alt={values.Brand_name}
                             className="w-20"
                           />
+
                           <span
                             onClick={(e) => {
                               e.target.files = null;
                               e.target.value = "";
                               setFieldValue("image", "");
                             }}
-                            className="text-red-500 text-2xl cursor-pointer absolute top-4 right-4"
+                            className="text-gray-600 hover:text-gray-700 transition text-lg cursor-pointer absolute top-2 right-2"
                           >
-                            <AiFillDelete />
+                            <AiOutlineDelete />
                           </span>
                         </div>
                       ) : null}
@@ -86,7 +87,11 @@ const AddBrand = () => {
                       />
                     </div>
 
-                    <ErrorMessage name="image" component="div" />
+                    <ErrorMessage
+                      name="image"
+                      component="div"
+                      className="text-red-400 text-xs "
+                    />
 
                     {loading ? (
                       <Loading />

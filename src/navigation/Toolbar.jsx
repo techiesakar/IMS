@@ -1,5 +1,5 @@
 import React, { useState, useContext, useRef, useEffect } from "react";
-import { MenuToggleContext } from "contexts/SideMenuToggleContext";
+import { MenuToggleContext } from "hoc/ContextApi/SideMenuContextAPI/SideMenuToggleContext";
 import {
   AiFillMessage,
   AiOutlineClose,

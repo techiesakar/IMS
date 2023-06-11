@@ -1,5 +1,4 @@
 import DataLayout from "components/ui/DataLayout";
-import { useState } from "react";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -10,11 +9,9 @@ import BrandContextApi, {
 import Table from "components/page-components/inventory/brand/BrandTable";
 import AddBrand from "components/page-components/inventory/brand/AddBrand";
 import EditBrand from "components/page-components/inventory/brand/EditBrand";
-import { useSearchParams } from "react-router-dom";
 const Brand = () => {
   document.title = "SA - Brand";
-  const [searchParams, setSearchParams] = useSearchParams();
-  console.log(searchParams, "slug");
+
   return (
     <BrandContextApi>
       <BrandContext.Consumer>

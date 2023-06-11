@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import {
   MenuShrinkContext,
   MenuToggleContext,
-} from "contexts/SideMenuToggleContext";
+} from "hoc/ContextApi/SideMenuContextAPI/SideMenuToggleContext";
 
 import { Link } from "react-router-dom";
 import NavLinks from "./NavlLinks";

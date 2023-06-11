@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import {
   MenuShrinkContext,
   MenuToggleProvider,
-} from "contexts/SideMenuToggleContext";
+} from "hoc/ContextApi/SideMenuContextAPI/SideMenuToggleContext";
 import { useLocation } from "react-router-dom";
 
 import Sidebar from "navigation/Sidebar";
