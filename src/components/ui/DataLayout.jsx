@@ -2,6 +2,7 @@ import { BrandContext } from "hoc/ContextApi/BrandContextAPI/BrandContextAPI";
 import React, { useContext } from "react";
 import { BiFilterAlt, BiPencil, BiPlus } from "react-icons/bi";
 import { MdOutlineInventory2 } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 
 const DataLayout = ({
   children,
@@ -14,6 +15,7 @@ const DataLayout = ({
   showViewAll = false,
 }) => {
   const data = useContext(BrandContext);
+  const navigate = useNavigate();
   return (
     <div className="w-full h-full flex flex-col gap-6">
       <h1 className="text-left font-bold text-xl text-gray-800">{title}</h1>
@@ -48,7 +50,7 @@ const DataLayout = ({
 
         {showViewAll && (
           <button
-            onClick={viewAllLink}
+            onClick={() => navigate(`${viewAllLink}`)}
             className="flex gap-2 items-center font-semibold hover:text-blue-800"
             aria-label="Edit"
           >

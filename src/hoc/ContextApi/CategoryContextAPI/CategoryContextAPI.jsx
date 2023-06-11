@@ -97,7 +97,7 @@ const CategoryContextAPI = ({ children }) => {
   return (
     <CategoryContext.Provider
       value={{
-        category: allCategory,
+        allCategory: allCategory,
         postRequest: postRequest,
         patchRequest: patchRequest,
         deleteRequest: deleteRequest,

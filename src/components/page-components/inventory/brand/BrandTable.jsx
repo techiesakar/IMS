@@ -12,7 +12,7 @@ const BrandTable = () => {
 
   return (
     <BrandContext.Consumer>
-      {({ brand, deleteRequest, setCurrentBrand, isDeleting }) => {
+      {({ allBrands, deleteRequest, setCurrentBrand, isDeleting }) => {
         return (
           <>
             <table className="w-full table-full  text-left text-gray-800 bg-white overfow-hidden	">
@@ -34,7 +34,7 @@ const BrandTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {brand.map((brand, index) => {
+                {allBrands.map((brand, index) => {
                   return (
                     <tr key={index} className=" border-b">
                       <td className="px-6 py-4">

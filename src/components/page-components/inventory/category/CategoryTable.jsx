@@ -11,7 +11,7 @@ const CategoryTable = () => {
     <>
       <CategoryContext.Consumer>
         {({
-          category,
+          allCategory,
           setCurrentCategory,
           currentCategory,
           isDeleting,
@@ -36,7 +36,7 @@ const CategoryTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {category.map((item, index) => {
+                  {allCategory.map((item, index) => {
                     return (
                       <tr key={index}>
                         <td className="px-6 py-4">

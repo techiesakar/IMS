@@ -144,7 +144,7 @@ function BrandContextAPI({ children }) {
   return (
     <BrandContext.Provider
       value={{
-        brand: allBrands,
+        allBrands: allBrands,
         // changetwo: changetwo,
         deleteRequest: deleteRequest,
         postRequest: postRequest,
