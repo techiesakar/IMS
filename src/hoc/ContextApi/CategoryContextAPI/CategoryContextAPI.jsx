@@ -8,8 +8,9 @@ const CategoryContextAPI = ({ children }) => {
   const [allCategory, setAllCategory] = useState([]);
   const [change, setChange] = useState(false);
   const [currentCategory, setCurrentCategory] = useState([]);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [tableLoading, setTableLoading] = useState(false);
 
+  // PostRequest
   const postRequest = (Category_name, resetForm, setLoading) => {
     try {
       setLoading(true);
@@ -31,7 +32,7 @@ const CategoryContextAPI = ({ children }) => {
       console.log(error);
     }
   };
-
+  // Patch or Update Request
   const patchRequest = (Category_name, id, resetForm, setEditLoading) => {
     try {
       setEditLoading(true);
@@ -57,7 +58,8 @@ const CategoryContextAPI = ({ children }) => {
     }
   };
 
-  const deleteRequest = (id) => {
+  // Delete Request
+  const deleteRequest = (id, setIsDeleting, setOpenDelete) => {
     try {
       setIsDeleting(true);
       axios
@@ -65,10 +67,12 @@ const CategoryContextAPI = ({ children }) => {
         .then((res) => {
           setIsDeleting(false);
           setChange(!change);
+          setOpenDelete(false);
         })
         .catch((err) => {
           console.log(err);
           setIsDeleting(false);
+          setOpenDelete(false);
         });
     } catch (error) {
       console.log(error);
@@ -78,13 +82,16 @@ const CategoryContextAPI = ({ children }) => {
   //   Get Table
   const getTable = useCallback(() => {
     try {
+      setTableLoading(true);
       axios
         .get("/category")
         .then((res) => {
           setAllCategory([...res.data.data]);
+          setTableLoading(false);
         })
         .catch((err) => {
           console.log(err);
+          setTableLoading(false);
         });
     } catch (error) {
       console.log(error);
@@ -92,6 +99,7 @@ const CategoryContextAPI = ({ children }) => {
     return allCategory;
   }, [change]);
 
+  // Memo to call table
   useMemo(() => getTable(), [change]);
 
   return (
@@ -103,7 +111,7 @@ const CategoryContextAPI = ({ children }) => {
         deleteRequest: deleteRequest,
         currentCategory: currentCategory,
         setCurrentCategory: setCurrentCategory,
-        isDeleting: isDeleting,
+        tableLoading: tableLoading,
       }}
     >
       {children}

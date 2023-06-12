@@ -42,7 +42,7 @@ const AddBrand = () => {
                       component="div"
                       className="text-red-400 text-xs "
                     />
-                    <div className="w-full h-32 p-3 rounded-md bg-white flex justify-center items-center">
+                    <div className="border relative border-gray-300 p-2 rounded-lg  h-36 flex flex-col items-center justify-center w-full">
                       {values.image.length <= 0 && (
                         <label
                           htmlFor="imageInput"
@@ -53,7 +53,7 @@ const AddBrand = () => {
                       )}
 
                       {values.image ? (
-                        <div className="relative w-36 p-3">
+                        <div className=" w-36 p-3">
                           <img
                             src={URL.createObjectURL(values.image)}
                             alt={values.Brand_name}
@@ -66,7 +66,7 @@ const AddBrand = () => {
                               e.target.value = "";
                               setFieldValue("image", "");
                             }}
-                            className="text-gray-600 hover:text-gray-700 transition text-lg cursor-pointer absolute top-2 right-2"
+                            className="text-gray-600 hover:text-gray-700 transition text-lg cursor-pointer absolute top-8 right-8"
                           >
                             <AiOutlineDelete />
                           </span>

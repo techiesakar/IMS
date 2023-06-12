@@ -9,7 +9,6 @@ function BrandContextAPI({ children }) {
   const [allBrands, setAllBrands] = useState([]);
   const [change, setChange] = useState(false);
   const [currentBrand, setCurrentBrand] = useState([]);
-  const [isDeleting, setIsDeleting] = useState(false);
 
   // const [changetwo, setChangetwo] = useState(false);
   // const [changethree, setChangethree] = useState(false);
@@ -69,7 +68,7 @@ function BrandContextAPI({ children }) {
     }
   };
 
-  const deleteRequest = (id) => {
+  const deleteRequest = (id, setIsDeleting) => {
     try {
       setIsDeleting(true);
       axios
@@ -152,8 +151,6 @@ function BrandContextAPI({ children }) {
         currentBrand: currentBrand,
         setCurrentBrand: setCurrentBrand,
         viewBrand: viewBrand,
-        isDeleting: isDeleting,
-        setIsDeleting: setIsDeleting,
       }}
     >
       {children}

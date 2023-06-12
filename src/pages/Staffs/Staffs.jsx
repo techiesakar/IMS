@@ -4,7 +4,6 @@ import DataLayout from "components/ui/DataLayout";
 import React, { useState } from "react";
 // import { BiFilterAlt, BiPlus, BiPencil } from "react-icons/bi";
 import staffs from "data/staffs.json";
-import Table from "components/ui/Table";
 const Inventory = () => {
   const staffsList = staffs.staffs;
   document.title = "SA - Inventory";

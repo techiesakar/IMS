@@ -18,8 +18,8 @@ const Category = () => {
               showEdit={false}
               showViewAll={false}
             >
-              <div className="max-w-screen-xl w-full mx-auto grid grid-cols-12 gap-24">
-                <div className="col-span-8">
+              <div className="max-w-screen-xl w-full mx-auto grid grid-cols-12 gap-24 h-full">
+                <div className="col-span-8 h-full">
                   <CategoryTable />
                 </div>
 

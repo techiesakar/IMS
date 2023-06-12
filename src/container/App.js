@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
 import Layout from "hoc/Layout/Layout";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Dashboard from "pages/Dashboard/Dashboard";
 import Customers from "pages/Customers/Customers";
 import Inventory from "pages/Inventory/Inventory";
@@ -26,7 +26,7 @@ import AddPurchase from "pages/Purchase/AddPurchase";
 import AddSales from "pages/Sales/AddSales";
 import Category from "pages/Inventory/Category";
 import Brand from "pages/Inventory/Brand";
-import ViewBrand from "components/page-components/inventory/brand/ViewBrand";
+import SingleBrand from "components/page-components/inventory/brand/SingleBrand";
 
 function App() {
   return (
@@ -42,10 +42,11 @@ function App() {
 
           <Route path={"/inventory"} element={<Inventory />} />
           <Route path={"/inventory/add"} element={<AddInventory />} />
+
           <Route path={"/categories"} element={<Category />} />
 
           <Route path={"/brands"} element={<Brand />} />
-          <Route path={"/brand/:slug"} element={<ViewBrand />} />
+          <Route path={"/brand/:slug"} element={<SingleBrand />} />
 
           <Route path={"/purchases"} element={<Purchase />} />
           <Route path={"/purchase/add"} element={<AddPurchase />} />

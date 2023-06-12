@@ -3,20 +3,18 @@ import { CategoryContext } from "hoc/ContextApi/CategoryContextAPI/CategoryConte
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 import EditCategory from "./EditCategory";
-import { ImSpinner8 } from "react-icons/im";
+import { useNavigate } from "react-router-dom";
+import DeleteCategory from "./DeleteCategory";
 
 const CategoryTable = () => {
-  const [categoryID, setCategoryID] = useState();
+  const [openDelete, setOpenDelete] = useState(false);
+  const [catID, setCatID] = useState(null);
+  const navigate = useNavigate();
+
   return (
     <>
       <CategoryContext.Consumer>
-        {({
-          allCategory,
-          setCurrentCategory,
-          currentCategory,
-          isDeleting,
-          deleteRequest,
-        }) => {
+        {({ allCategory, setCurrentCategory, currentCategory }) => {
           return (
             <>
               <table className="w-full  text-left text-gray-800 bg-white overfow-hidden">
@@ -55,22 +53,14 @@ const CategoryTable = () => {
                               <BiPencil />
                             </button>
 
-                            {isDeleting && categoryID === item.id ? (
-                              <ImSpinner8 className="animate-spin" />
-                            ) : (
-                              <button
-                                aria-label="Delete Category"
-                                onClick={() => {
-                                  deleteRequest(item.id);
-                                  setCategoryID(item.id);
-                                }}
-                              >
-                                <AiFillDelete />
-                              </button>
-                            )}
-
-                            <button aria-label="View Category">
-                              <AiFillEye />
+                            <button
+                              aria-label="Delete Category"
+                              onClick={() => {
+                                setOpenDelete(true);
+                                setCatID(item.id);
+                              }}
+                            >
+                              <AiFillDelete />
                             </button>
                           </div>
                         </td>
@@ -78,7 +68,12 @@ const CategoryTable = () => {
                     );
                   })}
                 </tbody>
+
+                {openDelete && (
+                  <DeleteCategory id={catID} setOpenDelete={setOpenDelete} />
+                )}
               </table>
+
               {currentCategory.length > 0 && <EditCategory />}
             </>
           );
