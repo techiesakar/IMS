@@ -1,6 +1,5 @@
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import UploadImage from "components/ui/UploadImage";
 import React from "react";
 
 const AddStaff = () => {
@@ -200,10 +199,7 @@ const AddStaff = () => {
           {/* Row Third End */}
           {/* Row Third End */}
           <div className="flex gap-4 w-full">
-            <UploadImage placeholder="Profile Image" />
-            <UploadImage placeholder="Citizenship Front" />
-            <UploadImage placeholder="Citizenship Back" />
-            <UploadImage placeholder="Other Documents" />
+            <input type="file" />
           </div>
           {/* Row Four End */}
           <div className="flex gap-4 w-full">

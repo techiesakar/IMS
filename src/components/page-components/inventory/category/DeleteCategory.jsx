@@ -15,8 +15,8 @@ const DeleteCategory = ({ setOpenDelete, id }) => {
                   Are you absolutely sure?
                 </span>
                 <span className="font-light text-gray-600 text-sm">
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
+                  This action cannot be undone. This will permanently delete the
+                  category from servers.
                 </span>
               </div>
               <div className="flex gap-6">

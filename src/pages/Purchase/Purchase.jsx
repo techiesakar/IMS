@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import DataLayout from "components/ui/DataLayout";
 
@@ -13,15 +13,6 @@ const Purchases = () => {
 
   document.title = "SA - Sales";
   const navigate = useNavigate();
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
-  // Calculate the index range for the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = purchaseList.slice(indexOfFirstItem, indexOfLastItem);
-
-  const totalPages = Math.ceil(purchaseList.length / itemsPerPage);
 
   return (
     <DataLayout
@@ -66,7 +57,7 @@ const Purchases = () => {
         </thead>
 
         <tbody>
-          {currentItems.map((item) => (
+          {purchaseList.map((item) => (
             <tr key={item.id} className=" border-b">
               <td className="px-6 py-4">
                 <input type="checkbox" name="inventoryItem" value={item.id} />

@@ -1,7 +1,5 @@
-import { Upload } from "@mui/icons-material";
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import UploadImage from "components/ui/UploadImage";
 import React from "react";
 
 const AddCustomer = () => {
@@ -140,7 +138,7 @@ const AddCustomer = () => {
           </div>
           {/* Row Four End */}
           <div className="flex gap-4 w-full">
-            <UploadImage placeholder="Upload Profile Image" />
+            <input type="file" />
           </div>
           <div className="flex gap-4 w-full">
             <Button variant="contained" color="primary" size="sm">

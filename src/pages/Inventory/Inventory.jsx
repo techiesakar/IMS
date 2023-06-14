@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import inventory from "data/inventory.json";
 import { BiPencil } from "react-icons/bi";
 import { AiFillDelete, AiFillEye } from "react-icons/ai";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Inventory = () => {
   const productsList = inventory.products;
