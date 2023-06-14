@@ -12,6 +12,7 @@ import Clothing from "components/page-components/inventory/productType/Clothing"
 const AddInventory = () => {
   document.title = "SA - Inventory";
   const location = useLocation();
+  console.log(location);
   const searchParams = new URLSearchParams(location.search);
   const type = searchParams.get("type");
   const navigate = useNavigate();
@@ -47,7 +48,10 @@ const AddInventory = () => {
                   onClick={() => {
                     navigate("?type=others");
                   }}
-                  className="py-1 hover:bg-gray-50 px-3 cursor-pointer border"
+                  className={`py-1 px-3 cursor-pointer border ${
+                    location.search === "?type=others" &&
+                    "bg-blue-500 text-white"
+                  }`}
                 >
                   Others
                 </li>
@@ -55,7 +59,10 @@ const AddInventory = () => {
                   onClick={() => {
                     navigate("?type=clothing");
                   }}
-                  className="py-1 hover:bg-gray-50 px-3 cursor-pointer border"
+                  className={`py-1  px-3 cursor-pointer border ${
+                    location.search === "?type=clothing" &&
+                    "bg-blue-500 text-white"
+                  }`}
                 >
                   Clothing
                 </li>

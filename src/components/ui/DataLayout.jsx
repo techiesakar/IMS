@@ -1,5 +1,4 @@
-import { BrandContext } from "hoc/ContextApi/BrandContextAPI/BrandContextAPI";
-import React, { useContext } from "react";
+import React from "react";
 import { BiFilterAlt, BiPencil, BiPlus } from "react-icons/bi";
 import { MdOutlineInventory2 } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +13,6 @@ const DataLayout = ({
   showAdd = false,
   showViewAll = false,
 }) => {
-  const data = useContext(BrandContext);
   const navigate = useNavigate();
   return (
     <div className="w-full h-full flex flex-col gap-6">
@@ -59,9 +57,7 @@ const DataLayout = ({
         )}
       </div>
 
-      <div className="w-full h-full flex  flex-col overflow-scroll">
-        {children}
-      </div>
+      <div className="w-full h-full flex  flex-col">{children}</div>
     </div>
   );
 };
