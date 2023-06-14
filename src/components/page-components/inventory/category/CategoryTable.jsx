@@ -1,15 +1,14 @@
+// eslint-disable-next-line
 import React, { useState } from "react";
 import { CategoryContext } from "hoc/ContextApi/CategoryContextAPI/CategoryContextAPI";
-import { AiFillDelete, AiFillEye } from "react-icons/ai";
+import { AiFillDelete } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 import EditCategory from "./EditCategory";
-import { useNavigate } from "react-router-dom";
 import DeleteCategory from "./DeleteCategory";
 
 const CategoryTable = () => {
   const [openDelete, setOpenDelete] = useState(false);
   const [catID, setCatID] = useState(null);
-  const navigate = useNavigate();
 
   return (
     <>

@@ -1,6 +1,5 @@
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import UploadImage from "components/ui/UploadImage";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -90,8 +89,7 @@ const AddSupplier = () => {
           </div>
           {/* Row  End */}{" "}
           <div className="flex gap-4 w-full">
-            <UploadImage placeholder="Registration Certificate" />
-            <UploadImage placeholder="PAN/VAT" />
+            <input type="file" />
           </div>
           <div className="flex gap-4 w-full">
             <Button variant="contained" color="primary" size="sm">

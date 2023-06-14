@@ -1,6 +1,6 @@
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import React, { useEffect, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BsPencilFill } from "react-icons/bs";
 import categories from "data/categories.json";
@@ -11,7 +11,7 @@ import { useNavigate } from "react-router-dom";
 
 const AddSales = () => {
   const [isMember, setIsMember] = useState(false);
-  const [customerPhone, setCustomerPhone] = useState(null);
+  const [customerPhone, setCustomerPhone] = useState(0);
   const [customerProfile, setCustomerProfile] = useState(false);
   const navigate = useNavigate();
 
@@ -22,10 +22,8 @@ const AddSales = () => {
   const handleNumberChange = (e) => {
     setCustomerPhone(e.target.value);
   };
-  useEffect(() => {
-    getCustomerData();
-  }, [customerPhone]);
-
+  // eslint-disable-next-line
+  useMemo(() => getCustomerData(), [customerPhone]);
   return (
     <DataLayout
       title="Sale Product"

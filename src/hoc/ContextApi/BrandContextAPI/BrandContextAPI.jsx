@@ -115,17 +115,6 @@ function BrandContextAPI({ children }) {
   }, [change]);
 
   useMemo(() => getTable(), [change]);
-  // useEffect(() => {
-  //   if (changethree) {
-  //     let interval = setTimeout(() => {
-  //       setChangetwo(false);
-  //     }, 2000);
-
-  //     return () => {
-  //       clearTimeout(interval);
-  //     };
-  //   }
-  // }, [changethree]);
 
   const viewBrand = (slug) => {
     try {
