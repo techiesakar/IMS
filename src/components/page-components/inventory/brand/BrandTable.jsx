@@ -6,6 +6,7 @@ import { BiPencil } from "react-icons/bi";
 import { BrandContext } from "hoc/ContextApi/BrandContextAPI/BrandContextAPI";
 import { useNavigate } from "react-router-dom";
 import Loading from "components/Loading";
+import BrandTableSkeleton from "./skeleton/BrandTableSkeleton";
 
 const BrandTable = () => {
   const navigate = useNavigate();
@@ -39,61 +40,67 @@ const BrandTable = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {allBrands.map((brand, index) => {
-                    return (
-                      <tr key={index} className=" border-b">
-                        <td className="px-6 py-4">
-                          <input type="checkbox" name="brand" />
-                        </td>
+                  {allBrands.length > 0 ? (
+                    <>
+                      {allBrands.map((brand, index) => {
+                        return (
+                          <tr key={index} className=" border-b">
+                            <td className="px-6 py-4">
+                              <input type="checkbox" name="brand" />
+                            </td>
 
-                        <td className="px-6 py-4 ">{index + 1}</td>
-                        <td className="px-6 py-4">
-                          <img
-                            // src={brand.image}
-                            src={`http://localhost:4002/public/${brand.image}`}
-                            alt={brand.Brand_name}
-                            className="h-8 w-8 rounded-lg"
-                          />
-                        </td>
-                        <td className="px-6 py-4">{brand.Brand_name}</td>
-                        <td className="px-6 py-4">
-                          <div className="flex gap-2 items-center text-base">
-                            <button
-                              aria-label="Edit Supplier"
-                              onClick={() => {
-                                setCurrentBrand([brand]);
-                              }}
-                            >
-                              <BiPencil />
-                            </button>
+                            <td className="px-6 py-4 ">{index + 1}</td>
+                            <td className="px-6 py-4">
+                              <img
+                                // src={brand.image}
+                                src={`http://localhost:4002/public/${brand.image}`}
+                                alt={brand.Brand_name}
+                                className="h-8 w-8 rounded-lg"
+                              />
+                            </td>
+                            <td className="px-6 py-4">{brand.Brand_name}</td>
+                            <td className="px-6 py-4">
+                              <div className="flex gap-2 items-center text-base">
+                                <button
+                                  aria-label="Edit Supplier"
+                                  onClick={() => {
+                                    setCurrentBrand([brand]);
+                                  }}
+                                >
+                                  <BiPencil />
+                                </button>
 
-                            {isDeleting && brandID === brand.id ? (
-                              <ImSpinner8 className="animate-spin" />
-                            ) : (
-                              <button
-                                aria-label="Delete Supplier"
-                                onClick={() => {
-                                  deleteRequest(brand.id, setIsDeleting);
-                                  setBrandID(brand.id);
-                                }}
-                              >
-                                <AiFillDelete />
-                              </button>
-                            )}
+                                {isDeleting && brandID === brand.id ? (
+                                  <ImSpinner8 className="animate-spin" />
+                                ) : (
+                                  <button
+                                    aria-label="Delete Supplier"
+                                    onClick={() => {
+                                      deleteRequest(brand.id, setIsDeleting);
+                                      setBrandID(brand.id);
+                                    }}
+                                  >
+                                    <AiFillDelete />
+                                  </button>
+                                )}
 
-                            <button
-                              aria-label="View Supplier"
-                              onClick={() => {
-                                navigate(`/brand/${brand.id}`);
-                              }}
-                            >
-                              <AiFillEye />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                                <button
+                                  aria-label="View Supplier"
+                                  onClick={() => {
+                                    navigate(`/brand/${brand.id}`);
+                                  }}
+                                >
+                                  <AiFillEye />
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </>
+                  ) : (
+                    <BrandTableSkeleton />
+                  )}
                 </tbody>
               </table>
             )}

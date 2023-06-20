@@ -3,6 +3,7 @@ import { categorySchema } from "components/schema/caetgory/CategorySchema";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import { CategoryContext } from "hoc/ContextApi/CategoryContextAPI/CategoryContextAPI";
 import { useState } from "react";
+import { ImSpinner8 } from "react-icons/im";
 
 const AddCategory = () => {
   const [loading, setLoading] = useState(false);
@@ -63,21 +64,30 @@ const AddCategory = () => {
                               </option>
                             );
                           })}
+
+                          {allCategory.length < 1
+                            ? setLoading(true)
+                            : setLoading(false)}
                         </Field>
                       </label>
                       <p className="text-sm italic text-gray-400">
                         If has parent category select otherwise ignore
                       </p>
-                      {loading ? (
-                        <Loading />
-                      ) : (
-                        <button
-                          type="submit"
-                          className="py-2 px-3 bg-blue-500 rounded text-white"
-                        >
-                          Add
-                        </button>
-                      )}
+
+                      <button
+                        type={`${loading ? "button" : "submit"}`}
+                        className="py-2 px-3 flex items-center justify-center gap-2 bg-blue-500 rounded text-white"
+                      >
+                        {`${
+                          loading ? (
+                            <>
+                              Loading <ImSpinner8 className="animate-spin" />{" "}
+                            </>
+                          ) : (
+                            "Add"
+                          )
+                        }`}
+                      </button>
                     </Form>
                   </>
                 );
