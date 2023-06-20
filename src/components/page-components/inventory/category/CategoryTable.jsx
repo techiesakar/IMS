@@ -5,6 +5,7 @@ import { AiFillDelete } from "react-icons/ai";
 import { BiPencil } from "react-icons/bi";
 import EditCategory from "./EditCategory";
 import DeleteCategory from "./DeleteCategory";
+import CategoryTableSkeleton from "./skeleton/CategoryTableSkeleton";
 
 const CategoryTable = () => {
   const [openDelete, setOpenDelete] = useState(false);
@@ -32,41 +33,46 @@ const CategoryTable = () => {
                     </th>
                   </tr>
                 </thead>
-                <tbody>
-                  {allCategory.map((item, index) => {
-                    return (
-                      <tr key={index}>
-                        <td className="px-6 py-4">
-                          <input type="checkbox" name="brand" />
-                        </td>
-                        <td className="px-6 py-4 ">{index + 1}</td>
-                        <td className="px-6 py-4">{item.Category_name}</td>
-                        <td className="px-6 py-4">
-                          <div className="flex gap-2 items-center text-base">
-                            <button
-                              aria-label="Edit Category"
-                              onClick={() => {
-                                setCurrentCategory([item]);
-                              }}
-                            >
-                              <BiPencil />
-                            </button>
 
-                            <button
-                              aria-label="Delete Category"
-                              onClick={() => {
-                                setOpenDelete(true);
-                                setCatID(item.id);
-                              }}
-                            >
-                              <AiFillDelete />
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
+                {allCategory.length > 0 ? (
+                  <tbody>
+                    {allCategory.map((item, index) => {
+                      return (
+                        <tr key={index}>
+                          <td className="px-6 py-4">
+                            <input type="checkbox" name="brand" />
+                          </td>
+                          <td className="px-6 py-4 ">{index + 1}</td>
+                          <td className="px-6 py-4">{item.Category_name}</td>
+                          <td className="px-6 py-4">
+                            <div className="flex gap-2 items-center text-base">
+                              <button
+                                aria-label="Edit Category"
+                                onClick={() => {
+                                  setCurrentCategory([item]);
+                                }}
+                              >
+                                <BiPencil />
+                              </button>
+
+                              <button
+                                aria-label="Delete Category"
+                                onClick={() => {
+                                  setOpenDelete(true);
+                                  setCatID(item.id);
+                                }}
+                              >
+                                <AiFillDelete />
+                              </button>
+                            </div>
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                ) : (
+                  <CategoryTableSkeleton />
+                )}
 
                 {openDelete && (
                   <DeleteCategory id={catID} setOpenDelete={setOpenDelete} />

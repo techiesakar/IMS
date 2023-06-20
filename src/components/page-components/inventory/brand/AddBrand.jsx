@@ -6,6 +6,7 @@ import { brandSchema } from "components/schema/brand/BrandSchema";
 import Loading from "components/Loading";
 import { BiUpload } from "react-icons/bi";
 import { AiOutlineDelete } from "react-icons/ai";
+import { ImSpinner8 } from "react-icons/im";
 const AddBrand = () => {
   const [loading, setLoading] = useState(false);
   return (
@@ -93,16 +94,20 @@ const AddBrand = () => {
                       className="text-red-400 text-xs "
                     />
 
-                    {loading ? (
-                      <Loading />
-                    ) : (
-                      <button
-                        type="submit"
-                        className="py-2 px-3 bg-blue-500 rounded text-white"
-                      >
-                        Add
-                      </button>
-                    )}
+                    <button
+                      type="submit"
+                      className="py-2 px-3 bg-blue-500 rounded text-white"
+                    >
+                      {`${
+                        loading ? (
+                          <>
+                            Loading <ImSpinner8 className="animate-spin" />
+                          </>
+                        ) : (
+                          "Add"
+                        )
+                      }`}
+                    </button>
                   </Form>
                 );
               }}
