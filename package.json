@@ -18,6 +18,7 @@
     "react-dom": "^18.2.0",
     "react-google-charts": "^4.0.0",
     "react-icons": "^4.8.0",
+    "react-inlinesvg": "^3.0.2",
     "react-is": "^18.2.0",
     "react-router-dom": "^6.11.2",
     "react-scripts": "5.0.1",
@@ -35,7 +36,8 @@
     "workbox-range-requests": "^6.5.4",
     "workbox-routing": "^6.5.4",
     "workbox-strategies": "^6.5.4",
-    "workbox-streams": "^6.5.4"
+    "workbox-streams": "^6.5.4",
+    "yup": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",

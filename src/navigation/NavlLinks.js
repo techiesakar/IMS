@@ -91,43 +91,43 @@ const NavLinks = [
 
   {
     id: 5,
-    title: "Customers",
-    link: "/customers",
+    title: "Contact",
+    link: "/contact",
     icon: <IoIosPeople />,
     children: [
       {
         id: 0,
-        title: "Add Customer",
-        link: "/customer/add",
+        title: "Add Contact Info",
+        link: "/contact/add",
       },
       {
         id: 0,
-        title: "View Customers",
-        link: "/customers",
+        title: "View Messages",
+        link: "/contact/view",
       },
     ],
   },
 
   {
     id: 7,
-    title: "Staffs",
+    title: "About",
     link: "/staffs",
     icon: <BsPeopleFill />,
     children: [
       {
         id: 0,
-        title: "Add Staff",
-        link: "/staff/add",
+        title: "Company Info",
+        link: "/about/add-info",
       },
       {
         id: 1,
-        title: "View Staffs",
-        link: "/staffs",
+        title: "How We Work ?",
+        link: "/about/add-hwk",
       },
       {
         id: 2,
-        title: "Attendance",
-        link: "/staffs/attendance",
+        title: "Our Achivements",
+        link: "/about/achivements",
       },
       {
         id: 3,
@@ -138,39 +138,27 @@ const NavLinks = [
   },
   {
     id: 8,
-    title: "Sales Return",
-    link: "/sales-return",
+    title: "Team",
+    link: "/team",
     icon: <BsPeopleFill />,
     children: [
       {
         id: 0,
-        title: "Add Return",
-        link: "/sales-return/add",
+        title: "Add Team Members",
+        link: "/team/add",
       },
       {
         id: 1,
-        title: "View Returns",
-        link: "/sales-return",
+        title: "View Team Members",
+        link: "/team/view",
       },
     ],
   },
   {
     id: 9,
-    title: "Purchase Return",
-    // link: "/",
+    title: "Testonomials",
+    link: "/testonomials",
     icon: <BsPeopleFill />,
-    children: [
-      {
-        id: 0,
-        title: "Add Returns",
-        link: "/purchases-return/add",
-      },
-      {
-        id: 1,
-        title: "View Returns",
-        link: "/purchases-return",
-      },
-    ],
   },
 
   { id: 10, title: "Reports", link: "/reports", icon: <SiGoogleanalytics /> },

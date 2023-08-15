@@ -1,10 +1,11 @@
 import Pagination from "components/Pagination";
 // import inventoryItems from "data/inventory";
 import DataLayout from "components/ui/DataLayout";
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 // import { BiFilterAlt, BiPlus, BiPencil } from "react-icons/bi";
 import staffs from "data/staffs.json";
 import Table from "components/ui/Table";
+import axios from '../../hoc/axios'
 const Inventory = () => {
   const staffsList = staffs.staffs;
   document.title = "SA - Inventory";
@@ -24,6 +25,23 @@ const Inventory = () => {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+
+  const getData=()=>{
+    try{
+      axios.get('/staff').then(res=>{
+        console.log(res);
+      }).catch(err=>{
+        console.log(err)
+      })
+    }catch(error){
+      console.log(error)
+    }
+  }
+  useEffect(() => {
+      getData()
+  }, [])
+  
 
   return (
     <DataLayout

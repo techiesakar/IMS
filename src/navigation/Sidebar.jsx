@@ -46,16 +46,19 @@ const Sidebar = () => {
             )}
           </Link>
         </div>
-        <ul className="flex flex-col gap-6 primary-menu">
+        <div className="flex flex-col gap-6 primary-menu">
           {NavLinks.map((item, index) => {
             if (item.children) {
               return (
-                <li
+                <button
                   key={index}
                   className="flex items-center text-white menu-item  cursor-pointer"
                   onClick={() =>
                     show === item.link ? setShow("") : setShow(item.link)
                   }
+                  onBlur={(e)=>{
+
+                  }}
                 >
                   <div className="flex items-center gap-3 w-full">
                     <button
@@ -73,7 +76,8 @@ const Sidebar = () => {
                       show === item.link
                         ? " opacity-100 translate-0   z-40"
                         : "opacity-0 -translate-y-4 -z-50 collapse"
-                    } ease-in-out transition-all duration-300 delay-75 absolute bg-[#083344] p-2  rounded-r left-full w-40 flex flex-col gap-2 sub-menu`}
+                    } ease-in-out transition-all duration-300 delay-75 absolute bg-[#083344] p-4 
+                     rounded-r left-full w-fit  flex flex-col gap-2 sub-menu`}
                   >
                     {item.children.map((childItem, count) => {
                       return (
@@ -99,11 +103,11 @@ const Sidebar = () => {
                       } transition-all  ease-in text-2xl`}
                     />
                   )}
-                </li>
+                </button>
               );
             } else
               return (
-                <li
+                <button
                   key={index}
                   className="flex items-center text-white menu-item"
                 >
@@ -120,10 +124,10 @@ const Sidebar = () => {
                     </button>
                     {!toggleShrink && item.title}
                   </Link>
-                </li>
+                </button>
               );
           })}
-        </ul>
+        </div>
       </div>
 
       <div className="text-white flex gap-3 items-center px-4 toggle-wrapper">
