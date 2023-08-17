@@ -32,6 +32,14 @@ import ViewTeam from "pages/Team/ViewTeam";
 import HowWeWork from "pages/Staffs/HowWeWork";
 import OurAchivements from "pages/Staffs/OurAchivements";
 import Testonomials from "pages/Testonomials/Testonomials";
+import Concept from "pages/Concept/Concept";
+import Edit from "pages/Concept/Edit";
+import StudentMain from "pages/StudentMain/StudentMain";
+import EditStudent from "pages/StudentMain/EditStudent";
+import Reason from "pages/Reason/Reason";
+import EditReason from '../pages/Reason/EditReason';
+import Banner from "pages/Banner/Banner";
+import EditBanner from "pages/Banner/EditBanner";
 
 function App() {
   return (
@@ -49,17 +57,21 @@ function App() {
           <Route path={"/inventory/add"} element={<AddInventory />} />
           <Route path={"/categories"} element={<Category />} />
 
-          <Route path={"/brands"} element={<Brand />} />
+          <Route path={"/banner"} element={<Banner />} />
+          <Route path={"/banner/edit/:id"} element={<EditBanner />} />
+
 
           <Route path={"/purchases"} element={<Purchase />} />
           <Route path={"/purchase/add"} element={<AddPurchase />} />
 
           <Route path={"/reports"} element={<Reports />} />
-          <Route path={"/students"} element={<Sales />}  />
+          <Route path={"/students"} element={<StudentMain />}  />
+          <Route path={"/students/edit/:id"} element={<EditStudent />} />
 
           <Route path={"/students/add"} element={<AddStudent />} />
 
-          <Route path={"/suppliers"} element={<Suppliers />} />
+          <Route path={"/reasons"} element={<Reason />} />
+          <Route path={"/reasons/edit/:id"} element={<EditReason />} />
           <Route path={"/supplier/add"} element={<AddSupplier />} />
 
           <Route path={"/staffs"} element={<Staffs />} />
@@ -67,6 +79,10 @@ function App() {
           <Route path={"/about/achivements"} element={<OurAchivements />} />
           <Route path={"/about/add-hwk"} element={<HowWeWork />} />
           <Route path={"/testonomials"} element={<Testonomials />} />
+          <Route path={"/concept"} element={<Concept />} />
+          <Route path={"/concept/edit/:id"} element={<Edit />} />
+
+
 
 
           <Route path={"/team/add"} element={<Add />} />
