@@ -50,15 +50,13 @@ const Sidebar = () => {
           {NavLinks.map((item, index) => {
             if (item.children) {
               return (
-                <button
+                <div
                   key={index}
                   className="flex items-center text-white menu-item  cursor-pointer"
                   onClick={() =>
                     show === item.link ? setShow("") : setShow(item.link)
                   }
-                  onBlur={(e)=>{
-
-                  }}
+                  onBlur={(e) => {}}
                 >
                   <div className="flex items-center gap-3 w-full">
                     <button
@@ -103,11 +101,11 @@ const Sidebar = () => {
                       } transition-all  ease-in text-2xl`}
                     />
                   )}
-                </button>
+                </div>
               );
             } else
               return (
-                <button
+                <div
                   key={index}
                   className="flex items-center text-white menu-item"
                 >
@@ -124,7 +122,7 @@ const Sidebar = () => {
                     </button>
                     {!toggleShrink && item.title}
                   </Link>
-                </button>
+                </div>
               );
           })}
         </div>
