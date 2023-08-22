@@ -56,7 +56,7 @@ const AddTools = () => {
       }
 
       axios
-        .post("/category", { title: values })
+        .post("/tools", { title: values })
         .then((res) => {
           console.log(res);
           setShowError(false);

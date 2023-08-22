@@ -24,7 +24,8 @@ const Sidebar = () => {
     <aside
       className={`sidebar fixed ${
         toggleMenu ? "left-0" : "-left-56"
-      } z-50  md:left-0 top-0 transition-all duration-300  bg-cyan-950 h-screen whitespace-nowrap  flex flex-col gap-6 justify-between py-10 ${
+      } z-30  md:left-0 top-0 transition-all duration-300   overflow-auto  bg-cyan-950 
+      h-full whitespace-nowrap  flex flex-col gap-6 justify-between py-10 ${
         toggleShrink ? "w-16" : "w-52"
       }`}
     >
@@ -56,7 +57,7 @@ const Sidebar = () => {
                   onClick={() =>
                     show === item.link ? setShow("") : setShow(item.link)
                   }
-                  onBlur={(e) => {}}
+                  // onBlur={(e) => {}}
                 >
                   <div className="flex items-center gap-3 w-full">
                     <button
@@ -72,10 +73,10 @@ const Sidebar = () => {
                   <ul
                     className={`${
                       show === item.link
-                        ? " opacity-100 translate-0   z-40"
+                        ? " opacity-100 translate-0   z-50"
                         : "opacity-0 -translate-y-4 -z-50 collapse"
-                    } ease-in-out transition-all duration-300 delay-75 absolute bg-[#083344] p-4 
-                     rounded-r left-full w-fit  flex flex-col gap-2 sub-menu`}
+                    } ease-in-out transition-all duration-300 delay-75 absolute bg-[#083344] px-2.5 py-4 
+                     rounded-r -right-3 w-fit     flex flex-col gap-2 sub-menu`}
                   >
                     {item.children.map((childItem, count) => {
                       return (

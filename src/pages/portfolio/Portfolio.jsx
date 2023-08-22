@@ -145,7 +145,7 @@ const Portfolio = () => {
                   {new Date(portfolio.date).toDateString()}
                 </td>
                 <td className="px-6 py-4">{portfolio?.category?.title}</td>
-                <td className="px-6 py-4">{portfolio.challenge}</td>
+                <td className="px-6 py-4">{portfolio.challange}</td>
                 <td className="px-6 py-4">{portfolio.solution}</td>
                 <td className="px-6 py-4">
                   {portfolio.Tools.map((tool, ind) => {

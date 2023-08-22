@@ -1,9 +1,14 @@
 import { MdDashboard, MdInventory, MdFireTruck } from "react-icons/md";
 import { BiPurchaseTagAlt } from "react-icons/bi";
-import { IoIosPeople } from "react-icons/io";
-import { SiGoogleanalytics, SiSalesforce } from "react-icons/si";
+import { MdContactPhone } from "react-icons/md";
+import { SiBookstack } from "react-icons/si";
+import { RiGalleryFill, RiSlideshow2Fill } from "react-icons/ri";
+import { TbBrandBlogger } from "react-icons/tb";
+
+import { SiGoogleanalytics, SiSalesforce, SiMercurial } from "react-icons/si";
 import { CiSettings } from "react-icons/ci";
 import { BsPeopleFill } from "react-icons/bs";
+import { FaChalkboardTeacher, FaTools } from "react-icons/fa";
 const NavLinks = [
   { id: 0, title: "Dashboard", link: "/", icon: <MdDashboard /> },
   {
@@ -89,10 +94,28 @@ const NavLinks = [
     ],
   },
   {
-    id: 15,
+    id: 5,
+    title: "Instructor",
+    link: "/instructor",
+    icon: <FaChalkboardTeacher />,
+    children: [
+      {
+        id: 0,
+        title: "Add Instructor",
+        link: "/instructor/add",
+      },
+      {
+        id: 1,
+        title: "View Instructor",
+        link: "/instructor",
+      },
+    ],
+  },
+  {
+    id: 6,
     title: "Course",
     link: "/course",
-    icon: <MdFireTruck />,
+    icon: <SiBookstack />,
     children: [
       {
         id: 0,
@@ -108,10 +131,10 @@ const NavLinks = [
   },
 
   {
-    id: 5,
+    id: 7,
     title: "Contact",
     link: "/contact",
-    icon: <IoIosPeople />,
+    icon: <MdContactPhone />,
     children: [
       {
         id: 0,
@@ -127,10 +150,10 @@ const NavLinks = [
   },
 
   {
-    id: 7,
+    id: 8,
     title: "About",
     link: "/staffs",
-    icon: <BsPeopleFill />,
+    icon: <SiMercurial />,
     children: [
       {
         id: 0,
@@ -155,7 +178,7 @@ const NavLinks = [
     ],
   },
   {
-    id: 8,
+    id: 9,
     title: "Team",
     link: "/team",
     icon: <BsPeopleFill />,
@@ -173,15 +196,15 @@ const NavLinks = [
     ],
   },
   {
-    id: 9,
+    id: 10,
     title: "Testonomials",
     link: "/testonomials",
-    icon: <BsPeopleFill />,
+    icon: <RiSlideshow2Fill />,
   },
 
-  { id: 10, title: "Reports", link: "/reports", icon: <SiGoogleanalytics /> },
+  { id: 11, title: "Reports", link: "/reports", icon: <SiGoogleanalytics /> },
   {
-    id: 11,
+    id: 12,
     title: "General Settings",
     link: "/settings",
     icon: <CiSettings />,
@@ -199,7 +222,7 @@ const NavLinks = [
     ],
   },
   {
-    id: 12,
+    id: 13,
     title: "Category",
     link: "/category",
     icon: <MdFireTruck />,
@@ -217,16 +240,16 @@ const NavLinks = [
     // ],
   },
   {
-    id: 16,
+    id: 14,
     title: "Tools",
     link: "/tools/add",
-    icon: <MdFireTruck />,
+    icon: <FaTools />,
   },
   {
-    id: 13,
+    id: 15,
     title: "Gallery",
     link: "/gallery",
-    icon: <MdFireTruck />,
+    icon: <RiGalleryFill />,
     // children: [
     //   {
     //     id: 0,
@@ -241,10 +264,10 @@ const NavLinks = [
     // ],
   },
   {
-    id: 14,
+    id: 16,
     title: "Portfolio",
     link: "/portfolio",
-    icon: <MdFireTruck />,
+    icon: <TbBrandBlogger />,
     // children: [
     //   {
     //     id: 0,

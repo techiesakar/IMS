@@ -42,6 +42,8 @@ import AddCourse from "pages/course/AddCourse";
 import Course from "pages/course/Course";
 import AddTools from "pages/tools/AddTools";
 import Tools from "pages/tools/Tools";
+import Instructor from "pages/instructor";
+import AddInstructor from "pages/instructor/AddInstructor";
 
 function App() {
   return (
@@ -71,29 +73,42 @@ function App() {
 
           <Route path={"/suppliers"} element={<Suppliers />} />
           <Route path={"/supplier/add"} element={<AddSupplier />} />
+          <Route path={"/instructor"} element={<Instructor />} />
+          <Route path={"/instructor/add"} element={<AddInstructor />} />
+
           <Route path={"/course"} element={<Course />} />
           <Route path={"/course/add"} element={<AddCourse />} />
 
           <Route path={"/staffs"} element={<Staffs />} />
           <Route path={"/about/add-info"} element={<AddStaff />} />
+
           <Route path={"/about/achivements"} element={<OurAchivements />} />
+
           <Route path={"/about/add-hwk"} element={<HowWeWork />} />
+
           <Route path={"/testonomials"} element={<Testonomials />} />
 
           <Route path={"/team/add"} element={<Add />} />
           <Route path={"/team/view"} element={<ViewTeam />} />
 
           <Route path={"/login"} element={<Login />} />
+
           <Route path={"/account"} element={<Account />} />
+
           <Route path={"/account/settings"} element={<Settings />} />
+
+          <Route path={"/category/add"} element={<AddCategory />} />
           <Route path={"/category"} element={<Categorys />} />
+
           <Route path={"/tools/add"} element={<AddTools />} />
           <Route path={"/tools"} element={<Tools />} />
-          <Route path={"/category/add"} element={<AddCategory />} />
+
           <Route path={"/gallery"} element={<Gallerys />} />
           <Route path={"/gallery/add"} element={<AddGallery />} />
+
           <Route path={"/portfolio"} element={<Portfolio />} />
           <Route path={"/portfolio/add"} element={<AddPortfolio />} />
+
           <Route path={"/404"} element={<NotFound />} />
           <Route path={"*"} element={<Navigate to="/404" />} />
         </Routes>
