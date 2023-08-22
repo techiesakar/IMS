@@ -62,7 +62,7 @@ function EditStudent() {
         getData(id)
       
        
-      }, [id,useParams])
+      }, [id])
       
   return (
     <div className="">
@@ -114,7 +114,7 @@ function EditStudent() {
               {console.log(Data,values)}
               <div className="grid gap-5">
                 {formlabels.map((val, i) => {
-                  if (val.type != "textare") {
+                  if (val.type !== "textare") {
                     return (
                       <div key={val.apiname} className="flex flex-col gap-1 justify-start items-start w-full">
                         <label
@@ -240,8 +240,8 @@ function EditStudent() {
                           className="text-sm text-red-600"
                         />
                          {
-                              values.image ? <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
-                            :<img src={`http://localhost:5004/public/${values.limage}`} className="w-full aspect-square" />
+                              values.image ? <img alt='loading..' src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
+                            :<img alt='loading' src={`http://localhost:5004/public/${values.limage}`} className="w-full aspect-square" />
                         }
                       </div>
               </div>

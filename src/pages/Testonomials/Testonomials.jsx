@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
 import Spinner from "components/ui/Spinner";
-import SVG from 'react-inlinesvg';
+// import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
 import { Link } from "react-router-dom";
 const Testonomials = () => {
@@ -188,7 +188,7 @@ setreload(prev=>!prev)
                               className="text-sm text-red-600"
                             />
                             {
-                              values.image && <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
+                              values.image && <img src={URL.createObjectURL(values.image)} alt="loading" className="w-full aspect-square" />
                             }
                           </div>
                   </div>
@@ -214,7 +214,7 @@ setreload(prev=>!prev)
                   <div className="text-base capitalize  font-extrabold flex gap-3 items-center">
                     <div className='h-10 w-10 rounded-full bg-gray-500 '>
                       {
-                        val.image && <img src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
+                        val.image && <img src={`http://localhost:5004/public/${val.image}`} alt="loading." className='w-full h-full rounded-full' />
                       }
                         {/* <SVG src={val.icon} className="h-full w-full" /> */}
                     </div>

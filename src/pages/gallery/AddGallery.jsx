@@ -4,7 +4,7 @@ import UploadImage from "components/ui/UploadImage";
 import React, { useState, useRef, useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BiUpload } from "react-icons/bi";
-import img from "../../assets/brandings/Logo.png";
+// import img from "../../assets/brandings/Logo.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../../hoc/axios";
@@ -82,7 +82,7 @@ const AddGallery = () => {
     formData.append("description", ChangeDescription);
     formData.append("coverImage", imageUrl);
     multipleImage.map((val, i) => {
-      formData.append("image", val);
+      return formData.append("image", val);
     });
     try {
       axios
@@ -106,9 +106,9 @@ const AddGallery = () => {
       console.log(error);
     }
   };
-  const handleTitle = (e) => {
-    console.log(e);
-  };
+  // const handleTitle = (e) => {
+  //   console.log(e);
+  // };
   return (
     <DataLayout
       title="Add Gallery"

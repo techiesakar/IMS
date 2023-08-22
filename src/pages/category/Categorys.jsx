@@ -20,13 +20,13 @@ const Categorys = () => {
   const totalPages = Math.ceil(supplierList.length / itemsPerPage);
   const [storeCategory, setStoreCategory] = useState([]);
   // Calculate the index range for the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // We need to perform loop on the products that is to be shown on the page
-  const currentSuppliers = supplierList.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  // const indexOfLastItem = currentPage * itemsPerPage;
+  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // // We need to perform loop on the products that is to be shown on the page
+  // const currentSuppliers = supplierList.slice(
+  //   indexOfFirstItem,
+  //   indexOfLastItem
+  // );
   const getCategoryData = () => {
     try {
       axios

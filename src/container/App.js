@@ -3,12 +3,12 @@ import "./App.css";
 import Layout from "hoc/Layout/Layout";
 import { Navigate, Route, Routes } from "react-router-dom";
 import Dashboard from "pages/Dashboard/Dashboard";
-import Customers from "pages/Customers/Customers";
+// import Customers from "pages/Customers/Customers";
 import Inventory from "pages/Inventory/Inventory";
-import Purchase from "pages/Purchase/Purchase";
+// import Purchase from "pages/Purchase/Purchase";
 import Reports from "pages/Reports/Reports";
-import Sales from "pages/Sales/Sales";
-import Suppliers from "pages/Suppliers/Suppliers";
+// import Sales from "pages/Sales/Sales";
+// import Suppliers from "pages/Suppliers/Suppliers";
 import AddInventory from "pages/Inventory/AddInventory";
 import AddCustomer from "pages/Customers/AddCustomers";
 import NotFound from "pages/NotFound/NotFound";
@@ -20,11 +20,11 @@ import AddStaff from "pages/Staffs/AddStaff";
 import AddSupplier from "pages/Suppliers/AddSupplier";
 import Account from "pages/Account/Account";
 import Settings from "pages/Account/Settings";
-import Attendance from "pages/Staffs/Attendance";
-import Salary from "pages/Staffs/HowWeWork";
+// import Attendance from "pages/Staffs/Attendance";
+// import Salary from "pages/Staffs/HowWeWork";
 import AddPurchase from "pages/Purchase/AddPurchase";
-import AddSales from "pages/Sales/AddSales";
-import Brand from "pages/Inventory/Brand";
+// import AddSales from "pages/Sales/AddSales";
+// import Brand from "pages/Inventory/Brand";
 import AddStudent from "pages/Student/AddStuden";
 import Add from "pages/Team/Add";
 import ViewTeam from "pages/Team/ViewTeam";
@@ -51,8 +51,8 @@ import AddCourse from "pages/course/AddCourse";
 import Course from "pages/course/Course";
 import AddTools from "pages/tools/AddTools";
 import Tools from "pages/tools/Tools";
-import Instructor from "pages/instructor";
-import AddInstructor from "pages/instructor/AddInstructor";
+import Instructor from "pages/Instructor/Instructor";
+import AddInstructor from "pages/Instructor/AddInstructor";
 
 function App() {
   return (
@@ -80,7 +80,7 @@ function App() {
           <Route path={"/reports"} element={<Reports />} />
           <Route path={"/students"} element={<StudentMain />}  />
           <Route path={"/students/edit/:id"} element={<EditStudent />} />
-//           <Route path={"/students"} element={<Sales />} />
+{/* //           <Route path={"/students"} element={<Sales />} /> */}
 
           <Route path={"/students/add"} element={<AddStudent />} />
 

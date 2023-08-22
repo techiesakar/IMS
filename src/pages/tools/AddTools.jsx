@@ -1,13 +1,9 @@
 import axios from "../../hoc/axios";
 import Button from "components/Button";
 import DataLayout from "components/ui/DataLayout";
-import UploadImage from "components/ui/UploadImage";
-import React, { useState, useRef, useEffect } from "react";
-import { AiFillDelete } from "react-icons/ai";
-import { BiUpload } from "react-icons/bi";
+import React, { useState,  } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import img from "../../assets/brandings/Logo.png";
 const AddTools = () => {
   document.title = "SA - Inventory";
   const Category = [
@@ -15,7 +11,7 @@ const AddTools = () => {
     { value: "two", id: "2" },
   ];
   //   const [imageUrl, setImageUrl] = useState(null);
-  const fileInputRef = useRef(null);
+  // const fileInputRef = useRef(null);
   //   const [file, setFile] = useState(null);
   //for options in status only change  state name
   const opti = [];
@@ -26,35 +22,35 @@ const AddTools = () => {
     };
     return opti.push(stats);
   });
-  const [multipleImage, setMultipleImage] = useState([]);
+  // const [multipleImage, setMultipleImage] = useState([]);
   const [Change, setChange] = useState("");
   const [showError, setShowError] = useState(false);
-  const handleFileChange = (event) => {
-    const uploadedFile = event.target.files[0];
-    // setFile(uploadedFile);
-    if (uploadedFile) {
-      setMultipleImage([...multipleImage, uploadedFile]);
-    }
-  };
-  const handleButtonClick = () => {
-    fileInputRef.current.click();
-  };
-  function handleDelete(e, id) {
-    e.preventDefault();
-    // setFile(null);
-    // setImageUrl(null);
-    let data = multipleImage;
-    data.splice(id, 1);
-    setMultipleImage([...data]);
-    fileInputRef.current.value = "";
-  }
+  // const handleFileChange = (event) => {
+  //   const uploadedFile = event.target.files[0];
+  // //   // setFile(uploadedFile);
+  // //   if (uploadedFile) {
+  // //     setMultipleImage([...multipleImage, uploadedFile]);
+  // //   }
+  // // };
+  // const handleButtonClick = () => {
+  //   fileInputRef.current.click();
+  // };
+  // function handleDelete(e, id) {
+  //   e.preventDefault();
+  //   // setFile(null);
+  //   // setImageUrl(null);
+  //   let data = multipleImage;
+  //   data.splice(id, 1);
+  //   setMultipleImage([...data]);
+  //   fileInputRef.current.value = "";
+  // }
   const handleSubmit = (values) => {
     setShowError(true);
     try {
       if (Change.length === 0) {
-        throw "error";
+        const newLocal = "error";
+        throw (newLocal);
       }
-
       axios
         .post("/tools", { title: values })
         .then((res) => {

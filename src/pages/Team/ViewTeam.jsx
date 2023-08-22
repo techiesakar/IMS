@@ -1,6 +1,6 @@
 import DataLayout from "components/ui/DataLayout";
 import React from "react";
-import Logo from "../../assets/brandings/LogoBlack.png";
+// import Logo from "../../assets/brandings/LogoBlack.png";
 import { useState, useEffect } from "react";
 import axios from "hoc/axios";
 import { Link } from "react-router-dom";
@@ -149,12 +149,11 @@ function ViewTeam() {
                       >
                         Edit
                       </div>
-                      <a
-                        href="#"
+                      <div
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
                         Remove
-                      </a>
+                      </div>
                     </td>
                   </tr>
                 );
@@ -254,12 +253,11 @@ function ViewTeam() {
                         Remember me
                       </label>
                     </div>
-                    <a
-                      href="#"
+                    <div
                       className="text-sm text-blue-700 hover:underline dark:text-blue-500"
                     >
                       Lost Password?
-                    </a>
+                    </div>
                   </div>
                   <button
                     type="submit"
@@ -269,12 +267,11 @@ function ViewTeam() {
                   </button>
                   <div className="text-sm font-medium text-gray-500 dark:text-gray-300">
                     Not registered?{" "}
-                    <a
-                      href="#"
+                    <div
                       className="text-blue-700 hover:underline dark:text-blue-500"
                     >
                       Create account
-                    </a>
+                    </div>
                   </div>
                 </form>
               </div>

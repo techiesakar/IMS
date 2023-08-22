@@ -1,12 +1,12 @@
 import DataLayout from "components/ui/DataLayout";
 import React,{useCallback, useMemo, useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {FaEdit} from 'react-icons/fa'
+// import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
 import Spinner from "components/ui/Spinner";
-import SVG from 'react-inlinesvg';
+// import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const HomeReason = () => {
   document.title = "SA - HomeReason";
   const [Submitted, setSubmitted] = useState(false)

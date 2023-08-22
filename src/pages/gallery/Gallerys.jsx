@@ -20,15 +20,15 @@ const Gallerys = () => {
   // Calculate the index range for the current page
   const totalPages = Math.ceil(supplierList.length / itemsPerPage);
 
-  // Calculate the index range for the current page
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  // We need to perform loop on the products that is to be shown on the page
-  const currentSuppliers = supplierList.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
-  const gallery = [];
+  // // Calculate the index range for the current page
+  // const indexOfLastItem = currentPage * itemsPerPage;
+  // const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  // // We need to perform loop on the products that is to be shown on the page
+  // const currentSuppliers = supplierList.slice(
+  //   indexOfFirstItem,
+  //   indexOfLastItem
+  // );
+  // const gallery = [];
 
   // Change the page
   const handlePageChange = (pageNumber) => {

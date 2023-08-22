@@ -4,7 +4,7 @@ import UploadImage from "components/ui/UploadImage";
 import React, { useState, useRef, useEffect } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BiUpload } from "react-icons/bi";
-import img from "../../assets/brandings/Logo.png";
+// import img from "../../assets/brandings/Logo.png";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "../../hoc/axios";
@@ -110,8 +110,8 @@ const AddPortfolio = () => {
     formData.append("challange", ChangeChallange);
     formData.append("solution", ChangeSolution);
     formData.append("coverImage", imageUrl);
-    multipleImage.map((val, i) => {
-      formData.append("image", val);
+    multipleImage.map((val) => {
+     return  formData.append("image", val);
     });
     try {
       axios
@@ -137,9 +137,9 @@ const AddPortfolio = () => {
       console.log(error);
     }
   };
-  const handleTitle = (e) => {
-    console.log(e);
-  };
+  // const handleTitle = (e) => {
+  //   console.log(e);
+  // };
   return (
     <DataLayout
       title="Add Portfolio"

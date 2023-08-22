@@ -1,12 +1,12 @@
 import DataLayout from "components/ui/DataLayout";
 import React,{useCallback, useMemo, useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import {FaEdit} from 'react-icons/fa'
+// import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
 import Spinner from "components/ui/Spinner";
-import SVG from 'react-inlinesvg';
+// import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 const Banner = () => {
   document.title = "SA - Banner";
   const [Submitted, setSubmitted] = useState(false)
@@ -187,7 +187,7 @@ setreload(prev=>!prev)
                               className="text-sm text-red-600"
                             />
                             {
-                              values.image && <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
+                              values.image && <img alt="loading" src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
                             }
                           </div>
                   </div>
@@ -232,7 +232,7 @@ setreload(prev=>!prev)
                 </div>
                 <div className="text-sm transition-all w-full  h-56  pt-3 duration-1000  flex items-center justify-center delay-700 ease-in font-serif  text-justify">
                 {
-                        val.image && <img src={`http://localhost:5004/public/${val.image}`} className=' h-full aspect-square mx-auto' />
+                        val.image && <img alt="loading" src={`http://localhost:5004/public/${val.image}`} className=' h-full aspect-square mx-auto' />
                       }
                 </div>
               </div>

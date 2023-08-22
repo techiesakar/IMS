@@ -4,7 +4,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
 import Spinner from "components/ui/Spinner";
-import SVG from 'react-inlinesvg';
+// import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
 import { Link } from "react-router-dom";
 const Instructor = () => {
@@ -134,7 +134,7 @@ setreload(prev=>!prev)
                 <Form onSubmit={handleSubmit}>
                   <div className="grid gap-5">
                     {formlabels.map((val, i) => {
-                      if (val.type != "textarea") {
+                      if (val.type !== "textarea") {
                         return (
                           <div key={i} className="flex flex-col gap-1 justify-start items-start w-full">
                             <label
@@ -213,7 +213,7 @@ setreload(prev=>!prev)
                               className="text-sm text-red-600"
                             />
                             {
-                              values.image && <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
+                              values.image && <img alt='loading...' src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
                             }
                           </div>
 
@@ -301,7 +301,7 @@ setreload(prev=>!prev)
                 <td className="mt-6 border px-2">{i+1}</td>
                 <td className="mt-6 border px-2">
                   <div className="h-8 w-8 flex items-center justify-center mt-3">
-                  <img src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
+                  <img alt='loading...' src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
                   </div>
                 </td>
                 <td className="mt-6 border px-2">{val.name}</td>

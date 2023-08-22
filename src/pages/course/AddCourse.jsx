@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb";
 import {
   AiOutlineWallet,
-  AiTwotoneDelete,
-  AiTwotoneEdit,
+  // AiTwotoneDelete,
+  // AiTwotoneEdit,
   AiFillDelete,
 } from "react-icons/ai";
 import Button from "@mui/material/Button";
@@ -14,27 +14,27 @@ import axios from "../../hoc/axios";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DataLayout from "components/ui/DataLayout";
-import { PersonAdd, Upload } from "@mui/icons-material";
-import UploadImage from "components/ui/UploadImage";
+// import { PersonAdd, Upload } from "@mui/icons-material";
+// import UploadImage from "components/ui/UploadImage";
 import { BiUpload } from "react-icons/bi";
 
 const Course = () => {
   const fileInputRef = useRef(null);
-  const fileInputRef2 = useRef(null);
-  const [showImage, setShowImage] = useState(false);
+  // const fileInputRef2 = useRef(null);
+  // const [showImage, setShowImage] = useState(false);
   const [multipleImage, setMultipleImage] = useState("");
-  const [multipleImages, setMultipleImages] = useState("");
+  // const [multipleImages, setMultipleImages] = useState("");
 
   const navigate = useNavigate();
   const [teamData, setTeamData] = useState([]);
-  const [storeRangeNumber, setStoreRangeNumber] = useState(0);
+  // const [storeRangeNumber, setStoreRangeNumber] = useState(0);
   const [budgetData, setBudgetData] = useState([]);
-  const [imageUrl, setImageUrl] = useState([]);
-  const [showOutSourcingSubmittedData, setShowOutSourcingSubmittedData] =
-    useState([]);
+  // const [imageUrl, setImageUrl] = useState([]);
+  // const [showOutSourcingSubmittedData, setShowOutSourcingSubmittedData] =
+  //   useState([]);
 
   // selected budget state
-  const [setSelectedBudget, setSetSelectedBudget] = useState(null);
+  // const [setSelectedBudget, setSetSelectedBudget] = useState(null);
 
   const status = [
     { value: "planned", id: "1" },
@@ -216,11 +216,11 @@ const Course = () => {
   //   },
   // ];
 
-  const [storeOutSourcingSubmittedData, setStoreOutSourcingSubmittedData] =
-    useState(false);
+  // const [storeOutSourcingSubmittedData, setStoreOutSourcingSubmittedData] =
+  //   useState(false);
 
   // const [store, setStore] = useState([...formImage]);
-  const [IDs, setIDs] = useState("");
+  // const [IDs, setIDs] = useState("");
 
   // const handleImage = (e, valued, i) => {
   //   console.log(e.target.files, e.target.value);
@@ -492,9 +492,7 @@ const Course = () => {
                               }}
                             >
                               {course?.options?.map((data, index) => {
-                                {
-                                  /* console.log(data); */
-                                }
+                                
                                 return (
                                   <option
                                     key={data.id}

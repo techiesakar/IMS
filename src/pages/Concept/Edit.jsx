@@ -39,7 +39,7 @@ function Edit() {
         getData(id)
       
        
-      }, [id,useParams])
+      }, [id])
       
   return (
     <div className="">
@@ -165,8 +165,8 @@ function Edit() {
                           className="text-sm text-red-600"
                         />
                          {
-                              values.image ? <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
-                            :<img src={`http://localhost:5004/public/${values.limage}`} className="w-full aspect-square" />
+                              values.image ? <img alt='loading' src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
+                            :<img alt='loading' src={`http://localhost:5004/public/${values.limage}`} className="w-full aspect-square" />
                         }
                       </div>
               </div>

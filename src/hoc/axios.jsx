@@ -7,7 +7,7 @@ const instance = axios.create({
   // baseURL: "http://192.168.18.255:5004/",
 });
 
-instance.defaults.headers.common["Authorization"] = "Bearer" + "token";
+// instance.defaults.headers.common["Authorization"] = "Bearer" + "token";
 instance.interceptors.request.use(
   async (config) => {
     config.headers = {
