@@ -54,6 +54,24 @@ const NavLinks = [
     //   },
     // ],
   },
+  {
+    id: 15,
+    title: "Course",
+    link: "/course",
+    icon: <MdFireTruck />,
+    children: [
+      {
+        id: 0,
+        title: "Add Course",
+        link: "/course/add",
+      },
+      {
+        id: 1,
+        title: "View Course",
+        link: "/course",
+      },
+    ],
+  },
 
   {
     id: 5,
@@ -151,6 +169,66 @@ const NavLinks = [
         link: "/account/settings",
       },
     ],
+  },
+  {
+    id: 12,
+    title: "Category",
+    link: "/category",
+    icon: <MdFireTruck />,
+    // children: [
+    //   {
+    //     id: 0,
+    //     title: "Add Category",
+    //     link: "/category/add",
+    //   },
+    //   {
+    //     id: 1,
+    //     title: "View category",
+    //     link: "/category",
+    //   },
+    // ],
+  },
+  {
+    id: 16,
+    title: "Tools",
+    link: "/tools/add",
+    icon: <MdFireTruck />,
+  },
+  {
+    id: 13,
+    title: "Gallery",
+    link: "/gallery",
+    icon: <MdFireTruck />,
+    // children: [
+    //   {
+    //     id: 0,
+    //     title: "Add Gallery",
+    //     link: "/gallery/add",
+    //   },
+    //   {
+    //     id: 1,
+    //     title: "View gallery",
+    //     link: "/gallery",
+    //   },
+    // ],
+  },
+  {
+    id: 14,
+    title: "Portfolio",
+    link: "/portfolio",
+    icon: <MdFireTruck />,
+    // children: [
+    //   {
+    //     id: 0,
+    //     title: "Add Portfolio",
+    //     link: "/portfolio/add",
+    //   },
+    //   {
+    //     id: 1,
+    //     title: "View Portfolio",
+    //     link: "/portfolio",
+    //   },
+    // ],
   },
 ];
 export default NavLinks;

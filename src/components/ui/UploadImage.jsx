@@ -2,15 +2,16 @@ import React, { useRef, useState } from "react";
 import { AiFillDelete } from "react-icons/ai";
 import { BiUpload } from "react-icons/bi";
 
-const UploadImage = ({ placeholder }) => {
+const UploadImage = ({ placeholder, imageUrl, setImageUrl }) => {
   const [file, setFile] = useState(null);
-  const [imageUrl, setImageUrl] = useState(null);
   const fileInputRef = useRef(null);
 
   const handleFileChange = (event) => {
     const uploadedFile = event.target.files[0];
-    setFile(uploadedFile);
-    setImageUrl(URL.createObjectURL(uploadedFile));
+    if (uploadedFile) {
+      setImageUrl(uploadedFile);
+      setFile(uploadedFile);
+    }
   };
 
   const handleButtonClick = () => {
@@ -23,7 +24,7 @@ const UploadImage = ({ placeholder }) => {
 
   const handleDrop = (event) => {
     event.preventDefault();
-    const uploadedFile = event.dataTransfer.files[0];
+    const uploadedFile = event.target.files[0];
     setFile(uploadedFile);
     setImageUrl(URL.createObjectURL(uploadedFile));
   };
@@ -36,7 +37,8 @@ const UploadImage = ({ placeholder }) => {
   }
   return (
     <div
-      className="border-2 border-gray-300 p-2 rounded-lg w-64 h-36 flex flex-col items-center justify-center"
+      className="border border-[#b2b2b2] w-64   h-52  overflow- flex  gap-5 items-center justify-center 
+               p-2 border-dashed   rounded-lg"
       onDragOver={handleDragOver}
       onDrop={handleDrop}
     >
@@ -46,7 +48,7 @@ const UploadImage = ({ placeholder }) => {
         ref={fileInputRef}
         onChange={handleFileChange}
       />
-      <div className="flex flex-col items-center gap-4 ">
+      <div className="flex flex-col items-center gap-4  overflow-scroll p-1">
         {!imageUrl && (
           <div
             onClick={handleButtonClick}
@@ -56,8 +58,12 @@ const UploadImage = ({ placeholder }) => {
           </div>
         )}
         {imageUrl && (
-          <div className="relative w-36">
-            <img src={imageUrl} alt="" className="w-full" />
+          <div className="relative w-">
+            <img
+              src={URL.createObjectURL(imageUrl)}
+              alt=""
+              className="w-full object-contain h-48"
+            />
             <span
               onClick={handleDelete}
               className="text-red-500 text-2xl cursor-pointer absolute top-4 right-4"

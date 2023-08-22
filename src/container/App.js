@@ -24,7 +24,6 @@ import Attendance from "pages/Staffs/Attendance";
 import Salary from "pages/Staffs/HowWeWork";
 import AddPurchase from "pages/Purchase/AddPurchase";
 import AddSales from "pages/Sales/AddSales";
-import Category from "pages/Inventory/Category";
 import Brand from "pages/Inventory/Brand";
 import AddStudent from "pages/Student/AddStuden";
 import Add from "pages/Team/Add";
@@ -41,6 +40,17 @@ import EditReason from '../pages/Reason/EditReason';
 import Banner from "pages/Banner/Banner";
 import EditBanner from "pages/Banner/EditBanner";
 import HomeReason from "pages/HomeReason/HomeReason";
+import Gallerys from "pages/gallery/Gallerys";
+import AddGallery from "pages/gallery/AddGallery";
+import AddCategory from "pages/category/AddCategory";
+import Categorys from "pages/category/Categorys";
+import Category from "pages/Inventory/Category";
+import Portfolio from "pages/portfolio/Portfolio";
+import AddPortfolio from "pages/portfolio/AddPortfolio";
+import AddCourse from "pages/course/AddCourse";
+import Course from "pages/course/Course";
+import AddTools from "pages/tools/AddTools";
+import Tools from "pages/tools/Tools";
 
 function App() {
   return (
@@ -68,12 +78,15 @@ function App() {
           <Route path={"/reports"} element={<Reports />} />
           <Route path={"/students"} element={<StudentMain />}  />
           <Route path={"/students/edit/:id"} element={<EditStudent />} />
+//           <Route path={"/students"} element={<Sales />} />
 
           <Route path={"/students/add"} element={<AddStudent />} />
 
           <Route path={"/reasons"} element={<Reason />} />
           <Route path={"/reasons/edit/:id"} element={<EditReason />} />
           <Route path={"/supplier/add"} element={<AddSupplier />} />
+          <Route path={"/course"} element={<Course />} />
+          <Route path={"/course/add"} element={<AddCourse />} />
 
           <Route path={"/staffs"} element={<Staffs />} />
           <Route path={"/about/add-info"} element={<AddStaff />} />
@@ -85,16 +98,20 @@ function App() {
 
 
 
-
           <Route path={"/team/add"} element={<Add />} />
           <Route path={"/team/view"} element={<ViewTeam />} />
-
-
 
           <Route path={"/login"} element={<Login />} />
           <Route path={"/account"} element={<Account />} />
           <Route path={"/account/settings"} element={<Settings />} />
-
+          <Route path={"/category"} element={<Categorys />} />
+          <Route path={"/tools/add"} element={<AddTools />} />
+          <Route path={"/tools"} element={<Tools />} />
+          <Route path={"/category/add"} element={<AddCategory />} />
+          <Route path={"/gallery"} element={<Gallerys />} />
+          <Route path={"/gallery/add"} element={<AddGallery />} />
+          <Route path={"/portfolio"} element={<Portfolio />} />
+          <Route path={"/portfolio/add"} element={<AddPortfolio />} />
           <Route path={"/404"} element={<NotFound />} />
           <Route path={"*"} element={<Navigate to="/404" />} />
         </Routes>
