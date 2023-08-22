@@ -105,22 +105,20 @@ const Course = () => {
     return Budget.push(detas);
   });
 
-  const planningFormSchema = yup.object().shape({
+  const CourseSchema = yup.object().shape({
     title: yup.string().required("required"),
     skillLevel: yup.string().required("required"),
-    instructor: yup.string().required("required"),
     duration: yup.string().required("required"),
     description: yup.string().required("required"),
-    // workingUnder: yup.string().required("required"),
-    // Status: yup.string().required("required"),
-    // update: yup.string().required("required"),
-    // TeamMembers: yup.string().required("required"),
-
-    // image: yup.string().required("required"),
-    // donorAgrement: yup.string().required("required"),
-    // contactAgrement: yup.string().required("required"),
+    category: yup.string().required("required"),
   });
-
+  const [category, setCategory] = useState([]);
+  const categoryOptions = [];
+  category?.map((val) => {
+    console.log(val);
+    let allCategoryData = { value: val.title, id: val.id };
+    return categoryOptions.push(allCategoryData);
+  });
   const formData = [
     {
       type: "text",
@@ -146,116 +144,114 @@ const Course = () => {
       apikey: "description",
       placeholder: "Enter description here",
     },
+    {
+      type: "select",
+      label: "category",
+      apikey: "category",
+      options: [{ id: "0", value: "Select category" }, ...categoryOptions],
+    },
   ];
-  const InstructorData = [
-    {
-      type: "text",
-      apikey: "about",
-      placeholder: "Enter about instructor",
-      label: "about instructor",
-    },
-    {
-      type: "email",
-      apikey: "email",
-      placeholder: "Enter email",
-      label: "email",
-    },
 
-    {
-      type: "text",
-      apikey: "experience",
-      placeholder: "Enter experience here ",
-      label: "experience",
-    },
+  // const InstructorData = [
+  //   {
+  //     type: "text",
+  //     apikey: "about",
+  //     placeholder: "Enter about instructor",
+  //     label: "about instructor",
+  //   },
+  //   {
+  //     type: "email",
+  //     apikey: "email",
+  //     placeholder: "Enter email",
+  //     label: "email",
+  //   },
 
-    {
-      type: "text",
-      apikey: "name",
-      placeholder: "Enter name here ",
-      label: "name",
-    },
-    {
-      type: "text",
-      apikey: "position",
-      placeholder: "Enter position here ",
-      label: "position",
-    },
-    {
-      type: "text",
-      apikey: "skills",
-      placeholder: "Enter skills here ",
-      label: "skills",
-    },
-  ];
-  const formImage = [
-    {
-      type: "file",
-      apikey: "image",
-      label: "image",
-      accept: ".gif,.jpg,.jpeg,.png,.mov",
-      file: "",
-    },
-    {
-      type: "file",
-      apikey: "donorAgrement",
-      label: "Upload Donor Agreement",
-      accept: ".gif,.jpg,.jpeg,.png,.mov",
-      file: "",
-    },
-    {
-      type: "file",
-      apikey: "contactAgrement",
-      label: "Upload Contract Agreement",
-      accept: ".gif,.jpg,.jpeg,.png,.mov",
-      file: "",
-    },
-  ];
+  //   {
+  //     type: "text",
+  //     apikey: "experience",
+  //     placeholder: "Enter experience here ",
+  //     label: "experience",
+  //   },
+
+  //   {
+  //     type: "text",
+  //     apikey: "name",
+  //     placeholder: "Enter name here ",
+  //     label: "name",
+  //   },
+  //   {
+  //     type: "text",
+  //     apikey: "position",
+  //     placeholder: "Enter position here ",
+  //     label: "position",
+  //   },
+  //   {
+  //     type: "text",
+  //     apikey: "skills",
+  //     placeholder: "Enter skills here ",
+  //     label: "skills",
+  //   },
+  // ];
+  // const formImage = [
+  //   {
+  //     type: "file",
+  //     apikey: "image",
+  //     label: "image",
+  //     accept: ".gif,.jpg,.jpeg,.png,.mov",
+  //     file: "",
+  //   },
+  //   {
+  //     type: "file",
+  //     apikey: "donorAgrement",
+  //     label: "Upload Donor Agreement",
+  //     accept: ".gif,.jpg,.jpeg,.png,.mov",
+  //     file: "",
+  //   },
+  //   {
+  //     type: "file",
+  //     apikey: "contactAgrement",
+  //     label: "Upload Contract Agreement",
+  //     accept: ".gif,.jpg,.jpeg,.png,.mov",
+  //     file: "",
+  //   },
+  // ];
 
   const [storeOutSourcingSubmittedData, setStoreOutSourcingSubmittedData] =
     useState(false);
 
-  const [store, setStore] = useState([...formImage]);
+  // const [store, setStore] = useState([...formImage]);
   const [IDs, setIDs] = useState("");
 
-  const handleImage = (e, valued, i) => {
-    console.log(e.target.files, e.target.value);
-    if (e.target.value) {
-      let data = store;
-      data[i].file = e.target.files[0];
-      setStore([...data]);
-      setIDs(i);
-    }
-  };
-  const [ID, setID] = useState([]);
-  const Submit = async (values) => {
-    // console.log(ID);
-    // values.allOutSourcingSubmittedData = ID;
-    // const formData = new FormData();
-    // await formData.append("courseName", values.courseName);
-    // await formData.append(
-    //   "showOutSourcingSubmittedData",
-    //   JSON.stringify(values.allOutSourcingSubmittedData)
-    // );
-
-    // await formData.append("duration", values.duration);
-    // await formData.append("startsOn", values.startsOn);
-    // await formData.append("dueOn", values.dueOn);
-    // await formData.append("Budegt", values.Budegt);
-    // await formData.append("workingUnder", values.workingUnder);
-    // await formData.append("Status", values.Status);
-    // await formData.append("update", values.update);
-    // await formData.append("TeamMembers", values.TeamMembers);
-    values.outsource = ID;
-    values.update = storeRangeNumber;
+  // const handleImage = (e, valued, i) => {
+  //   console.log(e.target.files, e.target.value);
+  //   if (e.target.value) {
+  //     let data = store;
+  //     data[i].file = e.target.files[0];
+  //     setStore([...data]);
+  //     setIDs(i);
+  //   }
+  // };
+  // const [ID, setID] = useState([]);
+  const Submit = async (values, resetForm) => {
+    console.log(values);
+    values.image = multipleImage;
+    const formData = new FormData();
+    await formData.append("image", values.image);
+    await formData.append("title", values.title);
+    await formData.append("skillLevel", values.skillLevel);
+    await formData.append("description", values.description);
+    await formData.append("duration", values.duration);
+    await formData.append("category", values.category);
 
     try {
       axios
-        .post("/planning", values)
+        .post("/course", formData)
         .then((res) => {
-          // console.log(res);
-          setStoreRangeNumber(0);
-          toast.success("Data has been added sucessfully");
-          setStoreOutSourcingSubmittedData(false);
+          if (res.status === 200) {
+            toast.success("Data has been added sucessfully");
+            resetForm();
+            setMultipleImage("");
+          }
         })
         .catch((err) => {
           console.log(err);
@@ -264,103 +260,115 @@ const Course = () => {
       console.log(error);
     }
   };
-  const handleDataChange = (e) => {
-    setStoreRangeNumber(e.target.value);
-  };
-  const AddMultipleData = async (value, resetForm) => {
-    console.log(value);
-    let data = showOutSourcingSubmittedData;
-    setShowOutSourcingSubmittedData([...data, value]);
-    setStoreOutSourcingSubmittedData(showOutSourcingSubmittedData);
-    value.image = store[0].file;
-    value.donorAgrement = store[1].file;
-    value.contactAgrement = store[2].file;
-    const formDatas = new FormData();
-    await formDatas.append("firstName", value.firstName);
-    await formDatas.append("lastName", value.lastName);
-    await formDatas.append("gender", value.gender);
-    await formDatas.append("contactNo", value.contactNo);
-    await formDatas.append("email", value.email);
-    await formDatas.append("image", value.image);
-    await formDatas.append("donorAgrement", value.donorAgrement);
-    await formDatas.append("contactAgrement", value.contactAgrement);
-    await formDatas.append("position", value.position);
-    try {
-      axios.post("/OutSources", formDatas).then((res) => {
-        console.log(res);
-        resetForm();
-        setStore([...formImage]);
-        toast.success("Data has been added sucessfully");
-        setID([...ID, res.data.result.id]);
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleDataChange = (e) => {
+  //   setStoreRangeNumber(e.target.value);
+  // };
+  // const AddMultipleData = async (value, resetForm) => {
+  //   console.log(value);
+  //   let data = showOutSourcingSubmittedData;
+  //   setShowOutSourcingSubmittedData([...data, value]);
+  //   setStoreOutSourcingSubmittedData(showOutSourcingSubmittedData);
+  //   value.image = store[0].file;
+  //   value.donorAgrement = store[1].file;
+  //   value.contactAgrement = store[2].file;
+  //   const formDatas = new FormData();
+  //   await formDatas.append("firstName", value.firstName);
+  //   await formDatas.append("lastName", value.lastName);
+  //   await formDatas.append("gender", value.gender);
+  //   await formDatas.append("contactNo", value.contactNo);
+  //   await formDatas.append("email", value.email);
+  //   await formDatas.append("image", value.image);
+  //   await formDatas.append("donorAgrement", value.donorAgrement);
+  //   await formDatas.append("contactAgrement", value.contactAgrement);
+  //   await formDatas.append("position", value.position);
+  //   try {
+  //     axios.post("/OutSources", formDatas).then((res) => {
+  //       resetForm();
+  //       setStore([...formImage]);
+  //       toast.success("Data has been added sucessfully");
+  //       setID([...ID, res.data.result.id]);
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const getBudgets = () => {
-    try {
-      axios
-        .get("/Budget")
-        .then((res) => {
-          // console.log(res);
-          setBudgetData(res.data.result);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getBudgets = () => {
+  //   try {
+  //     axios
+  //       .get("/Budget")
+  //       .then((res) => {
+  //         // console.log(res);
+  //         setBudgetData(res.data.result);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const getTeamMembers = () => {
-    try {
-      axios
-        .get("/staff")
-        .then((res) => {
-          setTeamData(res.data.data);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getTeamMembers = () => {
+  //   try {
+  //     axios
+  //       .get("/staff")
+  //       .then((res) => {
+  //         setTeamData(res.data.data);
+  //       })
+  //       .catch((err) => {
+  //         console.log(err);
+  //       });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   // setting the maximum input range in total budget
-  const [maxBudget, setMaxBudget] = useState(0);
-  const handleSetRemainingBudget = (id) => {
-    console.log(id);
-    const selectedBudget = budgetData.find((budget) => budget.id === id);
-    setMaxBudget(
-      Number(selectedBudget.budgetIssued) - Number(selectedBudget.usedBudget)
-    );
-    console.log(maxBudget);
-    // console.log(Number(selectedBudget.budgetIssued) - Number(selectedBudget.usedBudget))
-  };
+  // const [maxBudget, setMaxBudget] = useState(0);
 
-  useEffect(() => {
-    getTeamMembers();
-    getBudgets();
-  }, []);
+  // const handleSetRemainingBudget = (id) => {
+  //   console.log(id);
+  //   const selectedBudget = budgetData.find((budget) => budget.id === id);
+  //   setMaxBudget(
+  //     Number(selectedBudget.budgetIssued) - Number(selectedBudget.usedBudget)
+  //   );
+  //   console.log(maxBudget);
+  //   // console.log(Number(selectedBudget.budgetIssued) - Number(selectedBudget.usedBudget))
+  // };
 
-  const Delete = (id) => {
+  const getCategory = () => {
     axios
-      .delete(`/planning/${id}`)
+      .get(`/category`)
       .then((res) => {
-        if (res.status === 200) {
-          toast.error("Data has been deleted sucessfully");
-          getTeamMembers();
-        }
+        // console.log(res);
+        setCategory(res.data.result);
       })
       .catch((err) => {
         console.log(err);
       });
   };
+  useEffect(() => {
+    // getTeamMembers();
+    // getBudgets();
+    getCategory();
+  }, []);
+
+  // const Delete = (id) => {
+  //   axios
+  //     .delete(`/planning/${id}`)
+  //     .then((res) => {
+  //       if (res.status === 200) {
+  //         toast.error("Data has been deleted sucessfully");
+  //         getTeamMembers();
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(err);
+  //     });
+  // };
   const handleFileChange = (event) => {
-    alert("image1");
+    // alert("image1");
     console.log(event.target.files);
     const uploadedFile = event.target.files[0];
     // setFile(uploadedFile);
@@ -368,37 +376,38 @@ const Course = () => {
       setMultipleImage(uploadedFile);
     }
   };
-  const handleFileChange2 = (event) => {
-    alert("image2");
-    console.log(event.target.files);
-    const uploadedFile = event.target.files[0];
-    // setFile(uploadedFile);
-    if (uploadedFile) {
-      setMultipleImages(uploadedFile);
-    }
-  };
+  // const handleFileChange2 = (event) => {
+  //   alert("image2");
+  //   console.log(event.target.files);
+  //   const uploadedFile = event.target.files[0];
+  //   // setFile(uploadedFile);
+  //   if (uploadedFile) {
+  //     setMultipleImages(uploadedFile);
+  //   }
+  // };
   const handleButtonClick = () => {
     fileInputRef.current.click();
     // setShowImage(true);
   };
-  const handleButtonClick1 = () => {
-    fileInputRef2.current.click();
-    // setShowImage(true);
-  };
+  // const handleButtonClick1 = () => {
+  //   fileInputRef2.current.click();
+  //   // setShowImage(true);
+  // };
   function handleDelete(e, id) {
     e.preventDefault();
     setMultipleImage("");
   }
-  function handleDelete2(e, id) {
-    e.preventDefault();
-    setMultipleImages("");
-  }
+  // function handleDelete2(e, id) {
+  //   e.preventDefault();
+  //   setMultipleImages("");
+  // }
   return (
     <DataLayout
       title="Add course"
       showFilter={true}
-      showEdit={true}
-      showAdd={true}
+      showEdit={false}
+      showAdd={false}
+      showViewAll={true}
       addItemLink="/course/add"
       viewAllLink="/course"
     >
@@ -434,22 +443,17 @@ const Course = () => {
               description: "",
               duration: "",
               image: "",
-              workingUnder: "",
-              Status: "",
-              update: "",
-              TeamMembers: [],
-              outsource: "",
+              category: "",
             }}
-            validationSchema={planningFormSchema}
+            validationSchema={CourseSchema}
             onSubmit={(values, { resetForm }) => {
               console.log(values);
-              Submit(values);
-              resetForm();
+              Submit(values, resetForm);
             }}
           >
             {({ errors, touched, handleSubmit, setFieldValue, values }) => {
               return (
-                <Form onSubmit={() => handleSubmit()}>
+                <Form onSubmit={handleSubmit}>
                   <div className="grid grid-cols-2 gap-3">
                     {formData.map((course, i) => {
                       if (course.type === "select") {
@@ -481,7 +485,7 @@ const Course = () => {
                                   ]);
                                 } else if (course.apikey === "budgetrel") {
                                   setFieldValue(course.apikey, e.target.value);
-                                  handleSetRemainingBudget(e.target.value);
+                                  // handleSetRemainingBudget(e.target.value);
                                 } else {
                                   setFieldValue(course.apikey, e.target.value);
                                 }
@@ -667,236 +671,10 @@ const Course = () => {
                     </div>
                   </div>
 
-                  <hr className=" mx-auto my-10" />
-                  <div className="mb-2">
-                    <h2 className="font-medium text-gray-800 text-lg flex gap-3 items-center my-2 sm:mb-0">
-                      Instructor Data
-                      <span className="text-2xl">
-                        <PersonAdd />
-                      </span>
-                    </h2>
-                    {storeOutSourcingSubmittedData ? (
-                      <div className=" ">
-                        {showOutSourcingSubmittedData.map((val, i) => {
-                          return (
-                            <div
-                              key={i}
-                              className="border flex items-center justify-between border-gray-500 p-2 my-2 rounded-[4px]"
-                            >
-                              <div className="flex  items-center  gap-4">
-                                <div className="capitalize">
-                                  {val.firstName}
-                                </div>
-                                <div className=" bg-blue-700 w-fit px-1 py-0.5 rounded-md text-white">
-                                  {val.position}
-                                </div>
-                              </div>
-                              <div className="flex items-center gap-4">
-                                <div
-                                  className="border border-[#888888] cursor-pointer px-2 py-1 text-xl
-                               rounded-[3px] hover:bg-blue-700 hover:text-white"
-                                >
-                                  <AiTwotoneEdit />
-                                </div>
-                                <div
-                                  className="border border-[#888888] cursor-pointer px-2 py-1 text-xl
-                               rounded-[3px] hover:bg-red-500 hover:text-white"
-                                  onClick={() => Delete(val.id)}
-                                >
-                                  <AiTwotoneDelete />
-                                </div>
-                              </div>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    ) : (
-                      <p className="text-slate-500 mt-2 text-sm">
-                        No out sources assigned!
-                      </p>
-                    )}
-                  </div>
-
-                  <Formik
-                    initialValues={{
-                      firstName: "",
-                      lastName: "",
-                      gender: "",
-                      contactNo: "",
-                      email: "",
-                      image: "",
-                      donorAgrement: "",
-                      contactAgrement: "",
-                      position: "",
-                    }}
-                    onSubmit={(value, { resetForm }) => {
-                      AddMultipleData(value, resetForm);
-                    }}
-                  >
-                    {({ errors, touched, handleSubmit }) => {
-                      return (
-                        <Form>
-                          <div className="grid grid-cols-3 gap-3">
-                            {InstructorData.map((course, i) => {
-                              if (course.type === "select") {
-                                return (
-                                  <div key={i}>
-                                    <div className="my-1">
-                                      <label
-                                        htmlFor="course_name"
-                                        className="font-medium capitalize text-base text-gray-600"
-                                      >
-                                        {course.label}
-                                      </label>
-                                    </div>
-                                    <Field
-                                      as={course.type}
-                                      id={course.apikey}
-                                      name={course.apikey}
-                                      className="border border-[#c4c4c4] w-full text-slate-800 rounded-[5px]
-                                     p-3 focus:outline-primary placeholder:text-sm"
-                                      placeholder={course.placeholder}
-                                    >
-                                      {course?.options?.map((data, index) => {
-                                        return (
-                                          <option key={index}>
-                                            {data.value}
-                                          </option>
-                                        );
-                                      })}
-                                    </Field>
-                                    {errors[course.apikey] &&
-                                    touched[course.apikey] ? (
-                                      <div className="text-red-500 text-sm capitalize text-light mt-1">
-                                        {errors[course.apikey]}
-                                      </div>
-                                    ) : (
-                                      ""
-                                    )}
-                                  </div>
-                                );
-                              } else {
-                                return (
-                                  <div key={i}>
-                                    <div className="my-1">
-                                      <label
-                                        htmlFor="course_name"
-                                        className="font-medium capitalize text-base text-gray-600"
-                                      >
-                                        {course.label}
-                                      </label>
-                                    </div>
-                                    <Field
-                                      type={course.type}
-                                      id={course.apikey}
-                                      name={course.apikey}
-                                      placeholder={course.placeholder}
-                                      className="border w-full  border-[#c4c4c4] text-slate-800 rounded-[5px] p-3
-                                     focus:outline-primary placeholder:text-sm"
-                                    />
-                                    {errors[course.apikey] &&
-                                    touched[course.apikey] ? (
-                                      <div className="text-red-500 text-sm capitalize text-light mt-1">
-                                        {errors[course.apikey]}
-                                      </div>
-                                    ) : (
-                                      ""
-                                    )}
-                                  </div>
-                                );
-                              }
-                            })}
-                          </div>
-                          <div className=" h-64 my-3 ">
-                            <div className="mb-2">
-                              {" "}
-                              <label>Upload Cover Image</label>
-                            </div>
-                            <div className="">
-                              <input
-                                type="file"
-                                className="hidden"
-                                ref={fileInputRef2}
-                                accept="image/*"
-                                onChange={handleFileChange2}
-                              />
-                            </div>
-                            <div
-                              className={`border border-[#b2b2b2]   h-52 overflow-clip 
-                          flex  items-start justify-center 
-               p-2 border-dashed   rounded-lg`}
-                            >
-                              {multipleImages.length === 0 ? (
-                                <div
-                                  className={`${
-                                    multipleImages.length > 0
-                                      ? "bg-gray-200"
-                                      : ""
-                                  } w-60 h-32   flex items-center  justify-center flex-col mt-1`}
-                                >
-                                  {" "}
-                                  <div
-                                    onClick={handleButtonClick1}
-                                    className="flex items-center justify-center h-20"
-                                  >
-                                    <BiUpload
-                                      className="w-9  h-9 p-1.5 text-white bg-blue-600 cursor-pointer 
-                           rounded-full flex items-center justify-center"
-                                    />
-                                  </div>
-                                  {
-                                    <div className="text-center capitalize font-semibold text-gray-700">
-                                      Upload cover Image Here
-                                    </div>
-                                  }
-                                </div>
-                              ) : (
-                                ""
-                              )}
-                              <div className="  ">
-                                {multipleImages && (
-                                  <div className=" flex flex-col  justify-enter items-center  ">
-                                    <div className="relative  border border-red-900  p-0.5">
-                                      <img
-                                        src={URL.createObjectURL(
-                                          multipleImages
-                                        )}
-                                        alt="Loading"
-                                        className=" w-80 h- object-cover"
-                                      />
-
-                                      <span
-                                        onClick={(e) => handleDelete2(e)}
-                                        className="text-red-500  text-2xl cursor-pointer absolute top-4 right-4"
-                                      >
-                                        <AiFillDelete />
-                                      </span>
-                                    </div>
-                                  </div>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                          <div className="flex justify-end my-4">
-                            <Button
-                              type="submit"
-                              disabled={IDs >= 2 ? "" : "disabled "}
-                              onClick={handleSubmit}
-                              variant="contained"
-                              sx={{ padding: "10px 30px" }}
-                            >
-                              Add outsource
-                            </Button>
-                          </div>
-                        </Form>
-                      );
-                    }}
-                  </Formik>
                   <div className="flex justify-end  my-4">
                     <Button
-                      type="button"
+                      type="submit"
                       variant="contained"
-                      onClick={handleSubmit}
                       sx={{ padding: "10px 30px" }}
                     >
                       Add course
