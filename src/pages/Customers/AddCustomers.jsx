@@ -157,7 +157,7 @@ const AddCustomer = () => {
               <div className='flex flex-col gap-1 items-start justify-start'>
               <div className="text-base capitalize text-[#083344] font-extrabold">{val.title}</div>
               <Link to='https://iconify.design/' target="_blank" className='text-sky-500 underline'>
-                <a target={'_blank'}>{`https://iconify.design/`}</a>
+                <a href="##" target={'_blank'}>{`https://iconify.design/`}</a>
               </Link>
               </div>
 

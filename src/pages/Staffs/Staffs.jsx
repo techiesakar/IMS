@@ -4,7 +4,7 @@ import DataLayout from "components/ui/DataLayout";
 import React, { useState,useEffect } from "react";
 // import { BiFilterAlt, BiPlus, BiPencil } from "react-icons/bi";
 import staffs from "data/staffs.json";
-import Table from "components/ui/Table";
+// import Table from "components/ui/Table";
 import axios from '../../hoc/axios'
 const Inventory = () => {
   const staffsList = staffs.staffs;

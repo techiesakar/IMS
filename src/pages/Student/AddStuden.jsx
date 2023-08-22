@@ -174,7 +174,6 @@ const AddStudent = () => {
     
     {
         name: "Level_Of_Education",
-        label:'Level of education',
         type: "select",
         label: 'Level Of Education',
         options: [
@@ -280,7 +279,7 @@ Coures.map((val,i)=>{
         id:val.course_name,
         value:val.course_name
     };
-    datas.push(data)
+    return datas.push(data)
 })
 
 useMemo(() =>getCourse() , [Status])

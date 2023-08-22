@@ -106,18 +106,16 @@ const ViewCustomer = () => {
                     <td className="px-6 py-4 text-justify capitalize">{val.status}</td>
 
                     <td className="flex items-center px-6 py-4 space-x-3">
-                      <a
-                        href="#"
+                      <div
                         className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
                       >
                         Edit
-                      </a>
-                      <a
-                        href="#"
+                      </div>
+                      <div
                         className="font-medium text-red-600 dark:text-red-500 hover:underline"
                       >
                         Remove
-                      </a>
+                      </div>
                     </td>
                   </tr>
                 );

@@ -91,7 +91,7 @@ function Add() {
                             <label htmlFor={val.apiname}  className="text-sm font-semibold capitalize">
                                 {
                                     values.image?<div className='h-16 w-16 '>
-                                        <img className='h-full w-full' src={URL.createObjectURL(values.image)} />
+                                        <img alt='loading' className='h-full w-full' src={URL.createObjectURL(values.image)} />
                                     </div>:
                                     <div 
                               className=" text-white text-3xl flex items-center justify-center h-16 w-16 bg-blue-400 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
