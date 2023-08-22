@@ -7,8 +7,8 @@ import Spinner from "components/ui/Spinner";
 import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
 import { Link } from "react-router-dom";
-const Testonomials = () => {
-  document.title = "SA - Testonomials";
+const HomeReason = () => {
+  document.title = "SA - HomeReason";
   const [Submitted, setSubmitted] = useState(false)
   const [Data, setData] = useState([])
   const [reload, setreload] = useState(false)
@@ -17,12 +17,7 @@ const Testonomials = () => {
   const formlabels = [
     {
       title: "Name",
-      apiname: "name",
-      type: "text",
-    },
-    {
-      title: "Video Link",
-      apiname: "link",
+      apiname: "title",
       type: "text",
     },
     {
@@ -36,7 +31,7 @@ const Testonomials = () => {
   const getData=useCallback(
     () => {
       try {
-        axios.get('/Testonomials').then(res=>{
+        axios.get('/homereason').then(res=>{
           console.log(res);
           setData([...res.data.result])
         })
@@ -51,7 +46,7 @@ const Testonomials = () => {
 
   const deletedata=(id)=>{
     try {
-      axios.delete(`/Testonomials/${id}`).then(res=>{
+      axios.delete(`/homereason/${id}`).then(res=>{
 setreload(prev=>!prev)
       }).catch(err=>{
         console.log(err)
@@ -63,7 +58,7 @@ setreload(prev=>!prev)
 
   return (
     <DataLayout
-      title="Our Testonomials"
+      title="Home Reasons"
       showFilter={false}
       showEdit={false}
       showAdd={false}
@@ -72,8 +67,7 @@ setreload(prev=>!prev)
         <div className="col-span-6 ">
           <Formik
             initialValues={{
-            image:'',
-            name:'',
+            title:'',
             description:""
             }}
             // validationSchema={schema}
@@ -82,13 +76,7 @@ setreload(prev=>!prev)
               console.log(values);
               try {
               setSubmitted(true)
-                const formData=new FormData();
-                formData.append('name',values.name)
-                formData.append('link',values.link)
-                formData.append('description',values.description)
-                formData.append('image',values.image)
-
-                axios.post('/Testonomials',formData).then(res=>{
+                axios.post('/homereason',values).then(res=>{
                   console.log(res)
                   setSubmitted(false)
                   setreload(true)
@@ -120,7 +108,7 @@ setreload(prev=>!prev)
                             </label>
 
                             <Field
-                              type=""
+                              type="text"
                               placeholder={val.title}
                               name={val.apiname}
                               className="border w-full bg-gray-100 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
@@ -162,35 +150,6 @@ setreload(prev=>!prev)
                         );
                       }
                     })}
-
-<div className="flex flex-col gap-1 justify-start items-start w-full">
-                            <label
-                              htmlFor={'image'}
-                              className="text-sm font-semibold capitalize"
-                            >
-                              {'image'}
-                            </label>
-
-                            <input
-                            id="image"
-                              type="file"
-                              // placeholder={val}
-                              name={'image'}
-                              onChange={(e)=>{
-                                setFieldValue('image',e.target.files[0])
-                                e.target.value=''
-                              }}
-                              className="border w-full bg-gray-100 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
-                            />
-                            <ErrorMessage
-                              name={'image'}
-                              component={"div"}
-                              className="text-sm text-red-600"
-                            />
-                            {
-                              values.image && <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
-                            }
-                          </div>
                   </div>
                   <div className="flex w-full">
                     <button disabled={Submitted?true:false} className="disabled:bg-gray-500 disabled:cursor-not-allowed w-fit h-fit px-20 mt-6 rounded-md capitalize drop-shadow-md py-2 bg-green-700 text-white">
@@ -212,18 +171,18 @@ setreload(prev=>!prev)
               <div className="flex flex-col gap-1 items-start  w-full justify-start">
                 <div className='flex justify-between  w-full'>
                   <div className="text-base capitalize  font-extrabold flex gap-3 items-center">
-                    <div className='h-10 w-10 rounded-full bg-gray-500 '>
+                    {/* <div className='h-10 w-10 rounded-full bg-gray-500 '>
                       {
                         val.image && <img src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
                       }
-                        {/* <SVG src={val.icon} className="h-full w-full" /> */}
-                    </div>
-                  <div>{val.name}</div>
+                        <SVG src={val.icon} className="h-full w-full" />
+                    </div> */}
+                  <div>{val.title}</div>
                   </div>
                   <div className={`flex gap-6 text-xl` }>
-                    <Link to={`/concept/edit/${val.id}`} className="text-gray-300 cursor-pointer hover:scale-110
+                    {/* <Link to={`/concept/edit/${val.id}`} className="text-gray-300 cursor-pointer hover:scale-110
                      hover:text-sky-600 ease-in-out transition-all delay-100 duration-200">
-                      <FaEdit /></Link>
+                      <FaEdit /></Link> */}
                     <div className="text-gray-300 cursor-pointer hover:scale-110
                      hover:text-red-600 ease-in-out transition-all delay-100 duration-200">
                       <MdDelete onClick={()=>{
@@ -246,4 +205,4 @@ setreload(prev=>!prev)
   );
 };
 
-export default Testonomials;
+export default HomeReason;

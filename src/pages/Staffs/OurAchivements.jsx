@@ -30,6 +30,7 @@ const OurAchivements = () => {
       apiname: "image",
       type: "file",
     },
+    
     {
         title: "Overview",
         apiname: "overview",

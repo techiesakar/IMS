@@ -1,5 +1,5 @@
 import DataLayout from "components/ui/DataLayout";
-import React,{useCallback, useMemo, useState} from "react";
+import React,{useCallback, useMemo,useEffect, useState} from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {FaEdit} from 'react-icons/fa'
 import {MdDelete} from 'react-icons/md'
@@ -7,8 +7,8 @@ import Spinner from "components/ui/Spinner";
 import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
 import { Link } from "react-router-dom";
-const Testonomials = () => {
-  document.title = "SA - Testonomials";
+const Instructor = () => {
+  document.title = "SA - Student";
   const [Submitted, setSubmitted] = useState(false)
   const [Data, setData] = useState([])
   const [reload, setreload] = useState(false)
@@ -21,24 +21,45 @@ const Testonomials = () => {
       type: "text",
     },
     {
-      title: "Video Link",
-      apiname: "link",
-      type: "text",
+      title: "email",
+      apiname: "email",
+      type: "email",
     },
     {
-      title: "description",
-      apiname: "description",
-      type: "none",
+      title: "contact no",
+      apiname: "contact",
+      type: "text",
     },
   ];
+  const [Course, setCourse] = useState([])
+
+  const getCourse=()=>{
+    try {
+      axios.get('/course').then(res=>{
+        console.log(res);
+        setCourse([...res.data.result])
+      }).catch(err=>{
+        console.log(err)
+      })
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  useEffect(() => {
+    getCourse()
+  }, [])
+  
 
   
   const getData=useCallback(
     () => {
       try {
-        axios.get('/Testonomials').then(res=>{
+        axios.get('/student').then(res=>{
           console.log(res);
           setData([...res.data.result])
+        }).catch(err=>{
+          console.log(err)
         })
       } catch (error) {
         console.log(error);
@@ -46,12 +67,11 @@ const Testonomials = () => {
     },
     [reload],
   )
-
   useMemo(() => getData(), [reload])
 
   const deletedata=(id)=>{
     try {
-      axios.delete(`/Testonomials/${id}`).then(res=>{
+      axios.delete(`/student/${id}`).then(res=>{
 setreload(prev=>!prev)
       }).catch(err=>{
         console.log(err)
@@ -63,18 +83,21 @@ setreload(prev=>!prev)
 
   return (
     <DataLayout
-      title="Our Testonomials"
+      title="Our Student"
       showFilter={false}
       showEdit={false}
       showAdd={false}
     >
       <div className={`grid grid-cols-12 gap-4 h-full`}>
-        <div className="col-span-6 ">
+        <div className="col-span-4 ">
           <Formik
             initialValues={{
             image:'',
             name:'',
-            description:""
+            email:"",
+            contact:"",
+            course:[],
+
             }}
             // validationSchema={schema}
             onSubmit={(values,{resetForm}) => {
@@ -84,11 +107,13 @@ setreload(prev=>!prev)
               setSubmitted(true)
                 const formData=new FormData();
                 formData.append('name',values.name)
-                formData.append('link',values.link)
-                formData.append('description',values.description)
+                formData.append('email',values.email)
+                formData.append('contact',values.contact)
+                formData.append('course',JSON.stringify(values.course))
+
                 formData.append('image',values.image)
 
-                axios.post('/Testonomials',formData).then(res=>{
+                axios.post('/student',formData).then(res=>{
                   console.log(res)
                   setSubmitted(false)
                   setreload(true)
@@ -109,9 +134,9 @@ setreload(prev=>!prev)
                 <Form onSubmit={handleSubmit}>
                   <div className="grid gap-5">
                     {formlabels.map((val, i) => {
-                      if (val.type === "text") {
+                      if (val.type != "textarea") {
                         return (
-                          <div className="flex flex-col gap-1 justify-start items-start w-full">
+                          <div key={i} className="flex flex-col gap-1 justify-start items-start w-full">
                             <label
                               htmlFor={val.apiname}
                               className="text-sm font-semibold capitalize"
@@ -120,7 +145,7 @@ setreload(prev=>!prev)
                             </label>
 
                             <Field
-                              type=""
+                              type={val.type}
                               placeholder={val.title}
                               name={val.apiname}
                               className="border w-full bg-gray-100 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
@@ -191,6 +216,54 @@ setreload(prev=>!prev)
                               values.image && <img src={URL.createObjectURL(values.image)} className="w-full aspect-square" />
                             }
                           </div>
+
+
+                          <div className="flex flex-col gap-1 justify-start items-start w-full">
+                            <label
+                              htmlFor={'course'}
+                              className="text-sm font-semibold capitalize"
+                            >
+                              {'course'}
+                            </label>
+
+                            <select
+                              as="select"
+                              placeholder={'select course'}
+                              name={'course'}
+                              onChange={(e)=>{
+                                let data=Course[e.target.value]
+                                if(values.course.findIndex(x=>x.id===data.id)===-1){
+
+                                  setFieldValue("course", [...values.course,data]);
+                                }
+                                // console.log(data)
+                              }}
+                              className="border capitalize w-full bg-gray-100 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
+                            >
+                              <option value="">select course</option>
+                              {
+                                Course.map((item,i)=>{
+                                  return <option key={i} value={i}>{item.title}</option>
+                                })
+                              }
+                            </select>
+                            <div className='mt-4 grid grid-cols-2 gap-4'>
+                              {
+                                values.course.map((val,i)=>{
+                                  console.log(val);
+
+                                  return <div key={i} className='w-fit h-fit px-4 py-2 border border-gray-400 text-white bg-gray-400'>
+                                    <div>{val.title}</div>
+                                  </div>
+                                })
+                              }
+                            </div>
+                            <ErrorMessage
+                              name={'course'}
+                              component={"div"}
+                              className="text-sm text-red-600"
+                            />
+                          </div>
                   </div>
                   <div className="flex w-full">
                     <button disabled={Submitted?true:false} className="disabled:bg-gray-500 disabled:cursor-not-allowed w-fit h-fit px-20 mt-6 rounded-md capitalize drop-shadow-md py-2 bg-green-700 text-white">
@@ -204,24 +277,46 @@ setreload(prev=>!prev)
             }}
           </Formik>
         </div>
-        <div className="col-span-6  grid grid-cols-1 place-content-start place-items-start h-[570px] overflow-y-scroll gap-5 px-8 py-4">
-          {Data.length>0?Data.map((val, i) => (
-            <div className={`w-full hover:scale-105 transition-all  h-fit  
-            group duration-700 delay-300 ease-in-out ${val.color?"text-white":'bg-white text-gray-500'}  p-6 flex gap-5 items-start 
-            justify-start rounded-lg drop-shadow-lg`} >
-              <div className="flex flex-col gap-1 items-start  w-full justify-start">
-                <div className='flex justify-between  w-full'>
-                  <div className="text-base capitalize  font-extrabold flex gap-3 items-center">
-                    <div className='h-10 w-10 rounded-full bg-gray-500 '>
-                      {
-                        val.image && <img src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
-                      }
-                        {/* <SVG src={val.icon} className="h-full w-full" /> */}
-                    </div>
-                  <div>{val.name}</div>
+        <div className="col-span-8  grid grid-cols-1 place-content-start place-items-start h-[570px] overflow-y-scroll gap-5 px-8 py-4">
+         {Data.length>0?
+         <table className="w-full">
+          <thead className="bg-blue-700 text-white py-4">
+            <tr >
+            <th className="py-3 px-2 capitalize">S.no</th>
+            <th className="py-3 px-2 capitalize">image</th>
+            <th className="py-3 px-2 capitalize">name</th>
+            <th className="py-3 px-2 capitalize">contact</th>
+            <th className="py-3 px-2 capitalize">email</th>
+            <th className="py-3 px-2 capitalize">course</th>
+            <th className="py-3 px-2 capitalize">action</th>
+
+
+            </tr>
+
+          </thead>
+          <tbody>
+          {Data.map((val, i) => {
+            return(
+              <tr key={i} className="pt-3">
+                <td className="mt-6 border px-2">{i+1}</td>
+                <td className="mt-6 border px-2">
+                  <div className="h-8 w-8 flex items-center justify-center mt-3">
+                  <img src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
                   </div>
-                  <div className={`flex gap-6 text-xl` }>
-                    <Link to={`/concept/edit/${val.id}`} className="text-gray-300 cursor-pointer hover:scale-110
+                </td>
+                <td className="mt-6 border px-2">{val.name}</td>
+                <td className="mt-6 border px-2">{val.contact}</td>
+                <td className="mt-6 border px-2">{val.email}</td>
+                <td className="mt-6 border px-2">{
+                val.course.map((item,i)=>(
+                  <div key={i} className="flex">{i+1}. {item.title}</div>
+                ))
+                
+                
+                }</td>
+                <td className="mt-6 border px-2">
+                <div className={`flex gap-2 text-xl` }>
+                    <Link to={`/students/edit/${val.id}`} className="text-gray-300 cursor-pointer hover:scale-110
                      hover:text-sky-600 ease-in-out transition-all delay-100 duration-200">
                       <FaEdit /></Link>
                     <div className="text-gray-300 cursor-pointer hover:scale-110
@@ -231,19 +326,25 @@ setreload(prev=>!prev)
                       }} /></div>
 
                   </div>
-                </div>
-                <div className="text-sm transition-all pt-3 duration-1000 delay-700 ease-in font-serif  text-justify">
-                 {`"`} {val.description} {`"`}
-                </div>
-              </div>
-            </div>
-          )):<div className='flex items-center'>
+                </td>
+
+
+
+              </tr>
+            )
+          })
+          }
+
+          </tbody>
+         </table>:<div className='flex items-center'>
             <Spinner />
-            </div>}
+            </div>
+}
+      
         </div>
       </div>
     </DataLayout>
   );
 };
 
-export default Testonomials;
+export default Instructor;

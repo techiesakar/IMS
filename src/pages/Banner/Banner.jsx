@@ -7,8 +7,8 @@ import Spinner from "components/ui/Spinner";
 import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
 import { Link } from "react-router-dom";
-const Testonomials = () => {
-  document.title = "SA - Testonomials";
+const Banner = () => {
+  document.title = "SA - Banner";
   const [Submitted, setSubmitted] = useState(false)
   const [Data, setData] = useState([])
   const [reload, setreload] = useState(false)
@@ -16,27 +16,17 @@ const Testonomials = () => {
 
   const formlabels = [
     {
-      title: "Name",
-      apiname: "name",
+      title: "type",
+      apiname: "type",
       type: "text",
-    },
-    {
-      title: "Video Link",
-      apiname: "link",
-      type: "text",
-    },
-    {
-      title: "description",
-      apiname: "description",
-      type: "none",
-    },
+    }
   ];
 
   
   const getData=useCallback(
     () => {
       try {
-        axios.get('/Testonomials').then(res=>{
+        axios.get('/banner').then(res=>{
           console.log(res);
           setData([...res.data.result])
         })
@@ -51,7 +41,7 @@ const Testonomials = () => {
 
   const deletedata=(id)=>{
     try {
-      axios.delete(`/Testonomials/${id}`).then(res=>{
+      axios.delete(`/banner/${id}`).then(res=>{
 setreload(prev=>!prev)
       }).catch(err=>{
         console.log(err)
@@ -63,18 +53,18 @@ setreload(prev=>!prev)
 
   return (
     <DataLayout
-      title="Our Testonomials"
+      title="Our Banner"
       showFilter={false}
       showEdit={false}
       showAdd={false}
     >
+      <div className="text-sm text-red-500 font-bold uppercase">home can be more then one. rest can only be 1</div>
       <div className={`grid grid-cols-12 gap-4 h-full`}>
         <div className="col-span-6 ">
           <Formik
             initialValues={{
             image:'',
-            name:'',
-            description:""
+            type:'',
             }}
             // validationSchema={schema}
             onSubmit={(values,{resetForm}) => {
@@ -83,12 +73,10 @@ setreload(prev=>!prev)
               try {
               setSubmitted(true)
                 const formData=new FormData();
-                formData.append('name',values.name)
-                formData.append('link',values.link)
-                formData.append('description',values.description)
+                formData.append('type',values.type)
                 formData.append('image',values.image)
 
-                axios.post('/Testonomials',formData).then(res=>{
+                axios.post('/banner',formData).then(res=>{
                   console.log(res)
                   setSubmitted(false)
                   setreload(true)
@@ -120,11 +108,22 @@ setreload(prev=>!prev)
                             </label>
 
                             <Field
-                              type=""
+                              as="select"
                               placeholder={val.title}
                               name={val.apiname}
-                              className="border w-full bg-gray-100 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
-                            />
+                              className="border w-full capitalize bg-gray-100 border-gray-500 rounded-md px-4 py-2 outline-none placeholder:capitalize"
+                            >
+                              <option value={''}>select banner page</option>
+                              <option value={'home'}>home</option>
+                              <option value={'about'}>about</option>
+                              <option value={'gallery'}>gallery</option>
+                              <option value={'portfolio'}>portfolio</option>
+                              <option value={'contact'}>contact</option>
+                              <option value={'blog'}>blog</option>
+
+
+
+                            </Field>
                             <ErrorMessage
                               name={val.apiname}
                               component={"div"}
@@ -212,18 +211,17 @@ setreload(prev=>!prev)
               <div className="flex flex-col gap-1 items-start  w-full justify-start">
                 <div className='flex justify-between  w-full'>
                   <div className="text-base capitalize  font-extrabold flex gap-3 items-center">
-                    <div className='h-10 w-10 rounded-full bg-gray-500 '>
+                    {/* <div className='h-10 w-10 rounded-full bg-gray-500 '>
                       {
                         val.image && <img src={`http://localhost:5004/public/${val.image}`} className='w-full h-full rounded-full' />
                       }
-                        {/* <SVG src={val.icon} className="h-full w-full" /> */}
-                    </div>
-                  <div>{val.name}</div>
+                    </div> */}
+                  <div>{val.type}</div>
                   </div>
                   <div className={`flex gap-6 text-xl` }>
-                    <Link to={`/concept/edit/${val.id}`} className="text-gray-300 cursor-pointer hover:scale-110
+                    {/* <Link to={`/banner/edit/${val.id}`} className="text-gray-300 cursor-pointer hover:scale-110
                      hover:text-sky-600 ease-in-out transition-all delay-100 duration-200">
-                      <FaEdit /></Link>
+                      <FaEdit /></Link> */}
                     <div className="text-gray-300 cursor-pointer hover:scale-110
                      hover:text-red-600 ease-in-out transition-all delay-100 duration-200">
                       <MdDelete onClick={()=>{
@@ -232,8 +230,10 @@ setreload(prev=>!prev)
 
                   </div>
                 </div>
-                <div className="text-sm transition-all pt-3 duration-1000 delay-700 ease-in font-serif  text-justify">
-                 {`"`} {val.description} {`"`}
+                <div className="text-sm transition-all w-full  h-56  pt-3 duration-1000  flex items-center justify-center delay-700 ease-in font-serif  text-justify">
+                {
+                        val.image && <img src={`http://localhost:5004/public/${val.image}`} className=' h-full aspect-square mx-auto' />
+                      }
                 </div>
               </div>
             </div>
@@ -246,4 +246,4 @@ setreload(prev=>!prev)
   );
 };
 
-export default Testonomials;
+export default Banner;

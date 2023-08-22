@@ -8,85 +8,51 @@ const NavLinks = [
   { id: 0, title: "Dashboard", link: "/", icon: <MdDashboard /> },
   {
     id: 1,
-    title: "Inventory",
-    link: "/inventory",
+    title: "Home Reason",
+    link: "/homereason",
     icon: <MdInventory />,
-    children: [
-      {
-        id: 0,
-        title: "Add Item",
-        link: "/inventory/add",
-      },
-      {
-        id: 1,
-        title: "Categories",
-        link: "/categories",
-      },
-      {
-        id: 2,
-        title: "Brands",
-        link: "/brands",
-      },
-      {
-        id: 2,
-        title: "View All",
-        link: "/inventory",
-      },
-    ],
   },
   {
     id: 2,
-    title: "Purchases",
-    link: "/purchases",
+    title: "Bannner",
+    link: "/banner",
     icon: <BiPurchaseTagAlt />,
-    children: [
-      {
-        id: 0,
-        title: "Add Purchase",
-        link: "/purchase/add",
-      },
-      {
-        id: 1,
-        title: "View Purchases",
-        link: "/purchases",
-      },
-    ],
   },
   {
     id: 3,
     title: "Students",
     link: "/students",
     icon: <SiSalesforce />,
-    children: [
-      {
-        id: 0,
-        title: "Add Sale",
-        link: "/students/add",
-      },
-      {
-        id: 1,
-        title: "View Sales",
-        link: "/students",
-      },
-    ],
+    // children: [
+    //   {
+    //     id: 0,
+    //     title: "Add Sale",
+    //     link: "/students/add",
+    //   },
+    //   {
+    //     id: 1,
+    //     title: "View Sales",
+    //     link: "/students",
+    //   },
+    // ],
   },
   {
     id: 4,
-    title: "Suppliers",
-    link: "/suppliers",
+    title: "Reasons",
+    link: "/reasons",
     icon: <MdFireTruck />,
-    children: [
-      {
-        id: 0,
-        title: "Add Supplier",
-        link: "/supplier/add",
-      },
-      {
-        id: 1,
-        title: "View Suppliers",
-        link: "/suppliers",
-      },
-    ],
+    // children: [
+    //   {
+    //     id: 0,
+    //     title: "Add Supplier",
+    //     link: "/supplier/add",
+    //   },
+    //   {
+    //     id: 1,
+    //     title: "View Suppliers",
+    //     link: "/suppliers",
+    //   },
+    // ],
   },
   {
     id: 15,
@@ -176,6 +142,12 @@ const NavLinks = [
     id: 9,
     title: "Testonomials",
     link: "/testonomials",
+    icon: <BsPeopleFill />,
+  },
+  {
+    id: 12,
+    title: "concept",
+    link: "/concept",
     icon: <BsPeopleFill />,
   },
 

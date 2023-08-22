@@ -7,8 +7,8 @@ import Spinner from "components/ui/Spinner";
 import SVG from 'react-inlinesvg';
 import axios from 'hoc/axios'
 import { Link } from "react-router-dom";
-const Testonomials = () => {
-  document.title = "SA - Testonomials";
+const Concept = () => {
+  document.title = "SA - Concept";
   const [Submitted, setSubmitted] = useState(false)
   const [Data, setData] = useState([])
   const [reload, setreload] = useState(false)
@@ -18,11 +18,6 @@ const Testonomials = () => {
     {
       title: "Name",
       apiname: "name",
-      type: "text",
-    },
-    {
-      title: "Video Link",
-      apiname: "link",
       type: "text",
     },
     {
@@ -36,7 +31,7 @@ const Testonomials = () => {
   const getData=useCallback(
     () => {
       try {
-        axios.get('/Testonomials').then(res=>{
+        axios.get('/concept').then(res=>{
           console.log(res);
           setData([...res.data.result])
         })
@@ -51,7 +46,7 @@ const Testonomials = () => {
 
   const deletedata=(id)=>{
     try {
-      axios.delete(`/Testonomials/${id}`).then(res=>{
+      axios.delete(`/concept/${id}`).then(res=>{
 setreload(prev=>!prev)
       }).catch(err=>{
         console.log(err)
@@ -63,7 +58,7 @@ setreload(prev=>!prev)
 
   return (
     <DataLayout
-      title="Our Testonomials"
+      title="Our Concept"
       showFilter={false}
       showEdit={false}
       showAdd={false}
@@ -84,11 +79,10 @@ setreload(prev=>!prev)
               setSubmitted(true)
                 const formData=new FormData();
                 formData.append('name',values.name)
-                formData.append('link',values.link)
                 formData.append('description',values.description)
                 formData.append('image',values.image)
 
-                axios.post('/Testonomials',formData).then(res=>{
+                axios.post('/concept',formData).then(res=>{
                   console.log(res)
                   setSubmitted(false)
                   setreload(true)
@@ -246,4 +240,4 @@ setreload(prev=>!prev)
   );
 };
 
-export default Testonomials;
+export default Concept;
