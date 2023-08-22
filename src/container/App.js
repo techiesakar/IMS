@@ -52,7 +52,7 @@ import Course from "pages/course/Course";
 import AddTools from "pages/tools/AddTools";
 import Tools from "pages/tools/Tools";
 import Instructor from "pages/Instructor/Instructor";
-import AddInstructor from "pages/Instructor/AddInstructor";
+import AddInstructor from "pages/Instructor/Add_Instructor";
 
 function App() {
   return (
