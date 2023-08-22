@@ -40,6 +40,7 @@ import Reason from "pages/Reason/Reason";
 import EditReason from '../pages/Reason/EditReason';
 import Banner from "pages/Banner/Banner";
 import EditBanner from "pages/Banner/EditBanner";
+import HomeReason from "pages/HomeReason/HomeReason";
 
 function App() {
   return (
@@ -61,7 +62,7 @@ function App() {
           <Route path={"/banner/edit/:id"} element={<EditBanner />} />
 
 
-          <Route path={"/purchases"} element={<Purchase />} />
+          <Route path={"/homereason"} element={<HomeReason />} />
           <Route path={"/purchase/add"} element={<AddPurchase />} />
 
           <Route path={"/reports"} element={<Reports />} />

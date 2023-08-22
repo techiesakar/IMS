@@ -8,31 +8,9 @@ const NavLinks = [
   { id: 0, title: "Dashboard", link: "/", icon: <MdDashboard /> },
   {
     id: 1,
-    title: "Inventory",
-    link: "/inventory",
+    title: "Home Reason",
+    link: "/homereason",
     icon: <MdInventory />,
-    children: [
-      {
-        id: 0,
-        title: "Add Item",
-        link: "/inventory/add",
-      },
-      {
-        id: 1,
-        title: "Categories",
-        link: "/categories",
-      },
-      {
-        id: 2,
-        title: "Brands",
-        link: "/brands",
-      },
-      {
-        id: 2,
-        title: "View All",
-        link: "/inventory",
-      },
-    ],
   },
   {
     id: 2,
